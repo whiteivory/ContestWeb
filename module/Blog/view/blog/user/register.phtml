@@ -1,0 +1,17 @@
+<div id="register">
+<?php 
+// $this->layout()->userpanel=$this->action
+ $form = $this->userform;
+//设置表单的action属性，跳转到album/add 然后addAction()getRequest；和正常的方式是类似的。
+$form->setAttribute('action', $this->url());
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('userID'));
+echo $this->formRow($form->get('username'));
+echo $this->formRow($form->get('upassword'));
+
+
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();?>
+</div>

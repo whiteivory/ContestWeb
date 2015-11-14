@@ -1,0 +1,11 @@
+
+ <h1>Blog</h1>
+
+ <?php foreach ($this->pages as $page): ?>
+ <article>
+     <h1 id="page<?= $page->getId() ?>"><?= $page->getTitle() ?></h1>
+     <p>
+         <?= $page->getBody() ?>
+     </p>
+ </article>
+ <?php endforeach ?>
