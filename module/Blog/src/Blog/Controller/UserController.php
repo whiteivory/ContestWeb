@@ -9,6 +9,7 @@ use Zend\InputFilter\InputFilter;
 use Blog\Service\UserService;
 use Application;
 use Zend\Authentication\AuthenticationService;
+use Application\Common\WAuthUtil;
 class UserController  extends AbstractActionController
 {
     /* 
@@ -19,28 +20,33 @@ class UserController  extends AbstractActionController
     public  function __construct(){
 
     }
-    /*
-     * 
+    
+    /*用来说明所有页面实现顶部状态更新注销的过程
+     * 已经封装成两个函数十分方便
      */
     public function testAction(){
-        
+        WAuthUtil::whetherLogout($this);//所有Action第一行加上这一行，用于进行顶部显示操作
+        /*以上一行代表下面这几行
         $request = $this->getRequest();
         if ($request->isGet()&&$request->getQuery()->offsetGet('logout')) {
             $auth = new AuthenticationService();
             $auth->getStorage()->clear();
-        }
+        }*/
         
+        WAuthUtil::addUserpanelToLayout($this, '/test');
+        /*上面一行代表下面这几行
         $idenstr = $this->getservice()->get_auth();
        // Debug::dump($tmp);//用户名的string字符串
         //layout()用法
         $v1=new ViewModel(array(
             'identity'=>$idenstr,
-            'currentPage'=>'/test'
+            'currentPage'=>'/test'//用于trace当前页面，必须要加
         ));
         //网页顶部显示登陆信息一般过程
         $v1->setTemplate('blog/user/userPanel');
         $layout=$this->layout();
         $layout->addChild($v1,'userPanel');
+        */
         $v=new ViewModel(array(
         ));
         return $v;
