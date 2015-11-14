@@ -8,6 +8,7 @@ use Zend\Debug\Debug;
 use Zend\InputFilter\InputFilter;
 use Blog\Service\UserService;
 use Application;
+use Zend\Authentication\AuthenticationService;
 class UserController  extends AbstractActionController
 {
     /* 
@@ -22,11 +23,19 @@ class UserController  extends AbstractActionController
      * 
      */
     public function testAction(){
+        
+        $request = $this->getRequest();
+        if ($request->isGet()&&$request->getQuery()->offsetGet('logout')) {
+            $auth = new AuthenticationService();
+            $auth->getStorage()->clear();
+        }
+        
         $idenstr = $this->getservice()->get_auth();
        // Debug::dump($tmp);//用户名的string字符串
         //layout()用法
         $v1=new ViewModel(array(
-            'identity'=>$idenstr
+            'identity'=>$idenstr,
+            'currentPage'=>'/test'
         ));
         //网页顶部显示登陆信息一般过程
         $v1->setTemplate('blog/user/userPanel');
@@ -36,6 +45,7 @@ class UserController  extends AbstractActionController
         ));
         return $v;
     }
+    
     public function loginAction(){
         $form = new UserForm();
         $form->get('submit')->setValue('login');
