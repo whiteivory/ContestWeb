@@ -85,6 +85,26 @@ return array(
                         'action'     => 'login',
                     )
                 )
+            ),
+            'add'=>array(
+                'type' => 'literal',
+                'options' => array(
+                    'route'    => '/add',
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Page',
+                        'action'     => 'add',
+                    )
+                )
+            ),
+            'addd'=>array(
+                'type' => 'literal',
+                'options' => array(
+                    'route'    => '/addd',
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Page',
+                        'action'     => 'addd',
+                    )
+                )
             )
         )
     )

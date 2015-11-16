@@ -1,0 +1,21 @@
+<?php
+//改变config要清楚浏览器缓存
+   echo $this->headtitle("A Simple Page with CKEditor"); 
+   echo $this->headScript()
+        ->prependFile($this->basePath() . '/ckeditor/ckeditor.js')
+        ->prependFile($this->basePath() . '/ckeditor/config.js'); //这一行 
+   ?>
+           <form action="/add" method="post">
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                    请在这里输入您要发表的内容
+            </textarea>
+            <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+        	//customConfig: '<php $this->basepath()?>/ckeditor/customconfig.js'
+            CKEDITOR.replace( 'editor1', {
+           	 filebrowserUploadUrl: "/addd"
+            });
+            </script>
+            <input type="submit"></input>
+        </form>

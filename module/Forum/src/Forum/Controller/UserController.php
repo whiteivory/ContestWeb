@@ -51,7 +51,9 @@ class UserController  extends AbstractActionController
         ));
         return $v;
     }
-    
+    public function testaddAction(){
+        
+    }
     public function loginAction(){
         $form = new UserForm();
         $form->get('submit')->setValue('login');
