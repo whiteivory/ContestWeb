@@ -8,7 +8,7 @@
 namespace Application\Common;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Authentication\AuthenticationService;
-
+use Zend\Debug\Debug;
 use Zend\View\Model\ViewModel;
 
 class WAuthUtil{
@@ -24,12 +24,12 @@ class WAuthUtil{
     public static function addUserpanelToLayout(AbstractActionController $controllerClass
         ,$currentPageNameStr){
         
-        $idenstr = $controllerClass->getservice()->get_auth();
-        // Debug::dump($tmp);//用户名的string字符串
+        $idenobj = $controllerClass->getservice()->get_auth();
+//          Debug::dump($idenobj);
         //layout()用法
         $v1=new ViewModel();
         $tmpArray=array();
-        $tmpArray['identity']=$idenstr;
+        $tmpArray['identity']=$idenobj->username;
         $tmpArray['currentPage']=$currentPageNameStr;
         $v1=new ViewModel($tmpArray);
         //网页顶部显示登陆信息一般过程

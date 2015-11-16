@@ -46,6 +46,16 @@ class UserForm extends Form
                 'value' => 'Submit',
             ),
         ));
+        $this->add(array(
+            'type' => 'Select',
+            'name' => 'schoolID',
+            'options' => array(
+                'label' => '你所在的学校',
+                'value_options' => array(
+                    '1' => '山东大学（威海）'
+                ),
+            )
+        ));
       /*   $this->add(array(
             'type' => 'Zend\Form\Element\Email',
             'name' => 'email',

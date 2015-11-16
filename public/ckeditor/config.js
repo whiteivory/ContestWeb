@@ -35,12 +35,4 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
-
-	// config.language = 'es';
-	// config.uiColor = '#F7B42C';
-	// config.height = 300;
-	config.toolbarCanCollapse = true;
-
-	// config.extraPlugins = 'uploadimage';
-	// config.imageUploadUrl = '/add';
 };

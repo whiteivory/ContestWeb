@@ -88,15 +88,18 @@ class UserController  extends AbstractActionController
     public function registerAction()
     {
         $form = new UserForm();
+        
         $request = $this->getRequest();
         if ($request->isPost()) {
             $user = new User();
-
+//             echo $_GET['user'];
+//             Debug::dump($request->getPost());
             $form->setInputFilter($user->getInputFilter());//就算没有输入id也可以通过检验。
             $form->bind($user);
             $form->setData($request->getPost());
             if ($form->isValid()) {
 //                 $user->setId(9);
+//                 Debug::dump($user);
                 $this->getservice()->save($user);
                 $this->getservice()->auth($user);
 //                 Debug::dump($form->getData());//经过bind,是一个$user对象，必须要实现exchangeArray ，get和set不必要

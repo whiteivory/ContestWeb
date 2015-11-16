@@ -4,66 +4,158 @@ namespace Forum\Model;
 
 class Page implements PageInterface
 {
-    /**
-     * @var int
-     */
-    protected $id;
-
-    /**
-     * @var string
-     */
-    protected $title;
-
-    /**
-     * @var string
-     */
-    protected $body;
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getId()
+    private $postID;
+    private $secID;
+    private $secname;
+    private $userID;
+    private $username;
+    private $ptitle;
+    private $ptime;
+    private $pcontent;
+    private $lasttime;
+    private $ptype;
+    private $pclicknum;
+    private $preplynum;
+    private $pzannum;
+    private $pallow; //是否允许外校人查看本贴
+ public function getPostID()
     {
-        return $this->id;
+        return $this->postID;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId($id)
+ public function getSecID()
     {
-        $this->id = $id;
+        return $this->secID;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getTitle()
+ public function getSecname()
     {
-        return $this->title;
+        return $this->secname;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle($title)
+ public function getUserID()
     {
-        $this->title = $title;
+        return $this->userID;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getBody()
+ public function getUsername()
     {
-        return $this->body;
+        return $this->username;
     }
 
-    /**
-     * @param string $text
-     */
-    public function setBody($body)
+ public function getPtitle()
     {
-        $this->body = $body;
+        return $this->ptitle;
     }
+
+ public function getPtime()
+    {
+        return $this->ptime;
+    }
+
+ public function getPcontent()
+    {
+        return $this->pcontent;
+    }
+
+ public function getLasttime()
+    {
+        return $this->lasttime;
+    }
+
+ public function getPtype()
+    {
+        return $this->ptype;
+    }
+
+ public function getPclicknum()
+    {
+        return $this->pclicknum;
+    }
+
+ public function getPreplynum()
+    {
+        return $this->preplynum;
+    }
+
+ public function getPzannum()
+    {
+        return $this->pzannum;
+    }
+
+ public function getPallow()
+    {
+        return $this->pallow;
+    }
+
+ public function setPostID($postID)
+    {
+        $this->postID = $postID;
+    }
+
+ public function setSecID($secID)
+    {
+        $this->secID = $secID;
+    }
+
+ public function setSecname($secname)
+    {
+        $this->secname = $secname;
+    }
+
+ public function setUserID($userID)
+    {
+        $this->userID = $userID;
+    }
+
+ public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+ public function setPtitle($ptitle)
+    {
+        $this->ptitle = $ptitle;
+    }
+
+ public function setPtime($ptime)
+    {
+        $this->ptime = $ptime;
+    }
+
+ public function setPcontent($pcontent)
+    {
+        $this->pcontent = $pcontent;
+    }
+
+ public function setLasttime($lasttime)
+    {
+        $this->lasttime = $lasttime;
+    }
+
+ public function setPtype($ptype)
+    {
+        $this->ptype = $ptype;
+    }
+
+ public function setPclicknum($pclicknum)
+    {
+        $this->pclicknum = $pclicknum;
+    }
+
+ public function setPreplynum($preplynum)
+    {
+        $this->preplynum = $preplynum;
+    }
+
+ public function setPzannum($pzannum)
+    {
+        $this->pzannum = $pzannum;
+    }
+
+ public function setPallow($pallow)
+    {
+        $this->pallow = $pallow;
+    }
+
 }

@@ -42,11 +42,26 @@ return array(
                 // Configure the route itself
                 'options' => array(
                     // Listen to "/blog" as uri
-                    'route'    => '/forum',
+                    'route'    => '/page',
                     // Define default controller and action to be called when this route is matched
                     'defaults' => array(
                         'controller' => 'Forum\Controller\Page',
                         'action'     => 'index',
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes'  => array(
+                    'detail' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route'    => '/:id',
+                            'defaults' => array(
+                                'action' => 'detail'
+                            ),
+                            'constraints' => array(
+                                'id' => '[1-9]\d*'
+                            )
+                        )
                     )
                 )
             ),
@@ -96,13 +111,13 @@ return array(
                     )
                 )
             ),
-            'addd'=>array(
+            'addUpPicSer'=>array(
                 'type' => 'literal',
                 'options' => array(
-                    'route'    => '/addd',
+                    'route'    => '/addUpPicSer',
                     'defaults' => array(
                         'controller' => 'Forum\Controller\Page',
-                        'action'     => 'addd',
+                        'action'     => 'addUpPicSer',
                     )
                 )
             )

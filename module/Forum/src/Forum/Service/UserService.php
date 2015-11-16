@@ -36,9 +36,8 @@ class UserService
         $row=$result->current();
 //         Debug::dump($row  );
         $user->setUserID($row['max(userID)']+1);
-        
         //insert
-        $sql='insert into user(userID,username,upassword) values('.$user->getUserID().',"'.$user->getUsername().'","'.$user->getUpassword().'")' ;
+        $sql='insert into user(userID,username,upassword,schoolID) values('.$user->getUserID().',"'.$user->getUsername().'","'.$user->getUpassword().'","'.$user->getSchoolID().'")' ;
 //         echo $sql;
         $this->dbAdapter->query($sql, Adapter::QUERY_MODE_EXECUTE);
     }
@@ -57,6 +56,11 @@ class UserService
         ;
         $result = $auth->authenticate($authAdapter);
         if($result->isValid()){
+            $storage=$auth->getStorage();
+            $storage->write($authAdapter->getResultRowObject(array(
+        'username',
+        'schoolID',
+            )));
             return true;
         }
         else {
@@ -70,6 +74,6 @@ class UserService
     public function get_auth(){
         $auth = new AuthenticationService();
         $tmp=$auth->getStorage()->read();
-        return $tmp;
+        return $tmp;//返回一个类，有username和schoolID这两个在userservice里面get——auth函数里write数据库中的两列。
     }
 }

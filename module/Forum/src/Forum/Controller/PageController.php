@@ -20,23 +20,20 @@ class PageController  extends AbstractActionController
             'pages' => $this->pageService->getPages()
         ));
     }
+    public function detailAction(){
+        
+    }
     public function addAction()
     {
         $request = $this->getRequest();
-        if($request->isPost()&&isset($request->getPost()['upload'])){
-            $result = '{
-            "uploaded": 1,
-            "fileName": "foo.jpg",
-            "url": "/up/foo.jpg"
-            }';//jason格式
-            echo $result;
-            return ;
-        }
+        
+      
         if($request->isPost()&&isset($request->getPost()['editor1'])){
             print_r($request->getPost()['editor1']);
         }
     }
-    public function adddAction(){
+
+    public function addUpPicSerAction(){
         $path_for_route="data/user/postimg/";//由于在apache配置文件里设置到了public
         $path_for_frame="public/".$path_for_route;//实际存的时候存放的地址。
 

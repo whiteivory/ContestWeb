@@ -12,10 +12,32 @@ class User implements InputFilterAwareInterface
     protected $userID;
     protected $upassword;
     protected $username;
+    protected $schoolID;
+    protected $schoolname;
     
     protected $inputFilter;
 
-    /**
+    public function getSchoolID()
+    {
+        return $this->schoolID;
+    }
+
+ public function getSchoolname()
+    {
+        return $this->schoolname;
+    }
+
+ public function setSchoolID($schoolID)
+    {
+        $this->schoolID = $schoolID;
+    }
+
+ public function setSchoolname($schoolname)
+    {
+        $this->schoolname = $schoolname;
+    }
+
+ /**
      * @return the $userID
      */
     public function getUserID()
@@ -68,6 +90,8 @@ class User implements InputFilterAwareInterface
         $this->userID     = (isset($data['userID']))     ? $data['userID']     : null;
         $this->username = (isset($data['username'])) ? $data['username'] : null;
         $this->upassword  = (isset($data['upassword']))  ? $data['upassword']  : null;
+        $this->schoolID = (isset($data['schoolID']))     ? $data['schoolID']     : null;
+        $this->schoolname= (isset($data['schoolname']))     ? $data['schoolname']     : null;
     }
     //Zend\Stdlib\Hydrator\ArraySerializable::extract expects the provided object to implement getArrayCopy()
     public function getArrayCopy()

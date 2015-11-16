@@ -10,7 +10,7 @@ echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('userID'));
 echo $this->formRow($form->get('username'));
 echo $this->formRow($form->get('upassword'));
-
+echo $this->formRow($form->get('schoolID'));
 
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();?>
