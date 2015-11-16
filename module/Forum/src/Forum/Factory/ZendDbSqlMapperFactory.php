@@ -1,10 +1,10 @@
 <?php
-namespace Blog\Factory;
+namespace Forum\Factory;
 
-use Blog\Model\Page;
+use Forum\Model\Page;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Blog\Mapper\ZendDbSqlMapper;
+use Forum\Mapper\ZendDbSqlMapper;
 use Zend\Stdlib\Hydrator\ClassMethods;
 
 class ZendDbSqlMapperFactory implements  FactoryInterface{

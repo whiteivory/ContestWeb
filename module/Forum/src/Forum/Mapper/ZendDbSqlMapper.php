@@ -1,7 +1,7 @@
 <?php
-namespace Blog\Mapper;
+namespace Forum\Mapper;
 
- use Blog\Model\PageInterface;
+ use Forum\Model\PageInterface;
  use Zend\Db\Adapter\AdapterInterface;
  use Zend\Db\Adapter\Driver\ResultInterface;
  use Zend\Db\ResultSet\HydratingResultSet;
@@ -51,7 +51,7 @@ use Zend\Db\ResultSet\ResultSet;
              return temp;
          }
          
-         throw new \InvalidArgumentException("Blog with given ID:{$id} not found.");
+         throw new \InvalidArgumentException("Forum with given ID:{$id} not found.");
      }
 
      /**

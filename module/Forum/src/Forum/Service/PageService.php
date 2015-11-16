@@ -1,7 +1,7 @@
 <?php
-// Filename: /module/Blog/src/Blog/Service/PostService.php
-namespace Blog\Service;
-use Blog\Mapper\PageMapperInterface;
+// Filename: /module/Forum/src/Blog/Service/PostService.php
+namespace Forum\Service;
+use Forum\Mapper\PageMapperInterface;
 
 class PageService implements  PageServiceInterface
 {

@@ -1,11 +1,11 @@
 <?php
-namespace Blog\Factory;
+namespace Forum\Factory;
 
-use Blog\Service\PageService;
+use Forum\Service\UserService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class PageServiceFactory implements FactoryInterface
+class UserServiceFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -15,8 +15,8 @@ class PageServiceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new PageService(
-            $serviceLocator->get('Blog\Mapper\PageMapperInterface')
+        return new UserService(
+            $serviceLocator->get('Zend\Db\Adapter\Adapter')
         );
     }
 }

@@ -1,7 +1,7 @@
 <?php
-namespace Blog\Mapper;
+namespace Forum\Mapper;
 
-use Blog\Model\PageInterface;
+use Forum\Model\PageInterface;
 
 interface PageMapperInterface
 {

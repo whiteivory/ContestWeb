@@ -1,12 +1,12 @@
 <?php
-namespace Blog\Controller;
+namespace Forum\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Blog\Form\UserForm;
-use Blog\Model\User;
+use Forum\Form\UserForm;
+use Forum\Model\User;
 use Zend\Debug\Debug;
 use Zend\InputFilter\InputFilter;
-use Blog\Service\UserService;
+use Forum\Service\UserService;
 use Application;
 use Zend\Authentication\AuthenticationService;
 use Application\Common\WAuthUtil;
@@ -127,7 +127,7 @@ class UserController  extends AbstractActionController
     {
         if (!$this->userService) {
             $sm = $this->getServiceLocator();//$sm service manager
-            $this->userService = $sm->get('Blog\Service\UserService');
+            $this->userService = $sm->get('Forum\Service\UserService');
         }
         return $this->userService;
     }

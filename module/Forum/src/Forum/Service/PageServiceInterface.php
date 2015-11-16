@@ -1,7 +1,7 @@
 <?php
-namespace Blog\Service;
+namespace Forum\Service;
 
-use Blog\Model\PageInterface;
+use Forum\Model\PageInterface;
 
 interface PageServiceInterface
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Form;
+namespace Forum\Form;
 
 use Zend\Captcha\AdapterInterface as CaptchaAdapter;
 use Zend\Form\Element;

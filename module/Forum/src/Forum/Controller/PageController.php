@@ -1,8 +1,8 @@
 <?php
-namespace Blog\Controller;
+namespace Forum\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
-use Blog\Service\PageServiceInterface;
-use Blog\Service\PageService;
+use Forum\Service\PageServiceInterface;
+use Forum\Service\PageService;
 use Zend\View\Model\ViewModel;
 
 class PageController  extends AbstractActionController

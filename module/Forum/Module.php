@@ -1,6 +1,6 @@
 <?php
  // Filename: /module/Blog/Module.php
- namespace Blog;
+ namespace Forum;
 
  use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
  use Zend\ModuleManager\Feature\ConfigProviderInterface;

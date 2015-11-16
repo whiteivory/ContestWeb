@@ -1,9 +1,9 @@
 <?php
-// Filename: /module/Blog/src/Blog/Service/PostService.php
-namespace Blog\Service;
+// Filename: /module/Forum/src/Forum/Service/PostService.php
+namespace Forum\Service;
 
 use Zend\Db\Adapter\Adapter;
-use Blog\Model\User;
+use Forum\Model\User;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Db\Adapter\AdapterInterface;

@@ -1,6 +1,6 @@
 <?php
 // Filename: /module/Blog/src/Blog/Model/Post.php
-namespace Blog\Model;
+namespace Forum\Model;
 
 class Page implements PageInterface
 {

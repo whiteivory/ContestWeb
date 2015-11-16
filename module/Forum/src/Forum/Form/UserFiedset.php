@@ -1,8 +1,8 @@
 <?php
-namespace Blog\Form;
+namespace Forum\Form;
 
 use Zend\Form\Fieldset;
-// use Blog\Model\Post;
+// use Forum\Model\Post;
 // use Zend\Stdlib\Hydrator\ClassMethods;
 
 class PostFieldset extends Fieldset

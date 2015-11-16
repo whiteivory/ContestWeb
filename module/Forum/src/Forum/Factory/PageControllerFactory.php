@@ -1,12 +1,12 @@
 <?php
 // Filename: /module/Blog/src/Blog/Factory/ListControllerFactory.php
-namespace Blog\Factory;
+namespace Forum\Factory;
 
-use Blog\Controller\UserController;
+use Forum\Controller\PageController;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class UserControllerFactory implements FactoryInterface
+class PageControllerFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -18,8 +18,8 @@ class UserControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
-//         $pageService        = $realServiceLocator->get('Blog\Service\PageServiceInterface');
+        $pageService        = $realServiceLocator->get('Forum\Service\PageServiceInterface');
 
-        return new UserController();
+        return new PageController($pageService);
     }
 }

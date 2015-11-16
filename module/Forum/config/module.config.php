@@ -13,10 +13,10 @@ return array(
     ),
      'service_manager' => array(
          'factories' => array(
-             'Blog\Mapper\PageMapperInterface'   => 'Blog\Factory\ZendDbSqlMapperFactory',
-             'Blog\Service\PageServiceInterface' => 'Blog\Factory\PageServiceFactory',
+             'Forum\Mapper\PageMapperInterface'   => 'Forum\Factory\ZendDbSqlMapperFactory',
+             'Forum\Service\PageServiceInterface' => 'Forum\Factory\PageServiceFactory',
              'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
-             'Blog\Service\UserService' => 'Blog\Factory\UserServiceFactory',
+             'Forum\Service\UserService' => 'Forum\Factory\UserServiceFactory',
          )
      ),
     'view_manager' => array(
@@ -28,8 +28,8 @@ return array(
     // This lines opens the configuration for the RouteManager
      'controllers' => array(
              'factories' => array(
-             'Blog\Controller\Page' => 'Blog\Factory\PageControllerFactory',
-                 'Blog\Controller\User'=>'Blog\Factory\UserControllerFactory',
+             'Forum\Controller\Page' => 'Forum\Factory\PageControllerFactory',
+                 'Forum\Controller\User'=>'Forum\Factory\UserControllerFactory',
          )
         ),
     'router' => array(
@@ -42,10 +42,10 @@ return array(
                 // Configure the route itself
                 'options' => array(
                     // Listen to "/blog" as uri
-                    'route'    => '/blog',
+                    'route'    => '/forum',
                     // Define default controller and action to be called when this route is matched
                     'defaults' => array(
-                        'controller' => 'Blog\Controller\Page',
+                        'controller' => 'Forum\Controller\Page',
                         'action'     => 'index',
                     )
                 )
@@ -57,7 +57,7 @@ return array(
                     'route'    => '/register',
                     // Define default controller and action to be called when this route is matched
                     'defaults' => array(
-                        'controller' => 'Blog\Controller\User',
+                        'controller' => 'Forum\Controller\User',
                         'action'     => 'register',
                     )
                 )
@@ -69,7 +69,7 @@ return array(
                     'route'    => '/test',
                     // Define default controller and action to be called when this route is matched
                     'defaults' => array(
-                        'controller' => 'Blog\Controller\User',
+                        'controller' => 'Forum\Controller\User',
                         'action'     => 'test',
                     )
                 )
@@ -81,7 +81,7 @@ return array(
                     'route'    => '/login',
                     // Define default controller and action to be called when this route is matched
                     'defaults' => array(
-                        'controller' => 'Blog\Controller\User',
+                        'controller' => 'Forum\Controller\User',
                         'action'     => 'login',
                     )
                 )
