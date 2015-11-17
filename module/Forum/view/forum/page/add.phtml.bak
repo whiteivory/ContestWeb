@@ -1,26 +1,15 @@
 <?php
 //改变config要清楚浏览器缓存
-echo $this->headmeta('utf-8');
    echo $this->headtitle("A Simple Page with CKEditor"); 
    echo $this->headScript()
         ->prependFile($this->basePath() . '/ckeditor/ckeditor.js')
         ->prependFile($this->basePath() . '/ckeditor/config.js'); //这一行 
-   
-   $form = $this->pageform;
-   $form->setAttribute('action', $this->url());
-   $form->prepare();
-//    echo $this->form($form);
-   echo $this->form()->opentag($form);
-   echo $this->formRow($form->get('secID')).'<br>';
-   echo $this->formRow($form->get('ptype')).'<br>';
-   echo $this->formRow($form->get('ptitle'));
-   echo $this->formRow($form->get('pcontent'));
-   echo $this->formRow($form->get('pallow'));
-   echo $this->formRow($form->get('filepath')).'<br>';
-   echo $this->formSubmit($form->get('submit'));
-   echo $this->form()->closeTag();
    ?>
-               <script>
+           <form action="/add" method="post">
+            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                    请在这里输入您要发表的内容
+            </textarea>
+            <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
         	//customConfig: '<php $this->basepath()?>/ckeditor/customconfig.js'
@@ -28,4 +17,5 @@ echo $this->headmeta('utf-8');
            	 filebrowserUploadUrl: "/addUpPicSer"
             });
             </script>
-   
+            <input type="submit"></input>
+        </form>

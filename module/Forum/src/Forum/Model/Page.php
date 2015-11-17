@@ -2,10 +2,11 @@
 // Filename: /module/Blog/src/Blog/Model/Post.php
 namespace Forum\Model;
 
-class Page implements PageInterface
+class Page
 {
-    private $postID;
+    private $pageID;
     private $secID;
+    private $schID;
     private $secname;
     private $userID;
     private $username;
@@ -18,11 +19,59 @@ class Page implements PageInterface
     private $preplynum;
     private $pzannum;
     private $pallow; //是否允许外校人查看本贴
- public function getPostID()
+    private $filepath;
+    public function getSchID()
     {
-        return $this->postID;
+        return $this->schID;
     }
 
+ public function setSchID($schID)
+    {
+        $this->schID = $schID;
+    }
+
+ public function exchangeArray($data)
+    {
+        $this->pageID     = (isset($data['pageID']))     ? $data['pageID']     : null;
+        $this->secID = (isset($data['secID'])) ? $data['secID'] : null;
+        $this->secname  = (isset($data['secname']))  ? $data['secname']  : null;
+        $this->userID = (isset($data['userID']))     ? $data['userID']     : null;
+        $this->username= (isset($data['username']))     ? $data['username']     : null;
+        $this->ptitle= (isset($data['ptitle']))     ? $data['ptitle']     : null;
+        $this->pcontent= (isset($data['pcontent']))     ? $data['pcontent']     : null;
+        $this->ptime= (isset($data['ptime']))     ? $data['ptime']     : null;
+        $this->lasttime= (isset($data['lasttime']))     ? $data['lasttime']     : null;
+        $this->ptype= (isset($data['ptype']))     ? $data['ptype']     : null;
+        $this->pclicknum= (isset($data['pclicknum']))     ? $data['pclicknum']     : null;
+        $this->preplynum= (isset($data['preplynum']))     ? $data['preplynum']     : null;
+        $this->pzannum= (isset($data['pzannum']))     ? $data['pzannum']     : null;
+        $this->pallow= (isset($data['pallow']))     ? $data['pallow']     : null;
+        $this->filepath= (isset($data['filepath']))     ? $data['filepath']     : null;
+    }
+    //Zend\Stdlib\Hydrator\ArraySerializable::extract expects the provided object to implement getArrayCopy()
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+ public function getPageID()
+    {
+        return $this->pageID;
+    }
+
+ public function getFilepath()
+    {
+        return $this->filepath;
+    }
+
+ public function setPageID($pageID)
+    {
+        $this->pageID = $pageID;
+    }
+
+ public function setFilepath($filepath)
+    {
+        $this->filepath = $filepath;
+    }
  public function getSecID()
     {
         return $this->secID;
@@ -87,12 +136,6 @@ class Page implements PageInterface
     {
         return $this->pallow;
     }
-
- public function setPostID($postID)
-    {
-        $this->postID = $postID;
-    }
-
  public function setSecID($secID)
     {
         $this->secID = $secID;

@@ -35,4 +35,6 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+	config.toolbarCanCollapse = true;
+	// config.uiColor = '#F7B42C';
 };

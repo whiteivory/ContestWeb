@@ -1,12 +1,13 @@
 <?php
 // Filename: /module/Forum/src/Blog/Service/PostService.php
 namespace Forum\Service;
-use Forum\Mapper\PageMapperInterface;
+use Forum\Mapper\ZendDbSqlMapper;
+use Forum\Model\Page;
 
-class PageService implements  PageServiceInterface
+class PageService
 {
     protected $pageMapper;
-    public function __construct(PageMapperInterface $pageMapper)
+    public function __construct(ZendDbSqlMapper $pageMapper)
     {
         $this->pageMapper = $pageMapper;
     }
@@ -26,5 +27,10 @@ class PageService implements  PageServiceInterface
     {
         // TODO: Implement findPost() method.
         return $this->pageMapper->find($id);
+    }
+    
+    public function savePage(Page $page)
+    {
+        return $this->pageMapper->save($page);
     }
 }

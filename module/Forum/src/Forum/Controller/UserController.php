@@ -55,9 +55,13 @@ class UserController  extends AbstractActionController
         
     }
     public function loginAction(){
-        $form = new UserForm();
-        $form->get('submit')->setValue('login');
+        WAuthUtil::whetherLogout($this);
         
+        $form = new UserForm();
+//         $username2=$form->get('username');
+//         $username2->setAttribute('class', 'username');
+        $form->remove('schoolID');
+        $form->get('submit')->setValue('login');
         $request = $this->getRequest();
         if ($request->isPost()) {
             $user = new User();
@@ -67,7 +71,7 @@ class UserController  extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 if($this->getservice()->auth($user)){
-                    return $this->redirect()->toRoute('test');
+                    return $this->redirect()->toRoute('add');
                 }
             }
             else {
@@ -76,6 +80,7 @@ class UserController  extends AbstractActionController
             }
         }
         
+        WAuthUtil::addUserpanelToLayout($this, '/login');
         
         return new ViewModel(array(
             'userform'=>$form
@@ -105,7 +110,7 @@ class UserController  extends AbstractActionController
 //                 Debug::dump($form->getData());//经过bind,是一个$user对象，必须要实现exchangeArray ，get和set不必要
                 //Debug::dump($user);//同上
 //                 Redirect to list of albums如果想要dump就不要转业
-                return $this->redirect()->toRoute('test');
+                return $this->redirect()->toRoute('add');
             }
             else {
                 $messages = $form->getMessages();

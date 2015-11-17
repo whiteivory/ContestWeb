@@ -58,6 +58,7 @@ class UserService
         if($result->isValid()){
             $storage=$auth->getStorage();
             $storage->write($authAdapter->getResultRowObject(array(
+                'userID',
         'username',
         'schoolID',
             )));
@@ -66,14 +67,5 @@ class UserService
         else {
             print_r($result->getMessages());
         }
-    }
-    
-    /**
-     * @return string 用户名字符串
-     */
-    public function get_auth(){
-        $auth = new AuthenticationService();
-        $tmp=$auth->getStorage()->read();
-        return $tmp;//返回一个类，有username和schoolID这两个在userservice里面get——auth函数里write数据库中的两列。
     }
 }
