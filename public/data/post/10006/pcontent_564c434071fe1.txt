@@ -1,1 +1,0 @@
-<p><img alt="" src="data/postinlineimg/foo.jpg" style="height:800px; width:800px" /></p>
