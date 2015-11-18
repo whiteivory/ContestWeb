@@ -1,28 +1,51 @@
-<html>
+<!DOCTYPE html>
+    <html lang="zh">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('主页title');?>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap - Prebuilt Layout</title>
 
-        <!-- Le styles -->
-        <?php echo $this->headLink()
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+        <!-- Bootstrap -->
+        <?php
+        echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
+            ->prependStylesheet($this->basePath() . '/css/source.css')
+            ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+            ->prependStylesheet($this->basePath() . '/css/styles.css');
+         ?>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- 主题风格框架 CSS -->  
+</head>
+<body>
 
-        <!-- Scripts -->
-        <?php 
-        echo $this->headScript()
-            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-            ->prependFile($this->basePath() . '/js/jquery.min.js')
-            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
-    </head>
-    <body>
     <?php echo $this->userPanel ?>
         <div class="container">
             <?php echo $this->content; ?>
             <hr>
         </div> <!-- /container -->
-    </body>
+  <hr>
+
+
+  <hr>
+  <div class="row">
+    <div class="text-center col-md-6 col-md-offset-3">
+      
+      <p>Copyright &copy; 2015 &middot; All Rights Reserved &middot; <a href="" >FBI</a></p>
+    </div>
+  </div>
+  <hr>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<?php
+     echo $this->inlineScript()->prependFile($this->basePath('js/bootstrap.js'))
+                              ->prependFile($this->basePath('js/jquery-1.11.2.min.js'));
+?>
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+</body>
 </html>

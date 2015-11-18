@@ -120,7 +120,17 @@ return array(
                         'action'     => 'addUpPicSer',
                     )
                 )
-            )
+            ),
+            'testajax'=>array(
+                'type' => 'literal',
+                'options' => array(
+                    'route'    => '/testajax',
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Page',
+                        'action'     => 'testajax',
+                    )
+                )
+            ),
         )
     )
 );
