@@ -30,6 +30,7 @@ class PageController  extends AbstractActionController
     public function getservice(){
         return $this->pageService;
     }
+    
     public function addAction()
     {
         WAuthUtil::whetherLogout($this);
@@ -55,16 +56,18 @@ class PageController  extends AbstractActionController
                 $userID=$auth->userID;
                 $page->setSchID($schID);
                 $page->setUserID($userID);
-                $page->setPageID(10001);
+                $pageID=$this->getservice()->getNewPageIDandMakedir();
+                $page->setPageID($pageID);
+                $file=$request->getFiles();
 //                 print_r($page);
-                $this->getservice()->savePage($page);
+                $this->getservice()->savePage($page,$file);
 //                  Debug::dump($page);
 //                 $this->getservice()->save($page);
 //                 $this->getservice()->auth($page);
 //                 Debug::dump($form->getData());//经过bind,是一个$user对象，必须要实现exchangeArray ，get和set不必要
                 //Debug::dump($user);//同上
 //                 Redirect to list of albums如果想要dump就不要转业
-//                 return $this->redirect()->toRoute('add');
+                return $this->redirect()->toRoute('test');
             }
             else {
                 $messages = $form->getMessages();
@@ -84,13 +87,14 @@ class PageController  extends AbstractActionController
      * 针对ckeditor的图片ajax上传处理
      */
     public function addUpPicSerAction(){
-        $path_for_route="data/user/postimg/";//由于在apache配置文件里设置到了public
+        $path_for_route="data/postinlineimg/";//由于在apache配置文件里设置到了public
         $path_for_frame="public/".$path_for_route;//实际存的时候存放的地址。
 
 //         if (file_exists($path. $_FILES["upload"]["name"]))
 //         {
 //              echo $_FILES["upload"]["name"] . " already exists please choose another image.";
 //         }
+//             $ran_path_for_route=$this->getservice()->getRandomizedname();
              move_uploaded_file($_FILES["upload"]["tmp_name"],
              $path_for_frame . $_FILES["upload"]["name"]);
              echo "Stored in: " . $path_for_frame . $_FILES["upload"]["name"];

@@ -121,4 +121,12 @@ use Zend\Db\Sql\Insert;
           
 //          throw new \Exception("Database error");
      }
+     public function getNewPageID(){
+        $sql1='select max(pageID) from page';
+        $statement=$this->dbAdapter->query($sql1);
+        $result=$statement->execute();
+        $row=$result->current();
+//         Debug::dump($row  );
+        return $row['max(pageID)']+1;
+     }
  }
