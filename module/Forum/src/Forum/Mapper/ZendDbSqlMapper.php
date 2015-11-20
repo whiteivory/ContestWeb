@@ -55,27 +55,34 @@ use Zend\Db\Sql\Insert;
          
          throw new \InvalidArgumentException("Forum with given ID:{$id} not found.");
      }
-
-     /**
-      * @return array|PostInterface[]
-      */
-     public function findAll()
-     {
-           $sql    = new Sql($this->dbAdapter);
-         $select = $sql->select('core_pages');
-
-         $stmt   = $sql->prepareStatementForSqlObject($select);
-         $result = $stmt->execute();
-
-         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-             $resultSet = new HydratingResultSet($this->hydrator, $this->pagePrototype);
-
-             return $resultSet->initialize($result);
-         }
-
-         return array();
-     }
      
+     public function findAll($secID,$ptype,$schID){
+        $sql="select * from page ";
+        $sql=$sql."where ";
+        if($secID!=0){
+            $sql =$sql." secID=$secID ";
+            if($ptype!=0)
+                $sql=$sql.' and ';
+        }
+        if($ptype!=0) $sql=$sql." ptype=$ptype ";
+        if($ptype!=0||$secID!=0){
+            $sql=$sql.' and ';
+        }
+        if($schID!=0){
+            $sql=$sql.'(pallow=1 or (pallow=0 and schID='.$schID.' ))';
+        }
+        else{
+            $sql=$sql.'(pallow=1)';
+        }
+//         echo $sql;
+        $statement=$this->dbAdapter->query($sql);
+        $result=$statement->execute();
+        if ($result instanceof ResultInterface && $result->isQueryResult()) {
+             $resultSet = new HydratingResultSet($this->hydrator, $this->pagePrototype);
+             return $resultSet->initialize($result);
+        }
+        return array();
+     }
      //单纯的resultset方式
      public function findAllres(){
          $sql    = new Sql($this->dbAdapter);
@@ -89,19 +96,10 @@ use Zend\Db\Sql\Insert;
      public function save(Page $pageObject)
      {
           $postData = $this->hydrator->extract($pageObject);
+          Debug::dump($postData);
           $postData=$postData['arrayCopy'];
           unset($postData['secname']);
           unset($postData['username']);
-//          unset($postData['id']); // Neither Insert nor Update needs the ID in the array
-          
-//          if ($pageObject->getId()) {
-//              // ID present, it's an Update
-//              $action = new Update('posts');
-//              $action->set($postData);
-//              $action->where(array('id = ?' => $pageObject->getId()));
-//          } else {
-             // ID NOT present, it's an Insert
-//              Debug::dump($postData);
              $action = new Insert('page');
              $action->values($postData);
 // // //          }

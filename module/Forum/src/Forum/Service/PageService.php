@@ -6,6 +6,8 @@ use Forum\Model\Page;
 use Zend\Filter\File\Rename;
 use Zend\Filter\BaseName;
 use Application\Common\WBasePath;
+use Application\Common\WAuthUtil;
+use Zend\Debug\Debug;
 
 class PageService
 {
@@ -17,10 +19,18 @@ class PageService
     /**
      * {@inheritDoc}
      */
-    public function getPages()
+    
+    /*
+     * 如过注册了，则schID=session中的schoolID
+     * 如过没注册，那么为0，数据库中不存在为0的schoolID，进一步交给mapper处理
+     */
+    public function getPages($secID,$ptype)
     {
         // TODO: Implement findAllPosts() method.
-        return $this->pageMapper->findAll();
+        if(isset(WAuthUtil::get_auth()->schoolID))
+            $schID=WAuthUtil::get_auth()->schoolID;
+        else $schID=0;
+        return $this->pageMapper->findAll($secID,$ptype,$schID);
     }
 
     /**
@@ -44,11 +54,8 @@ class PageService
     public function savePage(Page $page,$file)
     {
         $filetmpstr=$file['filepath']['tmp_name'];
-        
-        $filedir=$page->getPageID();//待更改
+        $filedir=$page->getPageID();
         $tmpuppcontentpath='public/tmpuppcontent.txt';
-        //写入文件
-//         $tmp_src="up/tmptxt.txt";
         $handle=fopen($tmpuppcontentpath,"w");
         $note=$page->getPcontent();
         if(fwrite($handle,$note)==false)
@@ -58,14 +65,12 @@ class PageService
         if(!fclose($handle)){
             echo"failed in close";
         }
-        
         //重命名pcontent文件，之所以存进txt为了倒排。
         $filter = new \Zend\Filter\File\Rename(array(
             "target"    => "public/data/post/".$filedir."/pcontent.txt",
             "randomize" => true,
         ));
         $filter->filter($tmpuppcontentpath);
-        
         //重命名上传文件
         $suffilter = new BaseName();
         $suffixname = $suffilter->filter($file['filepath']['name']);
@@ -76,7 +81,8 @@ class PageService
 
         $filepath=$filter->filter($filetmpstr);
         $page->setFilepath($filepath);
-        
+//         print_r($page);
+//         Debug::dump($page);
 //         数据库处理
         $this->pageMapper->save($page);
         

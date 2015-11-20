@@ -1,11 +1,79 @@
+<?php
+     echo $this->inlineScript()->prependFile($this->basePath('js/jump.js'));
 
- <h1>Blog</h1>
-
- <?php foreach ($this->pages as $page): ?>
- <article>
-     <h1 id="page<?= $page->getId() ?>"><?= $page->getTitle() ?></h1>
-     <p>
-         <?= $page->getBody() ?>
-     </p>
- </article>
- <?php endforeach ?>
+?>
+<script type="text/javascript">
+var body=document.getElementsByTagName("body"); 
+body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this->ptype;?>)");
+</script>
+<div class="row""> 
+    <div class="col-md-2 lead">
+     <strong>全部资源</strong>
+    </div> 
+   </div> 
+   <div class="row"> 
+    <div class="col-md-12"> 
+     <div class="well"> 
+      <!-- filterable portfolio menu starts --> 
+      <ul class="portfolioMenuWrapper " id="portfolioMenuWrapper"> 
+       <li><a id="0" onclick="jump(this.id);return false;" href="" data-type="all" class="currentPortfolioFilter">全部</a></li> 
+       <li><a id="1"  onclick="jump(this.id);return false;" href="" data-type="科研立项">科研立项</a></li> 
+       <li><a id="2" onclick="jump(this.id);return false;" href="" data-type="齐鲁软件">齐鲁软件</a></li> 
+       <li><a id="3" onclick="jump(this.id);return false;" href="" data-type="挑战杯">挑战杯</a></li> 
+      </ul>
+      <br /> 
+      <ul class="portfolioMenuWrapper " id="portfolioMenuWrapper2"> 
+       <li><a id="t0" onclick="jump2(this.id);return false;" href="" data-type="all" class="currentPortfolioFilter">全部</a></li> 
+       <li><a id="t1" onclick="jump2(this.id);return false;" href="" >本届信息</a></li> 
+       <li><a id="t2" onclick="jump2(this.id);return false;" href="" >往届信息</a></li> 
+       <li><a id="t3" onclick="jump2(this.id);return false;" href="" >经验交流</a></li> 
+       <li><a id="t4" onclick="jump2(this.id);return false;" href="" >资源分享</a></li> 
+      </ul>
+      <script >
+//       $('#portfolioMenuWrapper > li > a').click(function(){
+//     		$('.currentPortfolioFilter').removeClass('currentPortfolioFilter');
+//     		this.addClass('currentPortfolioFilter');
+//     })
+/* filterable portfolio functions start
+	$('#portfolioMenuWrapper > li > a').click(function(){
+		var filterVal = $(this).attr('data-type');
+		if(filterVal != 'all'){
+			$('.currentPortfolioFilter').removeClass('currentPortfolioFilter');
+			$(this).addClass('currentPortfolioFilter');
+			$('.portfolioFilterableItemWrapper').each(function(){
+				var itemCategories = $(this).attr("data-type").split(",");
+				if($.inArray(filterVal, itemCategories) > -1){
+					$(this).addClass('filteredPortfolioItem');
+   	       			$('.filteredPortfolioItem').stop(true, true).animate({opacity:1}, 300, 'easeOutCubic');
+				}else{
+					$(this).removeClass('filteredPortfolioItem');
+					if(!$(this).hasClass('filteredPortfolioItem')){
+						$(this).stop(true, true).animate({opacity:0.3}, 300, 'easeOutCubic');
+					};
+				};
+			});
+		}else{
+			$('.currentPortfolioFilter').removeClass('currentPortfolioFilter');
+			$(this).addClass('currentPortfolioFilter');
+			$('.filteredPortfolioItem').removeClass('filteredPortfolioItem');
+			$('.portfolioFilterableItemWrapper').stop(true, true).animate({opacity:1}, 300, 'easeOutCubic');
+		}
+		return false;
+	});
+	// filterable portfolio functions end*/
+	</script>
+      <!-- filterable portfolio menu ends --> 
+     </div> 
+    </div> 
+   </div> 
+   <hr /> 
+<?php 
+ foreach ($this->pages as $page): ?>
+   <div class="row">
+    <div class="col-md-12">
+      <ul class="ask-list">
+       <li> <a href="page/<?= $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= $page->getPcontent() ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
+       </ul>
+    </div>
+   </div>
+<?php endforeach ?>

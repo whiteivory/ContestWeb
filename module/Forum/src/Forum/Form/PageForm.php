@@ -57,12 +57,12 @@ class PageForm extends Form
         
         $this->add(array(
             'type' => 'textarea',
-            'name' => 'pcontent',
-            'attributes' => array(
-                'id'=>'editor1',
+            'name' => 'pcontent',//这里的逗号
+            'attributes' => array(  //设置attibute，注意,不要忘加
+                'id'=>'editor1', //id="editor1"
                 'rows'=>'10',
-                'cols'=>'80',
-            ),
+                'cols'=>'80',//这里
+            ),//这里
         ));
         $this->add(array(
             'type' => 'Radio',

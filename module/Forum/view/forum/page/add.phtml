@@ -10,7 +10,7 @@ echo $this->headmeta('utf-8');
    $form->setAttribute('action', $this->url());
    $form->prepare();
 //    echo $this->form($form);
-   echo $this->form()->opentag($form);
+   echo $this->form()->opentag($form);//<form>
    echo $this->formRow($form->get('secID')).'<br>';
    echo $this->formRow($form->get('ptype')).'<br>';
    echo $this->formRow($form->get('ptitle'));
@@ -18,7 +18,7 @@ echo $this->headmeta('utf-8');
    echo $this->formRow($form->get('pallow'));
    echo $this->formRow($form->get('filepath')).'<br>';
    echo $this->formSubmit($form->get('submit'));
-   echo $this->form()->closeTag();
+   echo $this->form()->closeTag();//</form>
    ?>
                <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
