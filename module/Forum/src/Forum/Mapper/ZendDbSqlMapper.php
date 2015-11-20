@@ -96,7 +96,7 @@ use Zend\Db\Sql\Insert;
      public function save(Page $pageObject)
      {
           $postData = $this->hydrator->extract($pageObject);
-          Debug::dump($postData);
+//           Debug::dump($postData);
           $postData=$postData['arrayCopy'];
           unset($postData['secname']);
           unset($postData['username']);

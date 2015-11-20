@@ -54,7 +54,7 @@ class PageController  extends AbstractActionController
     
     public function addAction()
     {
-//         WAuthUtil::whetherLogout($this);
+        WAuthUtil::whetherLogout($this);
         $request = $this->getRequest();
         $form=new PageForm();
         //start
@@ -73,7 +73,7 @@ class PageController  extends AbstractActionController
                 $file=$request->getFiles();
                 $this->getservice()->savePage($page,$file);
 //                 Redirect to list of albums如果想要dump就不要转业
-//                 return $this->redirect()->toRoute('test');
+                return $this->redirect()->toRoute('page');
             }
             else {
                 $messages = $form->getMessages();
@@ -81,7 +81,7 @@ class PageController  extends AbstractActionController
             }
         }
 
-//         WAuthUtil::addUserpanelToLayout($this, '/add');
+        WAuthUtil::addUserpanelToLayout($this, '/add');
         return new ViewModel(array(
             'pageform'=>$form
         ));

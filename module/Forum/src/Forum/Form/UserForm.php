@@ -44,6 +44,7 @@ class UserForm extends Form
             'type'  => 'Submit',
             'attributes' => array(
                 'value' => 'Submit',
+                'class' => 'submitc',
             ),
         ));
         $this->add(array(
