@@ -1,4 +1,17 @@
 <?php
+/*本页返回数据
+$this->pages  //所有的page 类
+$page->getID();
+$page->getPtitle();
+$page->getPcontent();  //具体内容
+$
+*/
+
+?>
+
+<?php
+
+
      echo $this->inlineScript()->prependFile($this->basePath('js/jump.js'));
 
 ?>
@@ -72,7 +85,7 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
    <div class="row">
     <div class="col-md-12">
       <ul class="ask-list">
-       <li> <a href="page/<?= $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= $page->getPcontent() ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
+       <li> <a href="page/<?php $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= $page->getPcontent() ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
        </ul>
     </div>
    </div>

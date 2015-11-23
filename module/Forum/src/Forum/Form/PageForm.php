@@ -52,7 +52,11 @@ class PageForm extends Form
             'name' => 'ptitle',
             'options' => array(
                 'label' => '标题'
-            )
+            ),
+            'attributes' => array(  //设置attibute，注意,不要忘加
+                'id'=>'biaoti',//id="editor1"
+                'class'=>'biaoti',
+            ),//这里
         ));
         
         $this->add(array(
