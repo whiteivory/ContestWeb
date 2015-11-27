@@ -10,6 +10,7 @@ namespace Forum\Mapper;
  use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Insert;
+use Application\Common\WHydrateResultset;
   
  class ZendDbSqlMapper implements PageMapperInterface
  {
@@ -19,16 +20,21 @@ use Zend\Db\Sql\Insert;
      protected $dbAdapter;
      protected $hydrator;
      protected $pagePrototype;
+     /**
+      *@var \ArrayObject
+      */
+     protected $prototypeArr;
 
      /**
       * @param AdapterInterface  $dbAdapter
       */
      public function __construct(AdapterInterface $dbAdapter, HydratorInterface $hydrator,
-         Page $pagePrototype)
+         Page $pagePrototype,\ArrayObject $prototypeArr)
      {
          $this->dbAdapter = $dbAdapter;
          $this->hydrator       = $hydrator;
          $this->pagePrototype  = $pagePrototype;
+         $this->prototypeArr=$prototypeArr;
      }
 
      /**
@@ -58,6 +64,7 @@ use Zend\Db\Sql\Insert;
      
      public function findAll($secID,$ptype,$schID){
         $sql="select * from page ";
+        $sql =$sql. " join user on page.userID=user.userID ";
         $sql=$sql."where ";
         if($secID!=0){
             $sql =$sql." secID=$secID ";
@@ -77,10 +84,18 @@ use Zend\Db\Sql\Insert;
 //         echo $sql;
         $statement=$this->dbAdapter->query($sql);
         $result=$statement->execute();
+//         foreach ($result as $row){
+//             Debug::dump($row);
+//         }
         if ($result instanceof ResultInterface && $result->isQueryResult()) {
-             $resultSet = new HydratingResultSet($this->hydrator, $this->pagePrototype);
-             return $resultSet->initialize($result);
+             $resultSet = new WHydrateResultset($this->hydrator, $this->pagePrototype,$this->prototypeArr);
+             $tmp=$resultSet->initialize($result);
+//              foreach ($resultSet as $row){
+//                  Debug::dump($row);
+//              }
+             return $tmp;
         }
+
         return array();
      }
      //单纯的resultset方式
@@ -96,13 +111,10 @@ use Zend\Db\Sql\Insert;
      public function save(Page $pageObject)
      {
           $postData = $this->hydrator->extract($pageObject);
-//           Debug::dump($postData);
-          $postData=$postData['arrayCopy'];
-          unset($postData['secname']);
-          unset($postData['username']);
-             $action = new Insert('page');
-             $action->values($postData);
-// // //          }
+          unset($postData['secname']);//等到更改成类的时候需要利用php的特性改变成员变量的类型，class变成id
+//           unset($postData['username']);//虽然还是比较麻烦，但是只要写一个类就够了，不需要再unset这么多了。
+          $action = new Insert('page');
+          $action->values($postData);
           
          $sql    = new Sql($this->dbAdapter);
          $stmt   = $sql->prepareStatementForSqlObject($action);

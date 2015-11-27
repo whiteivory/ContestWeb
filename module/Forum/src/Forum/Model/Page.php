@@ -8,8 +8,12 @@ class Page
     private $secID;
     private $schID;
     private $secname;
-    private $userID;
-    private $username;
+//     private $userID;
+//     private $username;
+/**
+ * @var User
+ */
+    private $user;
     private $ptitle;
     private $ptime;
     private $pcontent;
@@ -20,7 +24,23 @@ class Page
     private $pzannum;
     private $pallow; //是否允许外校人查看本贴
     private $filepath;
-    public function getSchID()
+    /**
+     * @return the $user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+ /**
+     * @param \Forum\Model\User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+ public function getSchID()
     {
         return $this->schID;
     }
@@ -35,8 +55,8 @@ class Page
         $this->pageID     = (isset($data['pageID']))     ? $data['pageID']     : null;
         $this->secID = (isset($data['secID'])) ? $data['secID'] : null;
         $this->secname  = (isset($data['secname']))  ? $data['secname']  : null;
-        $this->userID = (isset($data['userID']))     ? $data['userID']     : null;
-        $this->username= (isset($data['username']))     ? $data['username']     : null;
+//         $this->userID = (isset($data['userID']))     ? $data['userID']     : null;
+//         $this->username= (isset($data['username']))     ? $data['username']     : null;
         $this->ptitle= (isset($data['ptitle']))     ? $data['ptitle']     : null;
         $this->pcontent= (isset($data['pcontent']))     ? $data['pcontent']     : null;
         $this->ptime= (isset($data['ptime']))     ? $data['ptime']     : null;
@@ -82,15 +102,15 @@ class Page
         return $this->secname;
     }
 
- public function getUserID()
-    {
-        return $this->userID;
-    }
+//  public function getUserID()
+//     {
+//         return $this->userID;
+//     }
 
- public function getUsername()
-    {
-        return $this->username;
-    }
+//  public function getUsername()
+//     {
+//         return $this->username;
+//     }
 
  public function getPtitle()
     {
@@ -146,15 +166,15 @@ class Page
         $this->secname = $secname;
     }
 
- public function setUserID($userID)
-    {
-        $this->userID = $userID;
-    }
+//  public function setUserID($userID)
+//     {
+//         $this->userID = $userID;
+//     }
 
- public function setUsername($username)
-    {
-        $this->username = $username;
-    }
+//  public function setUsername($username)
+//     {
+//         $this->username = $username;
+//     }
 
  public function setPtitle($ptitle)
     {
