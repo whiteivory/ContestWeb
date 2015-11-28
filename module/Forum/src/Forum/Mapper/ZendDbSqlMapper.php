@@ -45,19 +45,24 @@ use Application\Common\WHydrateResultset;
       */
      public function find($id)
      {
-         $sql    = new Sql($this->dbAdapter);
-         $select = $sql->select('core_pages');
-         $select->where(array('id = ?' => $id));
+//          $sql    = new Sql($this->dbAdapter);
+//          $select = $sql->select('page');
+//          $select->join('user','page.userID=user.userID');
          
-         $stmt   = $sql->prepareStatementForSqlObject($select);
-         $result = $stmt->execute();
+//          $stmt   = $sql->prepareStatementForSqlObject($select);
          
-         if ($result instanceof ResultInterface && $result->isQueryResult() && $result->getAffectedRows()) {
-        
-             $temp = $this->hydrator->hydrate($result->current(), $this->pagePrototype);
-             //\Zend\Debug\Debug::dump($temp); die();
-             return temp;
-         }
+         $sql='select page.*,user.* from page  join user on page.userID=user.userID where pageID=1011';
+        $statement=$this->dbAdapter->query($sql);
+        $result=$statement->execute();
+         
+             if ($result instanceof ResultInterface && $result->isQueryResult()) {
+             $resultSet = new WHydrateResultset($this->hydrator, $this->pagePrototype,$this->prototypeArr);
+             $tmp=$resultSet->initialize($result);
+//              foreach ($resultSet as $row){
+//                  Debug::dump($row);
+//              }
+             return $tmp;
+        }
          
          throw new \InvalidArgumentException("Forum with given ID:{$id} not found.");
      }
@@ -111,6 +116,11 @@ use Application\Common\WHydrateResultset;
      public function save(Page $pageObject)
      {
           $postData = $this->hydrator->extract($pageObject);
+//           Debug::dump($postData);
+          /*
+           * 下面这两行一定记得自己加上去
+           */
+          $postData['userID']=$pageObject->getUser()->getUserID();
           unset($postData['secname']);//等到更改成类的时候需要利用php的特性改变成员变量的类型，class变成id
 //           unset($postData['username']);//虽然还是比较麻烦，但是只要写一个类就够了，不需要再unset这么多了。
           $action = new Insert('page');

@@ -14,6 +14,7 @@ class Page
  * @var User
  */
     private $user;
+    public $userID;//为了进行insert操作时候，只需要一个ID就可以了。
     private $ptitle;
     private $ptime;
     private $pcontent;

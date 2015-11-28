@@ -58,9 +58,19 @@ class WHydrateResultset extends HydratingResultSet
         $data = $this->dataSource->current();
         $object = is_array($data) ? $this->hydrator->hydrate($data, clone $this->objectPrototypeOri) : false;
         foreach ($this->objectPrototypeArr as $objectPrototype){
-            $name=get_class($objectPrototype);
+            $name=get_class($objectPrototype);     
+            $ar=explode('\\', $name);
+            $len=count($ar);
+            $name=$ar[$len-1];
+            $setAtrStr="set".$name;
+                
             $objecttmp = is_array($data) ? $this->hydrator->hydrate($data, clone $objectPrototype) : false;
-            $object->$name=$objecttmp;
+//             $object->$name=$objecttmp;
+
+            if(!method_exists($object,$setAtrStr)){
+                throw new \Exception('wyj The'.$setAtrStr.' method is not defined!');
+            }
+            $object->{$setAtrStr}($objecttmp);//调用对象的一个方法
         }
 //         $object = is_array($data) ? $this->hydrator->hydrate($data, clone $this->objectPrototype) : false;
     

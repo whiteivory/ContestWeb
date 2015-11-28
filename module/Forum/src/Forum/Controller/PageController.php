@@ -13,6 +13,7 @@ use Zend\Filter\File\Rename;
 use Application\Common\WBasePath;
 use Zend\Http\Request;
 use Zend\Feed\Reader\Reader;
+use Forum\Model\User;
 
 class PageController  extends AbstractActionController
 {
@@ -39,6 +40,7 @@ class PageController  extends AbstractActionController
             $ptype=$request->getQuery('ptype'); 
         }
 //         WAuthUtil::addUserpanelToLayout($this, '/page');
+        
         return new ViewModel(array(
             'pages' => $this->pageService->getPages($secID,$ptype),
             'secID' => $secID,
@@ -46,7 +48,19 @@ class PageController  extends AbstractActionController
         ));
     }
     public function detailAction(){
+        WAuthUtil::whetherLogout($this);
+        $id = $this->params()->fromRoute('id');
         
+        try {
+            $page = $this->getservice()->getPage($id);
+        } catch (\InvalidArgumentException $ex) {
+            return $this->redirect()->toRoute('blog');
+        }
+//         Debug::dump($page);
+        WAuthUtil::addUserpanelToLayout($this, '/add');
+        return new ViewModel(array(
+            'page' => $page
+        ));
     }
     public function getservice(){
         return $this->pageService;
@@ -60,6 +74,7 @@ class PageController  extends AbstractActionController
         //start
         if($request->isPost()&&isset($request->getPost()['pcontent'])){
            $page = new Page();
+           $user=new User();
             $form->bind($page);
             $form->setData($request->getPost());
             if ($form->isValid()) {
@@ -67,7 +82,8 @@ class PageController  extends AbstractActionController
                 $schID=$auth->schoolID;
                 $userID=$auth->userID;
                 $page->setSchID($schID);
-                $page->setUserID($userID);
+                $user->setUserID($userID);
+                $page->setUser($user);
                 $pageID=$this->getservice()->getNewPageIDandMakedir();
                 $page->setPageID($pageID);
                 $file=$request->getFiles();
