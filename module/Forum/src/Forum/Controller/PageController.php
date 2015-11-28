@@ -107,7 +107,7 @@ class PageController  extends AbstractActionController
      * 针对ckeditor的图片ajax上传处理
      */
     public function addUpPicSerAction(){
-        $path_for_route="data/postinlineimg/";//由于在apache配置文件里设置到了public
+        $path_for_route="/data/postinlineimg/";//由于在apache配置文件里设置到了public,注意前面的/一定要加，表示绝对路径
         $path_for_frame=WBasePath::getBasePath()."/".$path_for_route;//实际存的时候存放的地址。
 
 //         if (file_exists($path. $_FILES["upload"]["name"]))
