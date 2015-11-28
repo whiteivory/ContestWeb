@@ -51,7 +51,7 @@ use Application\Common\WHydrateResultset;
          
 //          $stmt   = $sql->prepareStatementForSqlObject($select);
          
-         $sql='select page.*,user.* from page  join user on page.userID=user.userID where pageID=1011';
+         $sql='select page.*,user.* from page  join user on page.userID=user.userID where pageID='.$id;
         $statement=$this->dbAdapter->query($sql);
         $result=$statement->execute();
          
