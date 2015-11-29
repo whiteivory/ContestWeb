@@ -47,21 +47,6 @@ class PageController  extends AbstractActionController
             'ptype' =>$ptype
         ));
     }
-    public function detailAction(){
-        WAuthUtil::whetherLogout($this);
-        $id = $this->params()->fromRoute('id');
-        
-        try {
-            $page = $this->getservice()->getPage($id);
-        } catch (\InvalidArgumentException $ex) {
-            return $this->redirect()->toRoute('blog');
-        }
-//         Debug::dump($page);
-        WAuthUtil::addUserpanelToLayout($this, '/add');
-        return new ViewModel(array(
-            'page' => $page
-        ));
-    }
     public function getservice(){
         return $this->pageService;
     }
