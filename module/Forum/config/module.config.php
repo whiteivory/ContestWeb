@@ -17,6 +17,8 @@ return array(
              'Forum\Service\PageServiceInterface' => 'Forum\Factory\PageServiceFactory',
              'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
              'Forum\Service\UserService' => 'Forum\Factory\UserServiceFactory',
+             'Forum\Service\FollowServiceInterface'=>'Forum\Factory\FollowServiceFactory',
+             'Forum\Mapper\FollowMapperInterface'=>'Forum\Factory\FollowMapperFactory'
          )
      ),
     'view_manager' => array(
@@ -29,7 +31,8 @@ return array(
      'controllers' => array(
              'factories' => array(
              'Forum\Controller\Page' => 'Forum\Factory\PageControllerFactory',
-                 'Forum\Controller\User'=>'Forum\Factory\UserControllerFactory',
+             'Forum\Controller\User'=>'Forum\Factory\UserControllerFactory',
+             'Forum\Controller\Follow'=>'Forum\Factory\FollowControllerFactory'
          )
         ),
     'router' => array(
@@ -56,6 +59,7 @@ return array(
                         'options' => array(
                             'route'    => '/:id',
                             'defaults' => array(
+                                'controller' => 'Forum\Controller\Follow',
                                 'action' => 'detail'
                             ),
                             'constraints' => array(
