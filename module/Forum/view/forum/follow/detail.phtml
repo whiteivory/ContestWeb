@@ -22,8 +22,15 @@ $page->getPallow()//本帖是否允许外校查看，1代表是，0代表否
 
 $page->getUser()->getUserID()
 $page->getUser()->getUsername()//发文者的name
-
+$page->getUser()->getFaceimgpath()//头像地址
 $page->getPcontent();  //具体内容
+foreach ($follows as $follow)
+$follow->getUser()->getFaceimgpath()//回复者的头像地址
+$follow->getUser()->getUserID()
+$follow->getUser()->getUsername()
+$follow->getFollowID()回复的ID
+$follow->getFcontent()回复内容
+$follow->getFtime()回复时间（未实现
  */
 ?>
 
@@ -31,9 +38,12 @@ $page->getPcontent();  //具体内容
     <h1>标题： <?=$page->getPtitle()?></h1><br>
     <p>正文信息 <?=$page->getPcontent();?></p>
     <p>发表者用户名 <?=$page->getUser()->getUsername();?></p>
+    <a href="<?=$page->getFilepath() ?>">下载附件(或者右键另存为)</a>
     <h2>评论</h2>
     <?php foreach ($follows as $follow):?>
+    
         <p>评论者用户名:<?= $follow->getUser()->getUsername();?></p>
+        <p>评论者头像:<img src="<?= $follow->getUser()->getFaceimgpath();?>"/></p>
         <p>评论内容:<?= $follow->getFcontent();?></p>
     <?php endforeach;?>
     <h2>发表评论</h2>

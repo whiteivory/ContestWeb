@@ -39,7 +39,7 @@ class PageController  extends AbstractActionController
             $secID=$request->getQuery('secID');
             $ptype=$request->getQuery('ptype'); 
         }
-//         WAuthUtil::addUserpanelToLayout($this, '/page');
+        WAuthUtil::addUserpanelToLayout($this, '/page');
         
         return new ViewModel(array(
             'pages' => $this->pageService->getPages($secID,$ptype),

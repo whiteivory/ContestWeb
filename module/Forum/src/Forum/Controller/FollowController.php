@@ -21,18 +21,11 @@ class FollowController extends AbstractActionController{
     }
     public function detailAction(){
         WAuthUtil::whetherLogout($this);
-        $id = $this->params()->fromRoute('id');
+
         //form
         $form=new FollowForm();
-        //读取page信息
-        try {
-            $page = $this->getPageService()->getPage($id);
-        } catch (\InvalidArgumentException $ex) {
-            return $this->redirect()->toRoute('blog');
-        }
-        //读取follow信息
-        $follows=$this->getFollowService()->getFollows($id);
         
+        $id = $this->params()->fromRoute('id');
         //查看是否评论，进行request处理
         $request = $this->getRequest();
         if($request->isPost()&&isset($request->getPost()['fcontent'])){
@@ -48,17 +41,28 @@ class FollowController extends AbstractActionController{
                 $followObject->setPageID($id);
                 $this->getFollowService()->saveFollow($followObject);
                 //                 Redirect to list of albums如果想要dump就不要转业
-//                 return $this->redirect()->toRoute('page');
+                //                 return $this->redirect()->toRoute('page');
             }
             else {
                 $messages = $form->getMessages();
                 Debug::dump($messages);
             }
         }
+
+        //读取page信息
+        try {
+            $page = $this->getPageService()->getPage($id);
+        } catch (\InvalidArgumentException $ex) {
+            return $this->redirect()->toRoute('blog');
+        }
+        //读取follow信息
+        $follows=$this->getFollowService()->getFollows($id);
+        
+
         
         
 //         //         Debug::dump($page);
-//         WAuthUtil::addUserpanelToLayout($this, '/add');
+        WAuthUtil::addUserpanelToLayout($this, '/detail/'.$id);
         return new ViewModel(array(
             'page' => $page,
             'follows'=>$follows,

@@ -49,7 +49,7 @@ class FollowMapper
         $result = $stmt->execute();
     }
     public function findAll($pageID){
-        $sql="select * from follow join user where pageID=$pageID ";
+        $sql="select * from follow join user on follow.userID = user.userID where pageID=$pageID ";
 
         //         echo $sql;
         $statement=$this->dbAdapter->query($sql);
