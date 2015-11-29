@@ -74,12 +74,14 @@ class PageService
         //重命名上传文件
         $suffilter = new BaseName();
         $suffixname = $suffilter->filter($file['filepath']['name']);
+        $basepath=WBasePath::getBasePath();//public
         $filter = new \Zend\Filter\File\Rename(array(
-            "target"    => "public/data/post/".$filedir."/".$suffixname,
+            "target"    => $basepath.'/'."data/post/".$filedir."/".$suffixname,
             "randomize" => true,
         ));
 
         $filepath=$filter->filter($filetmpstr);
+        $filepath=substr($filepath, strlen($basepath));
         $page->setFilepath($filepath);
 //         print_r($page);
 //         Debug::dump($page);
