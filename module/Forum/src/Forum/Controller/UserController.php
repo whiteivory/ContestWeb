@@ -118,7 +118,7 @@ class UserController  extends AbstractActionController
             }
         }
         
-        WAuthUtil::addUserpanelToLayout($this, '/login');
+//         WAuthUtil::addUserpanelToLayout($this, '/login');
         
         return new ViewModel(array(
             'userform'=>$form
