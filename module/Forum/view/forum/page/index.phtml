@@ -1,8 +1,27 @@
 <?php
 /*本页返回数据
 $this->pages  //所有的page 类
-$page->getID();
-$page->getPtitle();
+foreach($this->pages as $page)
+    在里面可以引用$page->get***
+endforeach
+$page->getPageID();
+$page->getSchID()//该文作者的学校ID
+$page->getFilepath()//上传文件的地址
+$page->getSecID()//对应科研立项、挑战杯……的ID
+$page->getPtitle();//标题
+$page->getPtime()//发帖时间
+$page->getPcontent()//具体内容
+$page->getLasttime()//最后一次回复时间（未实现）
+$page->getPtype()//ID对应全部、本届信息、往届信息……
+$page->getPclicknum()//帖子点击量（未实现
+$page->getPreplynum()//回复量（未实现
+$page->getPzannum()//点赞数（未实现
+$page->getPallow()//本帖是否允许外校查看，1代表是，0代表否
+
+$page->getUser()->getUserID()
+$page->getUser()->getUsername()//发文者的name
+$page->getUser()->getFaceimgpath()//头像地址
+
 $page->getPcontent();  //具体内容
 $
 */
@@ -19,7 +38,7 @@ $
 var body=document.getElementsByTagName("body"); 
 body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this->ptype;?>)");
 </script>
-<div class="row""> 
+<div class="row"> 
     <div class="col-md-2 lead">
      <strong>全部资源</strong>
     </div> 
@@ -85,7 +104,7 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
    <div class="row">
     <div class="col-md-12">
       <ul class="ask-list">
-       <li> <a href="page/<?php $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= $page->getPcontent() ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
+       <li> <a href="page/<?php echo $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= $page->getPcontent() ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
        </ul>
     </div>
    </div>

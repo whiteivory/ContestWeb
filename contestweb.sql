@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `follow`
+--
+
+DROP TABLE IF EXISTS `follow`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `follow` (
+  `followID` int(11) NOT NULL,
+  `pageID` int(11) DEFAULT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `fcontent` text,
+  `ftime` datetime DEFAULT NULL,
+  PRIMARY KEY (`followID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `follow`
+--
+
+LOCK TABLES `follow` WRITE;
+/*!40000 ALTER TABLE `follow` DISABLE KEYS */;
+INSERT INTO `follow` VALUES (1,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `follow` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `page`
 --
 
@@ -37,6 +64,7 @@ CREATE TABLE `page` (
   `pzannum` int(11) DEFAULT NULL,
   `pallow` int(11) DEFAULT NULL,
   `filepath` varchar(255) DEFAULT NULL,
+  `test` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`pageID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,7 +75,7 @@ CREATE TABLE `page` (
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,6 +166,7 @@ CREATE TABLE `user` (
   `schoolID` int(11) DEFAULT NULL,
   `sregtime` date DEFAULT NULL,
   `teamnum` int(11) DEFAULT NULL,
+  `faceimgpath` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -160,4 +189,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-20 18:14:43
+-- Dump completed on 2015-11-29 16:37:28

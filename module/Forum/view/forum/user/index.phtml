@@ -1,0 +1,24 @@
+<?php
+$mode=$this->mode; 
+$user=$this->user;
+/*$mode为显示模式，如果$mode=='check'表示查看别人的主页，$mode=='edit'表示查看和编辑自己的主页
+ * $user->getFaceimgpath() 头像地址
+ * $user->getSchoolID() 所在学校的ID
+ * $user->getUserID()用户ID
+ * $user->getUsername() 用户名
+ */
+?>
+<p>头像</p>
+<img src="<?= $user->getFaceimgpath();//错误不要管?>" />
+<?php if($mode=='edit'):?>
+<h2>上传头像</h2>
+
+
+<form action="/account/<?= $user->getUserID() ?>" method="post"
+enctype="multipart/form-data">
+<label for="file">Filename:</label>
+<input type="file" name="faceimgpath" id="faceimgpath" /> 
+<br />
+<input type="submit" name="submit" value="Submit" />
+</form>
+<?php endif?>

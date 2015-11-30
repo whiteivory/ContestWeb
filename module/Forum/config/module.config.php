@@ -17,6 +17,8 @@ return array(
              'Forum\Service\PageServiceInterface' => 'Forum\Factory\PageServiceFactory',
              'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
              'Forum\Service\UserService' => 'Forum\Factory\UserServiceFactory',
+             'Forum\Service\FollowServiceInterface'=>'Forum\Factory\FollowServiceFactory',
+             'Forum\Mapper\FollowMapperInterface'=>'Forum\Factory\FollowMapperFactory'
          )
      ),
     'view_manager' => array(
@@ -29,13 +31,44 @@ return array(
      'controllers' => array(
              'factories' => array(
              'Forum\Controller\Page' => 'Forum\Factory\PageControllerFactory',
-                 'Forum\Controller\User'=>'Forum\Factory\UserControllerFactory',
+             'Forum\Controller\User'=>'Forum\Factory\UserControllerFactory',
+             'Forum\Controller\Follow'=>'Forum\Factory\FollowControllerFactory'
          )
         ),
     'router' => array(
         // Open configuration for all possible routes
         'routes' => array(
             // Define a new route called "post"
+            'account' => array(
+                // Define the routes type to be "Zend\Mvc\Router\Http\Literal", which is basically just a string
+                'type' => 'literal',
+                // Configure the route itself
+                'options' => array(
+                    // Listen to "/blog" as uri
+                    'route'    => '/account',
+                    // Define default controller and action to be called when this route is matched
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\User',
+                        'action'     => 'index',
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes'  => array(
+                    'detail' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route'    => '/:id',
+                            'defaults' => array(
+                                'controller' => 'Forum\Controller\User',
+                                'action' => 'index'
+                            ),
+                            'constraints' => array(
+                                'id' => '[1-9]\d*'
+                            )
+                        )
+                    )
+                )
+            ),
             'page' => array(
                 // Define the routes type to be "Zend\Mvc\Router\Http\Literal", which is basically just a string
                 'type' => 'literal',
@@ -56,6 +89,7 @@ return array(
                         'options' => array(
                             'route'    => '/:id',
                             'defaults' => array(
+                                'controller' => 'Forum\Controller\Follow',
                                 'action' => 'detail'
                             ),
                             'constraints' => array(
