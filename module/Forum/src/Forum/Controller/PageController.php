@@ -13,6 +13,7 @@ use Zend\Filter\File\Rename;
 use Application\Common\WBasePath;
 use Zend\Http\Request;
 use Zend\Feed\Reader\Reader;
+use Forum\Model\User;
 
 class PageController  extends AbstractActionController
 {
@@ -39,14 +40,12 @@ class PageController  extends AbstractActionController
             $ptype=$request->getQuery('ptype'); 
         }
         WAuthUtil::addUserpanelToLayout($this, '/page');
+        
         return new ViewModel(array(
             'pages' => $this->pageService->getPages($secID,$ptype),
             'secID' => $secID,
             'ptype' =>$ptype
         ));
-    }
-    public function detailAction(){
-        
     }
     public function getservice(){
         return $this->pageService;
@@ -60,6 +59,7 @@ class PageController  extends AbstractActionController
         //start
         if($request->isPost()&&isset($request->getPost()['pcontent'])){
            $page = new Page();
+           $user=new User();
             $form->bind($page);
             $form->setData($request->getPost());
             if ($form->isValid()) {
@@ -67,7 +67,8 @@ class PageController  extends AbstractActionController
                 $schID=$auth->schoolID;
                 $userID=$auth->userID;
                 $page->setSchID($schID);
-                $page->setUserID($userID);
+                $user->setUserID($userID);
+                $page->setUser($user);
                 $pageID=$this->getservice()->getNewPageIDandMakedir();
                 $page->setPageID($pageID);
                 $file=$request->getFiles();
@@ -91,7 +92,7 @@ class PageController  extends AbstractActionController
      * 针对ckeditor的图片ajax上传处理
      */
     public function addUpPicSerAction(){
-        $path_for_route="data/postinlineimg/";//由于在apache配置文件里设置到了public
+        $path_for_route="/data/postinlineimg/";//由于在apache配置文件里设置到了public,注意前面的/一定要加，表示绝对路径
         $path_for_frame=WBasePath::getBasePath()."/".$path_for_route;//实际存的时候存放的地址。
 
 //         if (file_exists($path. $_FILES["upload"]["name"]))
