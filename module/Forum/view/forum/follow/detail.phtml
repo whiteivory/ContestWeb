@@ -33,11 +33,12 @@ $follow->getFcontent()回复内容
 $follow->getFtime()回复时间（未实现
  */
 ?>
-
-
+<div class="row">
+<div class="jumpbotron">
     <h1>标题： <?=$page->getPtitle()?></h1><br>
     <p>正文信息 <?=$page->getPcontent();?></p>
     <p>发表者用户名 <?=$page->getUser()->getUsername();?></p>
+</div></div>
     <a href="<?=$page->getFilepath() ?>">下载附件(或者右键另存为)</a>
     <h2>评论</h2>
     <?php foreach ($follows as $follow):?>
