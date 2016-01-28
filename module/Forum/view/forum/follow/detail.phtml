@@ -34,21 +34,38 @@ $follow->getFtime()回复时间（未实现
  */
 ?>
 <div class="row">
-<div class="jumpbotron">
-    <h1>标题： <?=$page->getPtitle()?></h1>
-    <p>正文信息 <?=$page->getPcontent();?></p>
-    <p>发表者用户名 <?=$page->getUser()->getUsername();?></p>
-</div></div>
-    <a href="<?=$page->getFilepath() ?>">下载附件(或者右键另存为)</a>
-    <h2>评论</h2>
+<div class="jumpbotron"> <!-- 背景灰-->
+
+    <h3>标题： <?=$page->getPtitle()?></h3>
+    <h4>正文信息 <?=$page->getPcontent();?></h4>
+    <div class="row">
+    <div class="col-md-12">
+       
+      <span style="display:block;float:right;line-height:12px;color:#b3b6bd;font-size:18px">发表者：<?=$page->getUser()->getUsername();?></span> 
+       
+    </div>
+   </div>
+   </div>
+   </div>
+   
+   <a class="btn btn-primary btn-large" href="<?=$page->getFilepath() ?>">下载附件(或者右键另存为)</a>
+    <div class="row">
+    <div class="col-md-12">
+    <div class="col-12 col-sm-6 col-lg-12">
     <?php foreach ($follows as $follow):?>
-    
-        <p>评论者用户名:<?= $follow->getUser()->getUsername();?></p>
-        <p>评论者头像:<img src="<?= $follow->getUser()->getFaceimgpath();?>"/></p>
-        <p>评论内容:<?= $follow->getFcontent();?></p>
+    <div   class="zq01">
+        <h4>评论者:<?= $follow->getUser()->getUsername();?></h4>
+       <img style="width:50px;" src="<?= $follow->getUser()->getFaceimgpath();?>"/>
+        <h3>评论内容:<?= $follow->getFcontent();?></h3><hr>
+      </div>  
     <?php endforeach;?>
-    <h2>发表评论</h2>
+    </div>
+    </div>
+    </div>
+    <hr>
+    <h2 style="font-size:18px;font-family:'Montserrat', sans-serif;">发表评论</h2>
     <?php 
+    
     $form->setAttribute('action', '/page/'.$page->getPageID());//注意这里写绝对路径
     $form->prepare();
     echo $this->form()->opentag($form);//<form>
