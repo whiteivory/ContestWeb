@@ -9,13 +9,15 @@ font-size:21px;
 font-weight:200;
 line-height:17;
 color:inherit;	
+	font-family:'Montserrat', sans-serif;
 }
 .zq01{
 background-color:#E7E7E7;
 border-radius:6px;
 font-size:11px;
 line-height:3;
-color:inherit;	
+color:inherit;
+font-family:'Montserrat', sans-serif;	
 }
 /*zq补充CSS*/
 #submitstyle{
@@ -29,4 +31,12 @@ color:inherit;
   font-family: 'Montserrat', arial, sans-serif;
   padding: 8px 16px;
   font-weight: bold;
+	font-family:'Montserrat', sans-serif;
 }
+.submitc{
+	padding:10px 16px;font-size:18px;line-height:1.33;
+	border-width:5px 5px 0;border-radius:6px;
+	
+}
+
+	

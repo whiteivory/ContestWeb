@@ -23,12 +23,14 @@ class UserForm extends Form
         $this->add(array(
             'name' => 'userID',
             'type'  => 'hidden',
+  
         ));
         $this->add(array(
             'type' => 'text',
             'name' => 'username',
             'options' => array(
-                'label' => 'Your username'
+                'label' => 'inputEmail'
+                
             )
         ));
         
