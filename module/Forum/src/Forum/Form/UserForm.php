@@ -27,19 +27,19 @@ class UserForm extends Form
         $this->add(array(
             'type' => 'text',
             'name' => 'username',
-<<<<<<< HEAD
+
             'options' => array( 
             ),
             'attributes'=>array(
                 'class'=>'form-control',
-                'id'=>'inputPassword'
-            
-=======
+                'id'=>'inputPassword',
+  
             'options' => array(
-                'label' => 'Your username'
->>>>>>> parent of 0349ad9... 个人基本信息头像界面
-            )
-        ));
+                //'label' => 'Your username',
+//>>>>>>> parent of 0349ad9... 个人基本信息头像界面
+            ),
+                )
+         ));
         
         $this->add(array(
             'type' => 'password',
@@ -49,7 +49,7 @@ class UserForm extends Form
             ),
             'attributes'=>array(
                 'class'=>'form-control',
-                'id'=>'inputPassword'
+                'id'=>'inputPassword',
                 
             )
         ));
