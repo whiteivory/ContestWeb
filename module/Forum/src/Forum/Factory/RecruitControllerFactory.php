@@ -10,8 +10,10 @@ class RecruitControllerFactory implements  FactoryInterface
     {
 //         $realServiceLocator = $serviceLocator->getServiceLocator();
 //         $pageService        = $realServiceLocator->get('Forum\Service\PageServiceInterface');
-    
-        return new RecruitController();
+        $realServiceLocator = $serviceLocator->getServiceLocator();
+        $recruitService        = $realServiceLocator->get('Forum\Service\RecruitServiceInterface');
+        
+        return new RecruitController($recruitService);
     }
 }
 

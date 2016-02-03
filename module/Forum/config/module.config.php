@@ -18,7 +18,12 @@ return array(
              'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
              'Forum\Service\UserService' => 'Forum\Factory\UserServiceFactory',
              'Forum\Service\FollowServiceInterface'=>'Forum\Factory\FollowServiceFactory',
-             'Forum\Mapper\FollowMapperInterface'=>'Forum\Factory\FollowMapperFactory'
+             'Forum\Mapper\FollowMapperInterface'=>'Forum\Factory\FollowMapperFactory',
+             'Forum\Mapper\RecruitMapperInterface'   => 'Forum\Factory\RecruitMapperFactory',
+             'Forum\Service\RecruitServiceInterface' => 'Forum\Factory\RecruitServiceFactory',
+             'Forum\Service\RFollowServiceInterface'=>'Forum\Factory\RFollowServiceFactory',
+             'Forum\Mapper\RFollowMapperInterface'=>'Forum\Factory\RFollowMapperFactory',
+              
          )
      ),
     'view_manager' => array(
@@ -160,6 +165,16 @@ return array(
                                 'id' => '[1-9]\d*'
                             )
                         )
+                    )
+                )
+            ),
+            'radd'=>array(
+                'type' => 'literal',
+                'options' => array(
+                    'route'    => '/radd',
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Recruit',
+                        'action'     => 'add',
                     )
                 )
             ),
