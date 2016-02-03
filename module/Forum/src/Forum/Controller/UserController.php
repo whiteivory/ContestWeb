@@ -92,6 +92,9 @@ class UserController  extends AbstractActionController
     public function testaddAction(){
         
     }
+    public function adminAction(){
+        
+    }
     public function loginAction(){
         WAuthUtil::whetherLogout($this);
         

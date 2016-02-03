@@ -33,12 +33,57 @@ $follow->getFcontent()回复内容
 $follow->getFtime()回复时间（未实现
  */
 ?>
+<style type="text/css">
+/* 灰色背景星星5个平铺 */
+.star_bg {
+    width: 120px; height: 20px;
+    background: url(/img/grey.jpg) repeat-x;
+    position: relative;
+    overflow: hidden;
+}
+/* 这是5个小星星们的默认状态的定位 */
+.star {
+    height: 100%; width: 24px;
+    line-height: 6em;
+    position: absolute;
+    z-index: 3;
+}
+.star_1 { left: 0; }
+.star_2 { left: 24px; }
+.star_3 { left: 48px; }
+.star_4 { left: 72px; }
+.star_5 { left: 96px; }
+
+/* 鼠标hover效果实现，分别显示背景与定宽 */
+.star:hover {    
+    background: url(/img/yellow.jpg) repeat-x ;
+    left: 0; z-index: 2;
+}
+.star_1:hover { width: 24px; }
+.star_2:hover { width: 48px; }
+.star_3:hover { width: 72px; }
+.star_4:hover { width: 96px; }
+.star_5:hover { width: 120px; }
+</style>
+
+
 
 
     <h1>标题： <?=$page->getPtitle()?></h1><br>
     <p>正文信息 <?=$page->getPcontent();?></p>
     <p>发表者用户名 <?=$page->getUser()->getUsername();?></p>
     <a href="<?=$page->getFilepath() ?>">下载附件(或者右键另存为)</a>
+    <h2>评分：</h2>
+    <p>请对本资源或内容进行评分</p>
+    
+    <div class="star_bg">
+        <a class="star star_1"></a>
+        <a class="star star_2"></a>
+        <a class="star star_3"></a>
+        <a class="star star_4"></a>
+        <a class="star star_5"></a>
+    </div>
+    
     <h2>评论</h2>
     <?php foreach ($follows as $follow):?>
     
@@ -55,3 +100,4 @@ $follow->getFtime()回复时间（未实现
        echo $this->formSubmit($form->get('submit'));
     echo $this->form()->closeTag();//</form>
 ?>
+<h2>和本文类似的文章：</h2>

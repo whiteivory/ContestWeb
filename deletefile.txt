@@ -1,0 +1,3 @@
+public/data/face 1 defaultfaceimg.png
+public/data/post 1 placeholder.txt
+public/data/postinlineimg 1 placeholder.txt

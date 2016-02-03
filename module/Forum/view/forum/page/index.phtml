@@ -109,3 +109,11 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
     </div>
    </div>
 <?php endforeach ?>
+<form action="/search" method="get" >
+    <input name="q"type = "text" placeholder="查询内容">
+    <input name="submitsearch" type="submit">
+</form>
+<div class="recommond">
+    <h3>您可能对以下文章感兴趣：</h3>
+    
+</div>

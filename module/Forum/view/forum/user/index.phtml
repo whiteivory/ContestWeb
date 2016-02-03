@@ -8,6 +8,7 @@ $user=$this->user;
  * $user->getUsername() 用户名
  */
 ?>
+<h2>用户名：<?=$user->getUsername(); ?></h2>
 <p>头像</p>
 <img src="<?= $user->getFaceimgpath();//错误不要管?>" />
 <?php if($mode=='edit'):?>
@@ -21,4 +22,7 @@ enctype="multipart/form-data">
 <br />
 <input type="submit" name="submit" value="Submit" />
 </form>
-<?php endif?>
+<?php else:?>
+<input type="button">好友申请</input>
+<?php endif;?>
+<h2>你可能感兴趣的用户：</h2>

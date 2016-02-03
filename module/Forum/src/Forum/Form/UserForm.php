@@ -28,15 +28,17 @@ class UserForm extends Form
             'type' => 'text',
             'name' => 'username',
             'options' => array(
-                'label' => 'Your username'
             )
         ));
         
         $this->add(array(
-            'type' => 'text',
+            'type' => 'password',
             'name' => 'upassword',
             'options' => array(
-                'label' => 'Your password'
+            ),
+            'attributes' => array(
+                'class'=>'form-control',
+                'id'=>'inputPassword'
             )
         ));
         $this->add(array(
