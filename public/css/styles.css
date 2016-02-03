@@ -8,27 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/*zq补充CSS*/
-.jumpbotron{
-background-color:#eee;
-border-radius:6px;
-padding:30px;
-margin-bottom:20px;
-font-size:21px;
-font-weight:200;
-line-height:17;
-color:inherit;	
-}
-.zq01{
-background-color:#E7E7E7;
-border-radius:6px;
-padding:30px;
-margin-bottom:10px;
-font-size:11px;
-line-height:3;
-color:inherit;	
-}
-/*zq补充CSS*/
+
 h1,
 h2,
 h3,
