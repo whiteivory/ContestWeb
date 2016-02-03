@@ -33,6 +33,16 @@ class RecruitForm extends Form
                      ),
              )
      ));
+         $this->add(array(
+             'type' => 'Select',
+             'name' => 'type',
+             'options' => array(
+                 'value_options' => array(
+                     '1' => '个人招募',
+                     '2' => '组队招募',
+                 ),
+             )
+         ));
         $this->add(array(
             'type' => 'text',
             'name' => 'rtitle',

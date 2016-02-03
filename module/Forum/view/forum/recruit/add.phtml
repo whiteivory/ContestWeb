@@ -17,6 +17,7 @@ echo $this->headmeta('utf-8');
    ?>
    <?php 
    echo '标题'.$this->formRow($form->get('rtitle')).'<br/>';
+   echo '类型'.$this->formRow($form->get('type'));
    echo '标签'.$this->formRow($form->get('tag'));
    echo $this->formRow($form->get('rcontent'));
    echo $this->formSubmit($form->get('submit'));

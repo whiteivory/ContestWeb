@@ -14,7 +14,8 @@ class Recruit
     private $rreplynum;
     private $schID;
     private $tag;
-    
+    private $type;
+
     public function exchangeArray($data)
     {
         $this->recruitID     = (isset($data['recruitID']))     ? $data['recruitID']     : null;
@@ -26,7 +27,25 @@ class Recruit
         $this->rreplynum= (isset($data['rreplynum']))     ? $data['rreplynum']     : null;
         $this->schID= (isset($data['schID']))     ? $data['schID']     : null;
         $this->tag= (isset($data['tag']))     ? $data['tag']     : null;
+        $this->type= (isset($data['type']))     ? $data['type']     : null;
+        
     }
+    /**
+     * @return the $type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+ /**
+     * @param field_type $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
     
     /**
      * @return the $tag

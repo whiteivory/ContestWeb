@@ -40,8 +40,6 @@ return array(
              'Forum\Controller\Follow'=>'Forum\Factory\FollowControllerFactory',
              'Forum\Controller\Recruit'=>'Forum\Factory\RecruitControllerFactory',
              'Forum\Controller\RFollow'=>'Forum\Factory\RFollControllerFactory',
-             'Forum\Controller\PRecruit'=>'Forum\Factory\PRecruitControllerFactory',
-             'Forum\Controller\PRFollow'=>'Forum\Factory\PRFollControllerFactory',
          )
         ),
     'router' => array(

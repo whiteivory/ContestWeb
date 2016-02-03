@@ -66,16 +66,16 @@ use Forum\Model\Recruit;
          throw new \InvalidArgumentException("Forum with given ID:{$id} not found.");
      }
      
-     public function findAll($schID,$tag){
+     public function findAll($schID,$tag,$type){
         $sql="select * from recruit ";
         $sql =$sql. " join user on recruit.userID=user.userID ";
         $sql=$sql."where ";
         
-        if($tag!=0){
-            $sql =$sql." tag=$tag "."and ";
+        if($tag!==0){//注意===的用法！
+            $sql =$sql." tag='$tag' "."and ";
         }
-        $sql=$sql."schID =$schID";
-//         echo $sql;
+        $sql=$sql."schID =$schID"." and ";
+        $sql=$sql."type = $type";
         $statement=$this->dbAdapter->query($sql);
         $result=$statement->execute();
 //         foreach ($result as $row){

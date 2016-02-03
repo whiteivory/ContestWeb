@@ -23,13 +23,13 @@ class RecruitService
      * 如过注册了，则schID=session中的schoolID
      * 如过没注册，那么为0，数据库中不存在为0的schoolID，所以不会反回结果
      */
-    public function getRecruits($tag)
+    public function getRecruits($tag,$type)
     {
         // TODO: Implement findAllPosts() method.
         if(isset(WAuthUtil::get_auth()->schoolID))
             $schID=WAuthUtil::get_auth()->schoolID;
         else $schID=0;
-        return $this->recruitMapper->findAll($schID,$tag);
+        return $this->recruitMapper->findAll($schID,$tag,$type);
     }
     
     /**

@@ -16,7 +16,7 @@
 $recruits=$this->recruits;
 
 foreach ($recruits as $recruit):?>
-    <span>标题 </span><?=$recruit->getRtitle(); ?>
+    <span>标题 </span><a href="/recruit/<?=$recruit->getRecruitID(); ?>"><?=$recruit->getRtitle(); ?></a>
     <span>标签 </span><?=$recruit->getTag(); ?>
     <span>内容 </span><?=$recruit->getRcontent(); ?>
     <span>作者</span><?=$recruit->getUser()->getUserName(); ?>

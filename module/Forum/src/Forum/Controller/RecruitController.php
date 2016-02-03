@@ -28,13 +28,18 @@ protected $recruitService;
         WAuthUtil::whetherLogout($this);
         $request = $this->getRequest();
         $tag=0;
+        $type=1;//1是组队招募
         if($request->isGet()&&isset($request->getQuery()['tag'])){
             $tag=$request->getQuery()['tag'];
         }
+        echo "<br/><br/><br/>";
+        if(isset($request->getQuery()['type'])){
+            $type=$request->getQuery()['type'];
+        }
+        if($type!=1&&$type!=2) $type=1;
         WAuthUtil::addUserpanelToLayout($this, '/recruit');
-        
         return new ViewModel(array(
-            'recruits' => $this->recruitService->getRecruits($tag),
+            'recruits' => $this->recruitService->getRecruits($tag,$type),
         ));
     }
     public function getservice(){
