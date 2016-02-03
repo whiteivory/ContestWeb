@@ -9,15 +9,13 @@ font-size:21px;
 font-weight:200;
 line-height:17;
 color:inherit;	
-	font-family:'Montserrat', sans-serif;
 }
 .zq01{
 background-color:#E7E7E7;
 border-radius:6px;
 font-size:11px;
 line-height:3;
-color:inherit;
-font-family:'Montserrat', sans-serif;	
+color:inherit;	
 }
 /*zq补充CSS*/
 #submitstyle{
@@ -31,8 +29,12 @@ font-family:'Montserrat', sans-serif;
   font-family: 'Montserrat', arial, sans-serif;
   padding: 8px 16px;
   font-weight: bold;
+<<<<<<< HEAD
 	font-family:'Montserrat', sans-serif;
 }
 
 
 	
+=======
+}
+>>>>>>> parent of 0349ad9... 个人基本信息头像界面

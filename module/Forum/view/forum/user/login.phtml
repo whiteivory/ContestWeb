@@ -4,6 +4,7 @@
 $form->setAttribute('action', $this->url());
 //$form->setAttribute('id','foo');//这里设置你的id
 $form->prepare();
+<<<<<<< HEAD
 ?>
 <?php 
 echo $this->form()->openTag($form);
@@ -41,3 +42,12 @@ echo $this->form()->closeTag();
 ?>
 
  
+=======
+
+echo $this->form()->openTag($form);//<form>
+ echo $this->formHidden($form->get('userID'));
+echo $this->formRow($form->get('username'));
+echo $this->formRow($form->get('upassword'));
+ echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+>>>>>>> parent of 0349ad9... 个人基本信息头像界面
