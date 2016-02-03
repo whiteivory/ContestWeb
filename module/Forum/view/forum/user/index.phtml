@@ -8,21 +8,50 @@ $user=$this->user;
  * $user->getUsername() 用户名
  */
 ?>
-<h2>用户名：<?=$user->getUsername(); ?></h2>
-<p>头像</p>
-<img src="<?= $user->getFaceimgpath();//错误不要管?>" />
-<?php if($mode=='edit'):?>
-<h2>上传头像</h2>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+<p style="font-size:22px;font-family:'Montserrat', sans-serif;">用户头像</p><hr>
+<img style="width:160px;height:160px;" class="img-circle" src="<?= $user->getFaceimgpath();//错误不要管?>" />
 
+<div class="page-header">
+				<h3 style="font-size:22px;font-family:'Montserrat', sans-serif;">
+					用户名/昵称 <small>个人基本信息介绍：专业、擅长、爱好等</small>
+				</h3>
+			</div>
+
+<div class="hero-unit well">
+				<h2 style="font-size:25px;font-family:'Microsoft YaHei', sans-serif;">
+					个人说明：</h2>
+				<p style="font-size:18px;font-family:'Montserrat', sans-serif;">
+					我是人才详细内容部分，此处大约字数300+，可以写
+                    个人基本情况介绍、对比赛的了解程度，参与经验，参加原因，希望承担团队哪方面的工作，专业突出技能和擅长领域等等；
+                    个人性格，爱好，希望在比赛中学到什么，对什么比赛感兴趣等等。
+                    
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#">私信</a>
+				</p>
+			</div>		
+
+>>>>>>> 1842f40569ac14c2e37a16b834bf9649af52411f
+<?php if($mode=='edit'):?>
+
+<p style="font-size:20px;font-family:'Microsoft YaHei', sans-serif;">上传头像：</p>
 
 <form action="/account/<?= $user->getUserID() ?>" method="post"
 enctype="multipart/form-data">
-<label for="file">Filename:</label>
-<input type="file" name="faceimgpath" id="faceimgpath" /> 
+
+
+<label for="file">文件名称:</label>
+<input  type="file" name="faceimgpath" id="faceimgpath" /> 
 <br />
-<input type="submit" name="submit" value="Submit" />
+<input class="btn btn-primary btn-large" type="submit" name="submit" value="提交修改" />
 </form>
-<?php else:?>
-<input type="button">好友申请</input>
-<?php endif;?>
-<h2>你可能感兴趣的用户：</h2>
+
+
+
+</div>
+	</div>
+</div>
+<?php endif?>

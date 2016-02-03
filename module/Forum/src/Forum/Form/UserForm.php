@@ -27,18 +27,27 @@ class UserForm extends Form
         $this->add(array(
             'type' => 'text',
             'name' => 'username',
+
+            'options' => array( 
+            ),
+            'attributes'=>array(
+                'class'=>'form-control',
+                'id'=>'inputPassword',
+  
             'options' => array(
-            )
-        ));
+            ),
+                )
+         ));
         
         $this->add(array(
             'type' => 'password',
             'name' => 'upassword',
             'options' => array(
+               // 'label' => 'Your password'
             ),
-            'attributes' => array(
+            'attributes'=>array(
                 'class'=>'form-control',
-                'id'=>'inputPassword'
+                'id'=>'inputPassword',
             )
         ));
         $this->add(array(
@@ -46,7 +55,7 @@ class UserForm extends Form
             'type'  => 'Submit',
             'attributes' => array(
                 'value' => 'Submit',
-                'class' => 'submitc',
+                'class' => 'btn btn-lg btn-primary btn-block',
             ),
         ));
         $this->add(array(

@@ -17,7 +17,9 @@ class FollowForm extends Form{
             'name' => 'submit',
             'type'  => 'Submit',
             'attributes' => array(
-                'value' => 'Submit',
+                'value' => '提交评论',
+                'id'=>'submitstyle',
+      
             ),
         ));
     }
