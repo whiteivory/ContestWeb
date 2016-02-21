@@ -85,4 +85,39 @@ class FollowController extends AbstractActionController{
     {
         return $this->pageService;
     }
+    public function zanajaxAction(){
+        $request=$this->getRequest();
+        $hasrecord=0;
+        $msg='';
+        if($request->isPost()&&isset($request->getPost()['userID'])){
+            $userID=$request->getPost()['userID'];
+            $pageID=$request->getPost()['pageID'];
+            $sql="select * from zanup where userID=$userID and pageID=$pageID";
+            
+            try {
+                $dbh=new \PDO('mysql:host=localhost;dbname=contestweb', 'root', '');
+                $stmt=$dbh->query($sql);
+                $curr=$stmt->fetch();
+                if(isset($curr['userID'])){
+                    $hasrecord=1;
+                }
+                else{
+                    $sqlforupdate="update page set pzannum=pzannum+1 where pageID=$pageID";
+                    $dbh->query($sqlforupdate);
+                }
+                $dbh=null;
+            } catch (\Exception $e) {
+                $msg= "ERROR!: ".$e->getMessage()."<br/>";
+            }
+            $success=$hasrecord==1?0:1;
+            if($success==0) $msg='每个人只能点赞一次哦！';
+            
+            echo '{"success":'.$success.',"msg":'.'"'.$msg.'"'.',"sql":'.'"'.$sql.'"'.'}';
+
+        }
+        //disable layout for the use of ajax;
+        $viewfordisable=new ViewModel();
+        $viewfordisable->setTerminal(true);
+        return $viewfordisable; 
+    }
 }

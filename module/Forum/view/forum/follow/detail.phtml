@@ -50,8 +50,38 @@ $follow->getFtime()回复时间（未实现
     </div>
    </div>
    </div>
-   </div> </div>
-   
+   </div> 
+   </div>
+<!--    点赞按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){ 
+   $("#zan0").click(function(){ 
+       $.ajax({ 
+           type: "POST",     
+           url: "/page/zanajax",
+           data: {
+               userID:2,
+               pageID:1005
+//                name: $("#staffName").val(),
+           },
+           dataType: "json",
+           success: function(data){
+               if (data.success) { 
+                   num=parseInt($("#zan0 span").html())+1;
+                   $("#zan0 span").html(num);
+               } else {
+                   $("#createResult").html(data.msg);
+               }  
+           },
+           error: function(jqXHR){     
+              alert("发生错误：" + jqXHR.status);  
+           },     
+       });
+   });
+});
+</script>
+<a id="zan0" href="#">赞(<span>0</span>)</a>
+<p id="createResult"></p>
    <div class="row row-offcavnas row-offcanvas-right">
    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
     <div class="list-group">

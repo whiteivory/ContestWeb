@@ -103,6 +103,20 @@ return array(
                                 'id' => '[1-9]\d*'
                             )
                         )
+                    ),
+                    'followajax' => array(
+                        'type'    => 'segment',
+                        'options' => array(
+                            'route'    => '/:action',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'Forum\Controller\Follow',
+//                                 'action'     => 'index',
+                            ),
+                        ),
+                        
                     )
                 )
             ),
