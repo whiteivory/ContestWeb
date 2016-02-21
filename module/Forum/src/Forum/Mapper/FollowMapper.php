@@ -11,6 +11,7 @@ use Zend\Stdlib\Hydrator\HydratorInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Insert;
 use Application\Common\WHydrateResultset;
+use Zend\Crypt\PublicKey\Rsa\PublicKey;
 
 class FollowMapper
 {
@@ -38,7 +39,8 @@ class FollowMapper
         /*
          * 下面这两行一定记得自己加上去
         */
-        $postData['userID']=$followObject->getUser()->getUserID();
+        $id= $followObject->getUser()->getUserID();
+        $postData['userID']=$id;
 //         unset($postData['secname']);//等到更改成类的时候需要利用php的特性改变成员变量的类型，class变成id
         //           unset($postData['username']);//虽然还是比较麻烦，但是只要写一个类就够了，不需要再unset这么多了。
         $action = new Insert('follow');
@@ -47,6 +49,11 @@ class FollowMapper
         $sql    = new Sql($this->dbAdapter);
         $stmt   = $sql->prepareStatementForSqlObject($action);
         $result = $stmt->execute();
+        
+        //update replynum
+        $sql2="update page set preplynum=preplynum+1 where pageID=$id";
+        $stmt2=$this->dbAdapter->query($sql2);
+        $stmt2->execute();
     }
     public function findAll($pageID){
         $sql="select * from follow join user on follow.userID = user.userID where pageID=$pageID ";
@@ -74,5 +81,22 @@ class FollowMapper
         $statement=$this->dbAdapter->query($sql);
         $result=$statement->execute();
         return $result->current()['max(followID)']+1;
+    }
+    public function updateClicktime($id){
+        $sql="update page set pclicknum=pclicknum+1 where pageID=$id";
+        $statement=$this->dbAdapter->query($sql);
+        $statement->execute();
+    }
+    public function updateLastReplyTime($id){
+        $time=date('y-m-d h:i:s',time());
+        $sql="update page set lasttime='$time' where pageID=$id";
+//         Debug::dump($sql);
+        $statement=$this->dbAdapter->query($sql);
+        $statement->execute();
+    }
+    public function updateReplynum($id){
+        $sql="update page set preplynum=preplynum+1 where pageID=$id";
+        $statement=$this->dbAdapter->query($sql);
+        $statement->execute();
     }
 }

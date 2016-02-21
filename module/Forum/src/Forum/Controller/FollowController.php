@@ -21,11 +21,12 @@ class FollowController extends AbstractActionController{
     }
     public function detailAction(){
         WAuthUtil::whetherLogout($this);
-
         //form
         $form=new FollowForm();
         
         $id = $this->params()->fromRoute('id');
+        //增加点击次数
+        $this->getFollowService()->updateClicktime($id);
         //查看是否评论，进行request处理
         $request = $this->getRequest();
         if($request->isPost()&&isset($request->getPost()['fcontent'])){
