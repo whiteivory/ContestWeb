@@ -1,7 +1,10 @@
 <?php
+/*
+ * 
+ */
+
 //改变config要清楚浏览器缓存
 echo $this->headmeta('utf-8');
-   echo $this->headtitle("A Simple Page with CKEditor"); 
    echo $this->headScript()
         ->prependFile($this->basePath() . '/ckeditor/ckeditor.js')
         ->prependFile($this->basePath() . '/ckeditor/config.js'); //这一行 
@@ -11,7 +14,10 @@ echo $this->headmeta('utf-8');
    $form->prepare();
 //    echo $this->form($form);
    echo $this->form()->opentag($form);//<form>
-   echo $this->formRow($form->get('secID')).'<br>';
+   ?>
+   <?php 
+   echo $this->formRow($form->get('secID')).'<br>';?>
+   <?php 
    echo $this->formRow($form->get('ptype')).'<br>';
    echo $this->formRow($form->get('ptitle'));
    echo $this->formRow($form->get('pcontent'));
