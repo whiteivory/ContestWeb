@@ -5,6 +5,7 @@ body{
 
 }
 /* filterable portfolio menu starts */
+
 .portfolioMenuWrapper {
 	list-style: none;
 	
@@ -118,4 +119,4 @@ body{
 }
 .ask-list li h4{line-height:24px;margin-bottom:5px}
 .ask-list li p{line-height:20px;color:#868b98;font-size:14px;margin-bottom:5px;max-height:60px;overflow:hidden}
-.ask-list li .ask-descrip{display:block;float:right;line-height:20px;color:#b3b6bd;font-size:12px}
+.ask-list li .ask-descrip{display:block;float:right;line-height:20px;color:#b3b6bd;font-size:13px}

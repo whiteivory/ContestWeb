@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `follow`
+--
+
+DROP TABLE IF EXISTS `follow`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `follow` (
+  `followID` int(11) NOT NULL,
+  `pageID` int(11) DEFAULT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `fcontent` text,
+  `ftime` datetime DEFAULT NULL,
+  PRIMARY KEY (`followID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `follow`
+--
+
+LOCK TABLES `follow` WRITE;
+/*!40000 ALTER TABLE `follow` DISABLE KEYS */;
+INSERT INTO `follow` VALUES (1,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `follow` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `page`
 --
 
@@ -37,6 +64,7 @@ CREATE TABLE `page` (
   `pzannum` int(11) DEFAULT NULL,
   `pallow` int(11) DEFAULT NULL,
   `filepath` varchar(255) DEFAULT NULL,
+  `test` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`pageID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,8 +75,67 @@ CREATE TABLE `page` (
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `recruit`
+--
+
+DROP TABLE IF EXISTS `recruit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recruit` (
+  `recruitID` int(11) NOT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `rtitle` varchar(255) DEFAULT NULL,
+  `rcontent` text,
+  `rtime` datetime DEFAULT NULL,
+  `lasttime` datetime DEFAULT NULL,
+  `rclicknum` int(11) DEFAULT NULL,
+  `rreplynum` int(11) DEFAULT NULL,
+  `tag` varchar(255) DEFAULT NULL,
+  `schID` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  PRIMARY KEY (`recruitID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recruit`
+--
+
+LOCK TABLES `recruit` WRITE;
+/*!40000 ALTER TABLE `recruit` DISABLE KEYS */;
+INSERT INTO `recruit` VALUES (1,3,'rrr','<p>rrr</p>\r\n',NULL,NULL,NULL,NULL,NULL,1,NULL);
+/*!40000 ALTER TABLE `recruit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rfollow`
+--
+
+DROP TABLE IF EXISTS `rfollow`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rfollow` (
+  `rfollowID` int(11) NOT NULL,
+  `recruitID` int(11) DEFAULT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `rfcontent` text,
+  `rftime` datetime DEFAULT NULL,
+  PRIMARY KEY (`rfollowID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rfollow`
+--
+
+LOCK TABLES `rfollow` WRITE;
+/*!40000 ALTER TABLE `rfollow` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rfollow` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -138,6 +225,7 @@ CREATE TABLE `user` (
   `schoolID` int(11) DEFAULT NULL,
   `sregtime` date DEFAULT NULL,
   `teamnum` int(11) DEFAULT NULL,
+  `faceimgpath` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -160,4 +248,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-20 18:14:43
+-- Dump completed on 2016-02-03 16:16:29

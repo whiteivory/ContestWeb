@@ -1,0 +1,57 @@
+<?php
+$mode=$this->mode; 
+$user=$this->user;
+/*$mode为显示模式，如果$mode=='check'表示查看别人的主页，$mode=='edit'表示查看和编辑自己的主页
+ * $user->getFaceimgpath() 头像地址
+ * $user->getSchoolID() 所在学校的ID
+ * $user->getUserID()用户ID
+ * $user->getUsername() 用户名
+ */
+?>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+<p style="font-size:22px;font-family:'Montserrat', sans-serif;">用户头像</p><hr>
+<img style="width:160px;height:160px;" class="img-circle" src="<?= $user->getFaceimgpath();//错误不要管?>" />
+
+<div class="page-header">
+				<h3 style="font-size:22px;font-family:'Montserrat', sans-serif;">
+					用户名/昵称 <small>个人基本信息介绍：专业、擅长、爱好等</small>
+				</h3>
+			</div>
+
+<div class="hero-unit well">
+				<h2 style="font-size:25px;font-family:'Microsoft YaHei', sans-serif;">
+					个人说明：</h2>
+				<p style="font-size:18px;font-family:'Montserrat', sans-serif;">
+					我是人才详细内容部分，此处大约字数300+，可以写
+                    个人基本情况介绍、对比赛的了解程度，参与经验，参加原因，希望承担团队哪方面的工作，专业突出技能和擅长领域等等；
+                    个人性格，爱好，希望在比赛中学到什么，对什么比赛感兴趣等等。
+                    
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#">私信</a>
+				</p>
+			</div>		
+
+>>>>>>> 1842f40569ac14c2e37a16b834bf9649af52411f
+<?php if($mode=='edit'):?>
+
+<p style="font-size:20px;font-family:'Microsoft YaHei', sans-serif;">上传头像：</p>
+
+<form action="/account/<?= $user->getUserID() ?>" method="post"
+enctype="multipart/form-data">
+
+
+<label for="file">文件名称:</label>
+<input  type="file" name="faceimgpath" id="faceimgpath" /> 
+<br />
+<input class="btn btn-primary btn-large" type="submit" name="submit" value="提交修改" />
+</form>
+
+
+
+</div>
+	</div>
+</div>
+<?php endif?>

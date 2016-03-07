@@ -29,9 +29,12 @@ class WAuthUtil{
         //layout()用法
         $v1=new ViewModel();
         $tmpArray=array();
-        if($idenobj)
-             $tmpArray['identity']=$idenobj->username;
+        if($idenobj){
+            $tmpArray['identity']=$idenobj->username;
+            $tmpArray['userID']=$idenobj->userID;
+        }
         $tmpArray['currentPage']=$currentPageNameStr;
+
         $v1=new ViewModel($tmpArray);
         //网页顶部显示登陆信息一般过程
 //         $v1->setTemplate('blog/user/userPanel');//注意这样写可以指向blog module里的对应没有问题。

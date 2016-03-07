@@ -13,6 +13,7 @@ use Zend\Filter\File\Rename;
 use Application\Common\WBasePath;
 use Zend\Http\Request;
 use Zend\Feed\Reader\Reader;
+use Forum\Model\User;
 
 class PageController  extends AbstractActionController
 {
@@ -39,19 +40,45 @@ class PageController  extends AbstractActionController
             $ptype=$request->getQuery('ptype'); 
         }
         WAuthUtil::addUserpanelToLayout($this, '/page');
+        
         return new ViewModel(array(
             'pages' => $this->pageService->getPages($secID,$ptype),
             'secID' => $secID,
             'ptype' =>$ptype
         ));
     }
-    public function detailAction(){
-        
-    }
     public function getservice(){
         return $this->pageService;
     }
     
+    public function searchAction(){
+        WAuthUtil::whetherLogout($this);
+        $request = $this->getRequest();
+        if($request->isGet()&&isset($request->getQuery()['q'])){
+            $q=urlencode($request->getQuery('q'));
+            $result = file_get_contents("http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=$q&wt=json&indent=true");
+            $de=json_decode($result);
+            $de=$de->response;
+            $n=$de->numFound;
+            $return=array();
+            for($i=0;$i<$n;$i++){
+                $idori=$de->docs[$i]->id;
+                $pos=strpos($idori,'pos');
+                $pos+=5;
+                $id=substr($idori, $pos,4);
+                $p=$this->getservice()->getPage($id);
+                $return[]=$p->current();
+            }
+//             Debug::dump($de->docs[0]);
+//             print_r($de);
+        }
+        
+        WAuthUtil::addUserpanelToLayout($this, '/search');
+        return new ViewModel(array(
+            'pages'=>$return
+        ));
+        
+    }
     public function addAction()
     {
         WAuthUtil::whetherLogout($this);
@@ -60,6 +87,7 @@ class PageController  extends AbstractActionController
         //start
         if($request->isPost()&&isset($request->getPost()['pcontent'])){
            $page = new Page();
+           $user=new User();
             $form->bind($page);
             $form->setData($request->getPost());
             if ($form->isValid()) {
@@ -67,7 +95,8 @@ class PageController  extends AbstractActionController
                 $schID=$auth->schoolID;
                 $userID=$auth->userID;
                 $page->setSchID($schID);
-                $page->setUserID($userID);
+                $user->setUserID($userID);
+                $page->setUser($user);
                 $pageID=$this->getservice()->getNewPageIDandMakedir();
                 $page->setPageID($pageID);
                 $file=$request->getFiles();
@@ -91,7 +120,7 @@ class PageController  extends AbstractActionController
      * 针对ckeditor的图片ajax上传处理
      */
     public function addUpPicSerAction(){
-        $path_for_route="data/postinlineimg/";//由于在apache配置文件里设置到了public
+        $path_for_route="/data/postinlineimg/";//由于在apache配置文件里设置到了public,注意前面的/一定要加，表示绝对路径
         $path_for_frame=WBasePath::getBasePath()."/".$path_for_route;//实际存的时候存放的地址。
 
 //         if (file_exists($path. $_FILES["upload"]["name"]))
