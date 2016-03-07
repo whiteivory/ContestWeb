@@ -8,6 +8,12 @@ $form->prepare();
 
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('userID'));
+?>
+<h2 style="font-size:25px;font-family:'Microsoft YaHei', sans-serif;">用户登录</h2><hr>
+
+<label for="inputEmail"  placeholder="Email address" required autofocus>
+邮箱地址：
+</label>
 echo $this->formRow($form->get('username'));
 echo $this->formRow($form->get('upassword'));
 echo $this->formRow($form->get('schoolID'));
