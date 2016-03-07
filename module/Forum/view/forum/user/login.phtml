@@ -2,6 +2,7 @@
  $form = $this->userform;
 //设置表单的action属性，跳转到album/add 然后addAction()getRequest；和正常的方式是类似的。
 $form->setAttribute('action', $this->url());
+
 //$form->setAttribute('id','foo');//这里设置你的id
 $form->prepare();
 
@@ -40,6 +41,4 @@ echo $this->formSubmit($form->get('submit'));
  
 echo $this->form()->closeTag();
 ?>
-
- 
 

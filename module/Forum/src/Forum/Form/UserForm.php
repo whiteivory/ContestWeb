@@ -35,8 +35,6 @@ class UserForm extends Form
                 'id'=>'inputPassword',
   
             'options' => array(
-                //'label' => 'Your username',
-//>>>>>>> parent of 0349ad9... 个人基本信息头像界面
             ),
                 )
          ));
@@ -50,7 +48,6 @@ class UserForm extends Form
             'attributes'=>array(
                 'class'=>'form-control',
                 'id'=>'inputPassword',
-                
             )
         ));
         $this->add(array(

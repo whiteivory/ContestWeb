@@ -1,0 +1,34 @@
+<?php
+/*
+ * 
+ */
+
+//改变config要清楚浏览器缓存
+echo $this->headmeta('utf-8');
+   echo $this->headScript()
+        ->prependFile($this->basePath() . '/ckeditor/ckeditor.js')
+        ->prependFile($this->basePath() . '/ckeditor/config.js'); //这一行 
+   
+   $form = $this->recruitform;
+   $form->setAttribute('action', $this->url());
+   $form->prepare();
+//    echo $this->form($form);
+   echo $this->form()->opentag($form);//<form>
+   ?>
+   <?php 
+   echo '标题'.$this->formRow($form->get('rtitle')).'<br/>';
+   echo '类型'.$this->formRow($form->get('type'));
+   echo '标签'.$this->formRow($form->get('tag'));
+   echo $this->formRow($form->get('rcontent'));
+   echo $this->formSubmit($form->get('submit'));
+   echo $this->form()->closeTag();//</form>
+   ?>
+               <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+        	//customConfig: '<php $this->basepath()?>/ckeditor/customconfig.js'
+            CKEDITOR.replace( 'editor1', {
+           	 filebrowserUploadUrl: "/addUpPicSer"
+            });
+            </script>
+   

@@ -18,7 +18,12 @@ return array(
              'Zend\Db\Adapter\Adapter'           => 'Zend\Db\Adapter\AdapterServiceFactory',
              'Forum\Service\UserService' => 'Forum\Factory\UserServiceFactory',
              'Forum\Service\FollowServiceInterface'=>'Forum\Factory\FollowServiceFactory',
-             'Forum\Mapper\FollowMapperInterface'=>'Forum\Factory\FollowMapperFactory'
+             'Forum\Mapper\FollowMapperInterface'=>'Forum\Factory\FollowMapperFactory',
+             'Forum\Mapper\RecruitMapperInterface'   => 'Forum\Factory\RecruitMapperFactory',
+             'Forum\Service\RecruitServiceInterface' => 'Forum\Factory\RecruitServiceFactory',
+             'Forum\Service\RFollowServiceInterface'=>'Forum\Factory\RFollowServiceFactory',
+             'Forum\Mapper\RFollowMapperInterface'=>'Forum\Factory\RFollowMapperFactory',
+              
          )
      ),
     'view_manager' => array(
@@ -32,7 +37,9 @@ return array(
              'factories' => array(
              'Forum\Controller\Page' => 'Forum\Factory\PageControllerFactory',
              'Forum\Controller\User'=>'Forum\Factory\UserControllerFactory',
-             'Forum\Controller\Follow'=>'Forum\Factory\FollowControllerFactory'
+             'Forum\Controller\Follow'=>'Forum\Factory\FollowControllerFactory',
+             'Forum\Controller\Recruit'=>'Forum\Factory\RecruitControllerFactory',
+             'Forum\Controller\RFollow'=>'Forum\Factory\RFollControllerFactory',
          )
         ),
     'router' => array(
@@ -96,6 +103,102 @@ return array(
                                 'id' => '[1-9]\d*'
                             )
                         )
+                    ),
+                    'followajax' => array(
+                        'type'    => 'segment',
+                        'options' => array(
+                            'route'    => '/:action',
+                            'constraints' => array(
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller' => 'Forum\Controller\Follow',
+//                                 'action'     => 'index',
+                            ),
+                        ),
+                        
+                    )
+                )
+            ),
+            'recruit' => array(
+                // Define the routes type to be "Zend\Mvc\Router\Http\Literal", which is basically just a string
+                'type' => 'literal',
+                // Configure the route itself
+                'options' => array(
+                    // Listen to "/blog" as uri
+                    'route'    => '/recruit',
+                    // Define default controller and action to be called when this route is matched
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Recruit',
+                        'action'     => 'index',
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes'  => array(
+                    'detail' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route'    => '/:id',
+                            'defaults' => array(
+                                'controller' => 'Forum\Controller\RFollow',
+                                'action' => 'detail'
+                            ),
+                            'constraints' => array(
+                                'id' => '[1-9]\d*'
+                            )
+                        )
+                    )
+                )
+            ),
+            'precruit' => array(
+                // Define the routes type to be "Zend\Mvc\Router\Http\Literal", which is basically just a string
+                'type' => 'literal',
+                // Configure the route itself
+                'options' => array(
+                    // Listen to "/blog" as uri
+                    'route'    => '/precruit',
+                    // Define default controller and action to be called when this route is matched
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\PRecruit',
+                        'action'     => 'index',
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes'  => array(
+                    'detail' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route'    => '/:id',
+                            'defaults' => array(
+                                'controller' => 'Forum\Controller\PRFollow',
+                                'action' => 'detail'
+                            ),
+                            'constraints' => array(
+                                'id' => '[1-9]\d*'
+                            )
+                        )
+                    )
+                )
+            ),
+            'radd'=>array(
+                'type' => 'literal',
+                'options' => array(
+                    'route'    => '/radd',
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Recruit',
+                        'action'     => 'add',
+                    )
+                )
+            ),
+            'search'=>array(
+                'type' => 'literal',
+                'options' => array(
+                    // Listen to "/blog" as uri
+                    'route'    => '/search',
+                    // Define default controller and action to be called when this route is matched
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Page',
+                        'action'     => 'search',
                     )
                 )
             ),

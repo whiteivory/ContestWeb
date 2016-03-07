@@ -1,5 +1,11 @@
 <?php
 /*本页返回数据
+ * 更新以下可用
+ * $page->getPclicknum()//帖子点击量
+$page->getPreplynum()//回复量
+$page->getPzannum()//点赞数
+$page->getPtime()//发帖时间
+
 $this->pages  //所有的page 类
 foreach($this->pages as $page)
     在里面可以引用$page->get***
@@ -9,13 +15,11 @@ $page->getSchID()//该文作者的学校ID
 $page->getFilepath()//上传文件的地址
 $page->getSecID()//对应科研立项、挑战杯……的ID
 $page->getPtitle();//标题
-$page->getPtime()//发帖时间
+
 $page->getPcontent()//具体内容
 $page->getLasttime()//最后一次回复时间（未实现）
 $page->getPtype()//ID对应全部、本届信息、往届信息……
-$page->getPclicknum()//帖子点击量（未实现
-$page->getPreplynum()//回复量（未实现
-$page->getPzannum()//点赞数（未实现
+
 $page->getPallow()//本帖是否允许外校查看，1代表是，0代表否
 
 $page->getUser()->getUserID()
@@ -109,3 +113,11 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
     </div>
    </div>
 <?php endforeach ?>
+<form action="/search" method="get" >
+    <input name="q"type = "text" placeholder="查询内容">
+    <input name="submitsearch" type="submit">
+</form>
+<div class="recommond">
+    <h3>您可能对以下文章感兴趣：</h3>
+    
+</div>

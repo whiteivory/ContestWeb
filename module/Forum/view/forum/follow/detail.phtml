@@ -1,8 +1,15 @@
 <?php
+$userID=$this->userID;
 $page=$this->page->current();
 $form=$this->form;
 $follows=$this->follows;
-/*有关表格
+/*更新可用：
+ * $page->getPtime()//发帖时间
+
+ * $page->getPclicknum()//帖子点击量
+$page->getPzannum()//点赞数
+
+ * 有关表格
  * $form (具体见下面代码）
  * 
  * 有关于正文信息
@@ -11,15 +18,9 @@ $page->getSchID()//该文作者的学校ID
 $page->getFilepath()//上传文件的地址
 $page->getSecID()//对应科研立项、挑战杯……的ID
 $page->getPtitle();//标题
-$page->getPtime()//发帖时间
 $page->getPcontent()//具体内容
-$page->getLasttime()//最后一次回复时间（未实现）
 $page->getPtype()//ID对应全部、本届信息、往届信息……
-$page->getPclicknum()//帖子点击量（未实现
-$page->getPreplynum()//回复量（未实现
-$page->getPzannum()//点赞数（未实现
 $page->getPallow()//本帖是否允许外校查看，1代表是，0代表否
-
 $page->getUser()->getUserID()
 $page->getUser()->getUsername()//发文者的name
 $page->getUser()->getFaceimgpath()//头像地址
@@ -31,12 +32,15 @@ $follow->getUser()->getUsername()
 $follow->getFollowID()回复的ID
 $follow->getFcontent()回复内容
 $follow->getFtime()回复时间（未实现
+$page->getLasttime()//最后一次回复时间(未实现）
+$page->getPreplynum()//回复量（未实现）
  */
 ?>
 <div class="row row-offcavnas row-offcanvas-right">
 <div class="col-xs-12 col-sm-9">
 <div class="row">
 <div class="jumpbotron"> <!-- 背景灰-->
+
 
     <h3>标题： <?=$page->getPtitle()?></h3>
     <h4>正文信息 <?=$page->getPcontent();?></h4>
@@ -48,8 +52,17 @@ $follow->getFtime()回复时间（未实现
     </div>
    </div>
    </div>
-   </div> </div>
-   
+   </div> 
+   </div>
+<!--    点赞按钮 -->
+<script type="text/javascript">
+$(document).ready(function(){
+    updatezan(<?= $userID?>,<?= $page->getPageID()?>);
+});
+
+</script>
+<a id="zan0" href="#">赞(<span><?= $page->getPzannum(); ?></span>)</a>
+<p id="createResult"></p>
    <div class="row row-offcavnas row-offcanvas-right">
    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
     <div class="list-group">
@@ -85,15 +98,13 @@ $follow->getFtime()回复时间（未实现
     <hr>
     <h2 style="font-size:18px;font-family:'Montserrat', sans-serif;">发表评论</h2>
     <?php 
-    
-    
-    
-    
-    
     $form->setAttribute('action', '/page/'.$page->getPageID());//注意这里写绝对路径
     $form->prepare();
     echo $this->form()->opentag($form);//<form>
        echo $this->formRow($form->get('fcontent')).'<br>';
        echo $this->formSubmit($form->get('submit'));
     echo $this->form()->closeTag();//</form>
+    
+    //最后添加js
+    echo $this->inlineScript()->prependFile($this->basepath('/js/follow.js'));
 ?>

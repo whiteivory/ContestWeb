@@ -53,6 +53,13 @@ class PageService
      */
     public function savePage(Page $page,$file)
     {
+        //获取时间
+        $page->setPtime(date('y-m-d h:i:s',time()));
+        //设置默认值
+        $page->setPclicknum(0);
+        $page->setPreplynum(0);
+        $page->setPzannum(0);
+        
         $filetmpstr=$file['filepath']['tmp_name'];
         $filedir=$page->getPageID();
         $tmpuppcontentpath='public/tmpuppcontent.txt';
