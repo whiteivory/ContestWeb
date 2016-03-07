@@ -51,6 +51,34 @@ class PageController  extends AbstractActionController
         return $this->pageService;
     }
     
+    public function searchAction(){
+        WAuthUtil::whetherLogout($this);
+        $request = $this->getRequest();
+        if($request->isGet()&&isset($request->getQuery()['q'])){
+            $q=urlencode($request->getQuery('q'));
+            $result = file_get_contents("http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=$q&wt=json&indent=true");
+            $de=json_decode($result);
+            $de=$de->response;
+            $n=$de->numFound;
+            $return=array();
+            for($i=0;$i<$n;$i++){
+                $idori=$de->docs[$i]->id;
+                $pos=strpos($idori,'pos');
+                $pos+=5;
+                $id=substr($idori, $pos,4);
+                $p=$this->getservice()->getPage($id);
+                $return[]=$p->current();
+            }
+//             Debug::dump($de->docs[0]);
+//             print_r($de);
+        }
+        
+        WAuthUtil::addUserpanelToLayout($this, '/search');
+        return new ViewModel(array(
+            'pages'=>$return
+        ));
+        
+    }
     public function addAction()
     {
         WAuthUtil::whetherLogout($this);

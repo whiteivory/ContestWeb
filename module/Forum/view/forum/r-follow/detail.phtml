@@ -1,0 +1,54 @@
+<?php
+$recruit=$this->recruit->current();
+$form=$this->form;
+$follows=$this->follows;
+/*有关表格
+ * $form (具体见下面代码）
+ * 
+ * 有关于正文信息
+ * $recruit->getRecruitID(); 帖子ID
+$recruit->getSchID()//该文作者的学校ID
+$recruit->getRtitle();//标题
+$recruit->getRtime()//发帖时间 未实现
+$recruit->getRcontent()//具体内容
+$recruit->getLasttime()//最后一次回复时间（未实现）
+$recruit->getRclicknum()//帖子点击量（未实现
+$recruit->getRreplynum()//回复量（未实现
+
+$recruit->getUser()->getUserID()
+$recruit->getUser()->getUsername()//发文者的name
+$recruit->getUser()->getFaceimgpath()//头像地址
+foreach ($follows as $follow)
+$follow->getUser()->getFaceimgpath()//回复者的头像地址
+$follow->getUser()->getUserID()
+$follow->getUser()->getUsername()
+$follow->getRFollowID()回复的ID
+$follow->getRFcontent()回复内容
+$follow->getRFtime()回复时间（未实现
+ */
+?>
+
+
+
+
+
+    <h1>标题： <?=$recruit->getRtitle()?></h1><br>
+    <p>正文信息 <?=$recruit->getRcontent();?></p>
+    <p>发表者用户名 <?=$recruit->getUser()->getUsername();?></p>
+    
+    <h2>评论</h2>
+    <?php foreach ($follows as $follow):?>
+    
+        <p>评论者用户名:<?= $follow->getUser()->getUsername();?></p>
+        <p>评论者头像:<img src="<?= $follow->getUser()->getFaceimgpath();?>"/></p>
+        <p>评论内容:<?= $follow->getRFcontent();?></p>
+    <?php endforeach;?>
+    <h2>发表评论</h2>
+    <?php 
+    $form->setAttribute('action', '/recruit/'.$recruit->getRecruitID());//注意这里写绝对路径
+    $form->prepare();
+    echo $this->form()->opentag($form);//<form>
+       echo $this->formRow($form->get('rfcontent')).'<br>';
+       echo $this->formSubmit($form->get('submit'));
+    echo $this->form()->closeTag();//</form>
+?>

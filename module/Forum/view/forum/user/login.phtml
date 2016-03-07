@@ -2,11 +2,43 @@
  $form = $this->userform;
 //设置表单的action属性，跳转到album/add 然后addAction()getRequest；和正常的方式是类似的。
 $form->setAttribute('action', $this->url());
+
+//$form->setAttribute('id','foo');//这里设置你的id
 $form->prepare();
 
-echo $this->form()->openTag($form);//<form>
- echo $this->formHidden($form->get('userID'));
+?>
+<?php 
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('userID'));
+?>
+<h2 style="font-size:25px;font-family:'Microsoft YaHei', sans-serif;">用户登录</h2><hr>
+
+<label for="inputEmail"  placeholder="Email address" required autofocus>
+邮箱地址：
+</label>
+
+
+<?php
 echo $this->formRow($form->get('username'));
-echo $this->formRow($form->get('upassword'));
- echo $this->formSubmit($form->get('submit'));
+?>
+
+<label for="inputEmail"  placeholder="Email address" required autofocus>
+输入密码：
+</label>
+<?php 
+echo $this->formRow($form->get('upassword'));?>
+
+
+<label style="font-size:13px;font-family:'Microsoft YaHei', sans-serif;">
+       <input type="checkbox" > 记住密码
+</label>
+<?php 
+
+echo $this->formSubmit($form->get('submit'));
+
+ 
+
+ 
 echo $this->form()->closeTag();
+?>
+

@@ -16,8 +16,14 @@ class FollowService{
     public function saveFollow(Follow $followObject){
         $followObject->setFollowID($this->getNewFollowID());
         $this->followMapper->save($followObject);
+        $pageID=$followObject->getPageID();
+        $this->followMapper->updateLastReplyTime($pageID);
+        $this->followMapper->updateReplynum($pageID);
     }
     public function getNewFollowID(){
         return $this->followMapper->getNewFollowID();
+    }
+    public function updateClicktime($id){
+        return $this->followMapper->updateClicktime($id);
     }
 }

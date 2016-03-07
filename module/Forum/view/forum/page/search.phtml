@@ -1,0 +1,5 @@
+<?php 
+    $pages=$this->pages;
+    foreach ($pages as $p):?>
+    <h2><a href="/page/<?=$p->getPageID();?>"><?= $p->getPtitle()?> </a></h2>
+    <?php endforeach;?>
