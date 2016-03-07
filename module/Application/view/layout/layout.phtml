@@ -11,7 +11,9 @@
             ->prependStylesheet($this->basePath() . '/css/bootstrap.css')
             ->prependStylesheet($this->basePath() . '/css/source.css')
             ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+            ->prependStylesheet($this->basePath() . '/css/zq.css')
             ->prependStylesheet($this->basePath() . '/css/styles.css');
+        
         echo $this->headScript()
             ->prependFile($this->basePath() . '/js/bootstrap.js')
             ->prependFile($this->basePath() . '/js/jquery-1.11.2.min.js');
