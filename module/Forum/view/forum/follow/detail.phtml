@@ -3,6 +3,8 @@ $userID=$this->userID;
 $page=$this->page->current();
 $form=$this->form;
 $follows=$this->follows;
+
+
 /*更新可用：
  * $page->getPtime()//发帖时间
 
@@ -36,6 +38,9 @@ $page->getLasttime()//最后一次回复时间(未实现）
 $page->getPreplynum()//回复量（未实现）
  */
 ?>
+<?php echo $this->headLink()
+->prependStylesheet($this->basePath() . '/css/zq.css');?>
+
 <div class="row row-offcavnas row-offcanvas-right">
 <div class="col-xs-12 col-sm-9">
 <div class="row">
