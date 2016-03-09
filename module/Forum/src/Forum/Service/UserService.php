@@ -101,7 +101,8 @@ class UserService
             return true;
         }
         else {
-            print_r($result->getMessages());
+//             print_r($result->getMessages());
+            return false;
         }
     }
 }
