@@ -38,7 +38,7 @@ CREATE TABLE `follow` (
 
 LOCK TABLES `follow` WRITE;
 /*!40000 ALTER TABLE `follow` DISABLE KEYS */;
-INSERT INTO `follow` VALUES (1,NULL,NULL,NULL,NULL);
+INSERT INTO `follow` VALUES (1,NULL,NULL,NULL,NULL),(2,1003,1,'adf',NULL),(3,1003,1,'adf',NULL),(4,1003,1,'adfafdfw',NULL),(5,1003,1,'adfafdfw',NULL),(6,1003,1,'adfafdfw',NULL),(7,1003,1,'grasdfg',NULL),(8,1003,1,'grasdfgasdffe',NULL),(9,1001,1,'asfd',NULL);
 /*!40000 ALTER TABLE `follow` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,7 +75,7 @@ CREATE TABLE `page` (
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1001,1,1,1,'阿斯蒂',NULL,'<p>各省地方</p>\r\n','2016-02-22 04:43:10','1',NULL,NULL,NULL,1,'0',NULL),(1002,1,1,1,'shijian',NULL,'<p>asdf</p>\r\n',NULL,'1',NULL,NULL,NULL,1,'0',NULL),(1003,1,1,1,'shijian','2016-02-21 03:05:00','<p>asdfdsaf</p>\r\n','2016-02-21 05:33:00','1',9,1,0,1,'0',NULL),(1004,1,1,1,'阿斯蒂芬','2016-02-21 05:37:23','<p>暗室逢灯</p>\r\n',NULL,'1',0,0,2,1,'0',NULL),(1005,1,1,1,'阿斯蒂芬','2016-02-21 05:38:09','<p>暗室逢灯</p>\r\n\r\n<p><img alt=\"\" src=\"/data/postinlineimg/29_56c93f2ce8f4f.ico\" style=\"height:128px; width:128px\" /></p>\r\n',NULL,'1',7,0,8,1,'0',NULL);
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +236,32 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'tttt','tttt',1,NULL,NULL,'/data/face/defaultfaceimg.png');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `zanup`
+--
+
+DROP TABLE IF EXISTS `zanup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `zanup` (
+  `pageID` int(11) NOT NULL,
+  `userID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`pageID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `zanup`
+--
+
+LOCK TABLES `zanup` WRITE;
+/*!40000 ALTER TABLE `zanup` DISABLE KEYS */;
+INSERT INTO `zanup` VALUES (1001,1),(1005,1);
+/*!40000 ALTER TABLE `zanup` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -248,4 +273,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-03 16:16:29
+-- Dump completed on 2016-03-09 15:29:22

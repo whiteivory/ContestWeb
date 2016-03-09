@@ -19,14 +19,18 @@ echo $this->formHidden($form->get('userID'));
 
 
 <?php
-echo $this->formRow($form->get('username'));
+echo $this->formelement($form->get('username'));
+echo $this->formElementErrors($form->get('username'), array('class' => 'error-message'));
 ?>
 
 <label for="inputEmail"  placeholder="Email address" required autofocus>
 输入密码：
 </label>
 <?php 
-echo $this->formRow($form->get('upassword'));?>
+echo $this->formelement($form->get('upassword'));
+echo $this->formElementErrors($form->get('upassword'), array('class' => 'error-message'));
+
+?>
 
 
 <label style="font-size:13px;font-family:'Microsoft YaHei', sans-serif;">

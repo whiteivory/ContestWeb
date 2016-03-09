@@ -118,7 +118,7 @@ class UserController  extends AbstractActionController
             }
             else {
                 $messages = $form->getMessages();
-                Debug::dump($messages);
+//                 Debug::dump($messages);
             }
         }
         
@@ -156,7 +156,7 @@ class UserController  extends AbstractActionController
             }
             else {
                 $messages = $form->getMessages();
-                Debug::dump($messages);
+//                 Debug::dump($messages);
             }
         }
         

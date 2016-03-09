@@ -6,6 +6,10 @@ use Zend\InputFilter\InputFilter;                 // <-- Add this import
 use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
 use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
 
+use Zend\Validator\ValidatorChain;
+use Zend\Validator\StringLength;
+use Zend\Validator\NotEmpty;
+
 
 class User implements InputFilterAwareInterface
 {
@@ -137,26 +141,60 @@ class User implements InputFilterAwareInterface
                     array('name' => 'Int'),
                 ),
             )));
-    
-            $inputFilter->add($factory->createInput(array(
+            
+            //用户名
+            $usernameif=$factory->createInput(array(
                 'name'     => 'username',
-                'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
                 ),
-                'validators' => array(
-                    array(
-                        'name'    => 'StringLength',
-                        'options' => array(
-                            'encoding' => 'UTF-8',
-                            'min'      => 1,
-                            'max'      => 100,
-                        ),
-                    ),
-                ),
-            )));
+            ));
+            $validatorChain = new ValidatorChain();
+            $v = new StringLength(array('min' => 6,
+                    'max' => 20, 'encoding'=>'UTF-8'));
+            $v->setMessages( array(
+                StringLength::TOO_SHORT =>
+                '用户名 \'%value%\' 太短了，至少需要6个字符',
+                StringLength::TOO_LONG  =>
+                '用户名 \'%value%\' 太长了，最多20个字符',
+            ));
+            $validatorChain->attach($v);
+            $v = new NotEmpty();
+            $v->setMessage(array(
+                NotEmpty::IS_EMPTY => '用户名不能为空',
+            ));
+            $validatorChain->attach($v);
+            $usernameif->setValidatorChain($validatorChain);
+            $inputFilter->add($usernameif);
     
+            //密码
+            $psif=$factory->createInput(array(
+                'name'     => 'upassword',
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+            ));
+            $validatorChain = new ValidatorChain();
+            $v = new StringLength(array('min' => 6,
+                'max' => 20, 'encoding'=>'UTF-8'));
+            $v->setMessages( array(
+                StringLength::TOO_SHORT =>
+                '密码\'%value%\' 太短了，至少需要6个字符',
+                StringLength::TOO_LONG  =>
+                '密码 \'%value%\' 太长了，最多20个字符',
+            ));
+            $validatorChain->attach($v);
+            $v = new NotEmpty();
+            $v->setMessage(array(
+                NotEmpty::IS_EMPTY => '密码不能为空',
+            ));
+            $validatorChain->attach($v);
+            $psif->setValidatorChain($validatorChain);
+            $inputFilter->add($psif);
+            
+            /* 原始方法不能改变默认错误信息
             $inputFilter->add($factory->createInput(array(
                 'name'     => 'upassword',
                 'required' => true,
@@ -169,13 +207,13 @@ class User implements InputFilterAwareInterface
                         'name'    => 'StringLength',
                         'options' => array(
                             'encoding' => 'UTF-8',
-                            'min'      => 1,
-                            'max'      => 100,
+                            'min'      => 6,
+                            'max'      => 20,
                         ),
                     ),
                 ),
             )));
-    
+    */
             $this->inputFilter = $inputFilter;
         }
     
