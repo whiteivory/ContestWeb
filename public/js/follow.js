@@ -1,4 +1,4 @@
-function updatezan(userID,pageID){
+/*function updatezan(userID,pageID){
 	   $("#zan0").click(function(){ 
 	       $.ajax({ 
 	           type: "POST",     
@@ -6,6 +6,7 @@ function updatezan(userID,pageID){
 	           data: {
 	               userID:userID,
 	               pageID:pageID
+	              
 //	                name: $("#staffName").val(),
 	           },
 	           dataType: "json",
@@ -22,4 +23,7 @@ function updatezan(userID,pageID){
 	           },     
 	       });
 	   });
-}
+}*/
+
+
+
