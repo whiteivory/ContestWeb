@@ -33,7 +33,8 @@ class UserController  extends AbstractActionController
     public function indexAction(){
         WAuthUtil::whetherLogout($this);
         $routeID = $this->params()->fromRoute('id');
-        $userID=WAuthUtil::get_auth()->userID;
+        $auth = WAuthUtil::get_auth();
+        $userID = ($auth == null? 0 : $auth->userID) ;
         $mode= $routeID==$userID? self::User_EDIT:self::USER_CHECK;
         
         //处理上传头像请求

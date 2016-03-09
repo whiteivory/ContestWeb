@@ -3,6 +3,7 @@ $userID=$this->userID;
 $page=$this->page->current();
 $form=$this->form;
 $follows=$this->follows;
+$whetherLogin = $this->whetherLogin;
 /*更新可用：
  * $page->getPtime()//发帖时间
 
@@ -98,13 +99,21 @@ $(document).ready(function(){
     <hr>
     <h2 style="font-size:18px;font-family:'Montserrat', sans-serif;">发表评论</h2>
     <?php 
+    if($whetherLogin):
+    ?>
+    <?php 
     $form->setAttribute('action', '/page/'.$page->getPageID());//注意这里写绝对路径
     $form->prepare();
     echo $this->form()->opentag($form);//<form>
        echo $this->formRow($form->get('fcontent')).'<br>';
        echo $this->formSubmit($form->get('submit'));
     echo $this->form()->closeTag();//</form>
-    
+    ?>
+    <?php else: ?>
+    <p>请<a href="/login">登录</a>发表评论</p>
+    <?php endif;?>
+
+    <?php 
     //最后添加js
     echo $this->inlineScript()->prependFile($this->basepath('/js/follow.js'));
 ?>

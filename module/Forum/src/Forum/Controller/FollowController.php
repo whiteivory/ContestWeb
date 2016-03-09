@@ -29,25 +29,31 @@ class FollowController extends AbstractActionController{
         $this->getFollowService()->updateClicktime($id);
         //查看是否评论，进行request处理
         $request = $this->getRequest();
-        $auth=WAuthUtil::get_auth();
-        $userID=$auth->userID;
+        $whetherlogin = false;
+        $userID = 0;
         if($request->isPost()&&isset($request->getPost()['fcontent'])){
-            $followObject = new Follow();
-            $user=new User();  //！之所以要用一个对象，是因为follow对象里面没有userID这个属性，要在mapper里手工加上
-            $form->bind($followObject);//通过Hydrator\ArraySerializable 通过model的exchangeArray
-            $form->setData($request->getPost());
-            if ($form->isValid()) {
-                $user->setUserID($userID);
-                $followObject->setUser($user);
-                $followObject->setPageID($id);
-                $this->getFollowService()->saveFollow($followObject);
-                //                 Redirect to list of albums如果想要dump就不要转业
-                //                 return $this->redirect()->toRoute('page');
+            $auth=WAuthUtil::get_auth();
+            if($auth){
+                $whetherlogin = true;
+                $userID=$auth->userID;
+                $followObject = new Follow();
+                $user=new User();  //！之所以要用一个对象，是因为follow对象里面没有userID这个属性，要在mapper里手工加上
+                $form->bind($followObject);//通过Hydrator\ArraySerializable 通过model的exchangeArray
+                $form->setData($request->getPost());
+                if ($form->isValid()) {
+                    $user->setUserID($userID);
+                    $followObject->setUser($user);
+                    $followObject->setPageID($id);
+                    $this->getFollowService()->saveFollow($followObject);
+                    //                 Redirect to list of albums如果想要dump就不要转业
+                    //                 return $this->redirect()->toRoute('page');
+                }
+                else {
+                    $messages = $form->getMessages();
+                    Debug::dump($messages);
+                }
             }
-            else {
-                $messages = $form->getMessages();
-                Debug::dump($messages);
-            }
+
         }
 
         //读取page信息
@@ -68,7 +74,8 @@ class FollowController extends AbstractActionController{
             'userID'=>$userID,
             'page' => $page,
             'follows'=>$follows,
-            'form'=>$form
+            'form'=>$form,
+            'whetherLogin'=>$whetherlogin
         ));
     }
     /**
