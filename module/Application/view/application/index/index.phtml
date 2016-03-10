@@ -1,44 +1,152 @@
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
-</div>
-
-<div class="row">
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="https://github.com/zendframework/zf2/issues">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
+<?php echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/homepage.css')?>
+            
+            <section id="page-breadcrumb" >
+    <div class="vertical-center sun">
+        <div class="container">
+            <div class="row">
+                <div class="action">
+                    <div class="col-sm-12">
+                        <h1 class="title">科研互动平台</h1>
+                        <p>Research  With  Interaction</p>
+                       
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Discover Modules') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
+<section id="blog" class="padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-7">
+                    <div class="row">
+                         <div class="col-sm-12 col-md-12">
+                            <div class="single-blog single-column">
+                                <div class="post-thumb">
+                                    <a href="blogdetails.html"><img src="/img/2.jpg" class="img-responsive" alt=""></a>
+                                    <div class="post-overlay">
+                                       <span class="uppercase"><a href="#">14 <br><small>Feb</small></a></span>
+                                   </div>
+                                </div>
+                                <div class="post-content overflow">
+                                    <h2 class="post-title bold"><a href="blogdetails.html">最新通知：创业大赛来袭</a></h2>
+                                    <h3 class="post-author"><a href="#">收藏该通知</a></h3>
+                                    <p>互联网创新创业大赛即将来临，我校将于12日晚举办针对比赛的培训讲座，于晚19点图东教学楼222进行，届时评委老师针对比赛流程进行介绍说明。同时历届获奖队伍代表进行相关培训 [...]</p>
+                                    <a href="#" class="read-more">查看详情</a>
+                                    <div class="post-bottom overflow">
+                                        <ul class="nav navbar-nav post-nav">
+                                            <li><a href="#"><i class="fa fa-tag"></i>日期 2015/2/14</a></li>
+                                            <li><a href="#"><i class="fa fa-heart"></i>点击量 88</a></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i>3 评论</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12">
+                            <div class="single-blog single-column">
+                                <div class="post-thumb">
+                                    <a href="blogdetails.html"><img src="/img/8.jpg" class="img-responsive" alt=""></a>
+                                    <div class="post-overlay">
+                                       <span class="uppercase"><a href="#">20 <br><small>Aug</small></a></span>
+                                   </div>
+                                </div>
+                                <div class="post-content overflow">
+                                    <h2 class="post-title bold"><a href="blogdetails.html">最新通知：创业大赛来袭</a></h2>
+                                    <h3 class="post-author"><a href="#">收藏该通知</a></h3>
+                                    <p>互联网创新创业大赛即将来临，我校将于12日晚举办针对比赛的培训讲座，于晚19点图东教学楼222进行，届时评委老师针对比赛流程进行介绍说明。同时历届获奖队伍代表进行相关培训 [...]</p>
+                                    <a href="#" class="read-more">查看详情</a>
+                                    <div class="post-bottom overflow">
+                                        <ul class="nav navbar-nav post-nav">
+                                            <li><a href="#"><i class="fa fa-tag"></i>日期 2015/8/20</a></li>
+                                            <li><a href="#"><i class="fa fa-heart"></i>点击量 28</a></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i>1 评论</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="blog-pagination"><!--下方页码-->
+                        <ul class="pagination">
+                          <li><a href="#"><</a></li>
+                          <li  class="active"><a href="#">1</a></li>
+                          <li><a href="#">2</a></li>
+                          <li><a href="#">3</a></li>
+                          <li><a href="#">4</a></li>
+                          <li><a href="#">5</a></li>
+                          <li><a href="#">6</a></li>
+                          <li><a href="#">7</a></li>
+                          <li><a href="#">8</a></li>
+                          <li><a href="#">></a></li>
+                        </ul>
+                    </div>
+                 </div>
+                <div class="col-md-3 col-sm-5">
+                    <div class="sidebar blog-sidebar">
+                        <div class="sidebar-item  recent">
+                            <h3>最热分享</h3>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <a href="#"><img src="/img/project1.jpg" alt=""></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4><a href="#">挑战杯获奖作品集</a></h4>
+                                    <p>发布于 2016 年 3月 10日</p>
+                                </div> 
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <a href="#"><img src="/img/project2.jpg" alt=""></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4><a href="#">专家评委总结大学生科研竞赛</a></h4>
+                                    <p>发布于 2016 年 2月 12日</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="pull-left">
+                                    <a href="#"><img src="/img/project3.jpg" alt=""></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4><a href="#">互联网+创业设计大赛公告</a></h4>
+                                    <p>发布于 2016 年 1月 17日</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-item categories">
+                            <h3>大赛信息</h3>
+                            <ul class="nav navbar-stacked">
+                                <li><a href="#">科研立项<span class="pull-right">(1)</span></a></li>
+                                <li><a href="#">节能减排大赛<span class="pull-right">(8)</span></a></li>
+                                <li><a href="#">挑战杯<span class="pull-right">(4)</span></a></li>
+                                <li><a href="#">ACM竞赛<span class="pull-right">(9)</span></a></li>
+                                <li><a href="#">齐鲁软件设计大赛<span class="pull-right">(3)</span></a></li>
+                                <li><a href="#">微软创新杯<span class="pull-right">(4)</span></a></li>
+                                <li><a href="#">智能机器人 <span class="pull-right">(2)</span></a></li>
+                                <li><a href="#">飞思卡尔智能车 <span class="pull-right">(8)</span></a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="sidebar-item popular">
+                            <h3>人才信息</h3>
+                            <ul class="gallery">
+                                <li><a href="#"><img src="/img/popular1.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="/img/popular2.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="/img/popular3.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="/img/popular4.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="/img/popular5.jpg" alt=""></a></li>
+                                <li><a href="#"><img src="/img/popular1.jpg" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Help &amp; Support') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
-            </div>
-        </div>
-    </div>
-</div>
+    </section>  
+ 
+ 
+ 
