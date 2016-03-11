@@ -17,9 +17,18 @@ echo $this->headmeta('utf-8');
    ?>
    <?php 
    echo $this->formRow($form->get('secID')).'<br>';?>
+   
+  
    <?php 
    echo $this->formRow($form->get('ptype')).'<br>';
-   echo $this->formRow($form->get('ptitle'));
+   ?>
+   
+   <?php 
+   echo $this->formRow($form->get('ptitle'));?>
+   <div class="col-sm-9">
+   <input type="email" id="user-weibo" placeholder="请输入标题">
+   </div>
+   <?php
    echo $this->formRow($form->get('pcontent'));
    echo $this->formRow($form->get('pallow'));
    echo $this->formRow($form->get('filepath')).'<br>';
