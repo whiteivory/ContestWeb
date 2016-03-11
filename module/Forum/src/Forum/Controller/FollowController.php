@@ -32,13 +32,14 @@ class FollowController extends AbstractActionController{
         $whetherlogin = false;
         $userID = 0;
         $auth=WAuthUtil::get_auth();
-        if($auth)
+        if($auth){
             $whetherlogin = true;
+            $userID=$auth->userID;
+        }
+
         if($request->isPost()&&isset($request->getPost()['fcontent'])){
 
             if($auth){
-                $whetherlogin = true;
-                $userID=$auth->userID;
                 $followObject = new Follow();
                 $user=new User();  //！之所以要用一个对象，是因为follow对象里面没有userID这个属性，要在mapper里手工加上
                 $form->bind($followObject);//通过Hydrator\ArraySerializable 通过model的exchangeArray
@@ -99,12 +100,13 @@ class FollowController extends AbstractActionController{
     public function zanajaxAction(){
         $request=$this->getRequest();
         $hasrecord=0;
+        $exception = 0;
         $msg='';
         if($request->isPost()&&isset($request->getPost()['userID'])){
             $userID=$request->getPost()['userID'];
             $pageID=$request->getPost()['pageID'];
+            $star = $request->getPost()['iStar'];
             $sql="select * from zanup where userID=$userID and pageID=$pageID";
-            
             try {
                 $dbh=new \PDO('mysql:host=localhost;dbname=contestweb', 'root', '');
                 $stmt=$dbh->query($sql);
@@ -115,16 +117,19 @@ class FollowController extends AbstractActionController{
                 else{
                     $sqlforupdate="update page set pzannum=pzannum+1 where pageID=$pageID";
                     $dbh->query($sqlforupdate);
-                    $sqlforinsert="insert into zanup(userID,pageID) values($userID,$pageID)";
+                    $sqlforinsert="insert into zanup (pageID,userID,star) values($pageID,$userID,$star)";
                     $dbh->query($sqlforinsert);
                 }
-                $dbh=null;
+                $dbh=null;   //申请资源进行释放
             } catch (\Exception $e) {
                 $msg= "ERROR!: ".$e->getMessage()."<br/>";
+                $exception = 1;
             }
             $success=$hasrecord==1?0:1;
-            if($success==0) $msg='每个人只能点赞一次哦！';
-            
+            if(!$exception){
+                if($success==0) $msg='每个人只能评论一次哦！';
+                else $msg = '评分成功!';
+            }
             echo '{"success":'.$success.',"msg":'.'"'.$msg.'"'.',"sql":'.'"'.$sql.'"'.'}';
 
         }
