@@ -36,33 +36,166 @@ $follow->getFtime()回复时间（未实现
 $page->getLasttime()//最后一次回复时间(未实现）
 $page->getPreplynum()//回复量（未实现）
  */
+
 ?>
-<div class="row row-offcavnas row-offcanvas-right">
+
+<?php echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/zq.css')?>
+            
+<div class="row-offcavnas row-offcanvas-right">
 <div class="col-xs-12 col-sm-9">
 <div class="row">
 <div class="jumpbotron"> <!-- 背景灰-->
 
 
-    <h3>标题： <?=$page->getPtitle()?></h3>
+    <h3 id="font-title">标题： <?=$page->getPtitle()?></h3>
     <h4>正文信息 <?=$page->getPcontent();?></h4>
     <div class="row">
     <div class="col-md-12">
        
-      <span style="display:block;float:right;line-height:12px;color:#b3b6bd;font-size:18px">发表者：<?=$page->getUser()->getUsername();?></span> 
+      <span id="fontsmall" >发表者：<?=$page->getUser()->getUsername();?></span> 
        
     </div>
    </div>
    </div>
    </div> 
+   
+   <div class="col-xs-2 col-sm-2">
+    <a class="btn btn-primary btn-large" href="<?=$page->getFilepath() ?>">下载附件(或者右键另存为)</a>
+    <!--  <a id="zan0" href="#">赞(<span><?= $page->getPzannum(); ?></span>)</a>-->
+    
+    <!--star-->
+    <div id="star">
+		<span id="font-regular">文章评论打分</span>
+		<ul>
+			<li><a href="javascript:;">1</a></li>
+			<li><a href="javascript:;">2</a></li>
+			<li><a href="javascript:;">3</a></li>
+			<li><a href="javascript:;">4</a></li>
+			<li><a href="javascript:;">5</a></li>
+		</ul>
+		<span></span><!--获取对象标签的内容oSpan.innerHTML-->
+        
+		<p></p>
+	</div><!--star end-->
+	</div>
+	
+	
+    <div class="row">
+    <div class="col-md-12">
+    
+    <?php foreach ($follows as $follow):?>
+      <div class="row">
+    	<div class="col-12 col-sm-6 col-lg-12 zq01">
+  
+        <h4 id="font-regular">评论者:<?= $follow->getUser()->getUsername();?></h4>
+       <img style="width:50px;" src="<?= $follow->getUser()->getFaceimgpath();?>"/>
+        <br>
+        <h5 style="font-family: "Microsoft YaHei";">评论内容:<?= $follow->getFcontent();?></h5><hr>
+        <p><a class="btn btn-default" href="#" role="button">查看详情</a></p>
+        
+      </div>
+      <div id="demo_line_05">———————————————————————————————————————</div>
+      </div>  
+    <?php endforeach;?>
+    
+    </div>
+    </div>
+   
+   
    </div>
-<!--    点赞按钮 -->
-<script type="text/javascript">
+
+<!--  <script type="text/javascript">
 $(document).ready(function(){
     updatezan(<?= $userID?>,<?= $page->getPageID()?>);
 });
 
+</script>-->
+
+<script type="text/javascript">
+window.onload = function (){
+
+	var oStar = document.getElementById("star");
+	var aLi = oStar.getElementsByTagName("li");
+	var oUl = oStar.getElementsByTagName("ul")[0];
+	var oSpan = oStar.getElementsByTagName("span")[1];
+	var oP = oStar.getElementsByTagName("p")[0];
+	var i = iScore  =iStar= 0;
+	var aMsg = [
+				"不值得推荐|内容不值得看",
+				"不看好|内容没有多大帮助",
+				"一般|内容一般",
+				"还不错|内容值得一看",
+				"很有帮助|内容好，五星推荐！"
+				]
+	
+	for (i = 1; i <= aLi.length; i++){
+		aLi[i - 1].index = i;
+		
+		//鼠标移过显示分数
+		aLi[i - 1].onmouseover = function (){
+			fnPoint(this.index);
+			//浮动层显示
+			oP.style.display = "block";
+			//计算浮动层位置
+			oP.style.left = oUl.offsetLeft + this.index * this.offsetWidth - 104 + "px";
+			//匹配浮动层文字内容
+			oP.innerHTML = "<em><b>" + this.index + "</b> 分 " + aMsg[this.index - 1].match(/(.+)\|/)[1] + "</em>" + aMsg[this.index - 1].match(/\|(.+)/)[1]
+		};
+		
+		//鼠标离开后恢复上次评分
+		aLi[i - 1].onmouseout = function (){
+			fnPoint();
+			//关闭浮动层
+			oP.style.display = "none"
+		};
+		
+		//点击后进行评分处理
+		aLi[i - 1].onclick = function (){
+			iStar = this.index;//此处是分数值
+			oP.style.display = "none";
+			oSpan.innerHTML = "<strong>" + (this.index) + " 分</strong> (" + aMsg[this.index - 1].match(/\|(.+)/)[1] + ")";
+			
+			
+			$.ajax({
+	    dataType:"json",
+        type:"POST",
+		url:"/page/zanajax",
+		data:iStar,
+		success:function(data)
+		  {
+                if(data.success=="true")
+                {
+                    alert('请求成功');
+                }
+				
+				
+			},
+		error:function(data){
+                alert("Error");
+            }
+		});
+			
+			
+		}
+		
+	}
+	
+	//评分处理
+	function fnPoint(iArg){
+		//分数赋值
+		iScore = iArg || iStar;
+		for (i = 0; i < aLi.length; i++) aLi[i].className = i < iScore ? "on" : "";	
+	}
+
+};
+
+
+
 </script>
-<a id="zan0" href="#">赞(<span><?= $page->getPzannum(); ?></span>)</a>
+
+
+</script>
 <p id="createResult"></p>
    <div class="row row-offcavnas row-offcanvas-right">
    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
@@ -82,22 +215,9 @@ $(document).ready(function(){
     
    </div>
    
-   <a class="btn btn-primary btn-large" href="<?=$page->getFilepath() ?>">下载附件(或者右键另存为)</a>
-    <div class="row">
-    <div class="col-md-12">
-    <div class="col-12 col-sm-6 col-lg-12">
-    <?php foreach ($follows as $follow):?>
-    <div   class="zq01">
-        <h4>评论者:<?= $follow->getUser()->getUsername();?></h4>
-       <img style="width:50px;" src="<?= $follow->getUser()->getFaceimgpath();?>"/>
-        <h3>评论内容:<?= $follow->getFcontent();?></h3><hr>
-      </div>  
-    <?php endforeach;?>
-    </div>
-    </div>
-    </div>
+  
     <hr>
-    <h2 style="font-size:18px;font-family:'Montserrat', sans-serif;">发表评论</h2>
+    <h2 style="font-size:18px;font-family: "Microsoft YaHei";">发表评论</h2>
     <?php 
     if($whetherLogin):
     ?>
