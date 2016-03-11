@@ -31,8 +31,11 @@ class FollowController extends AbstractActionController{
         $request = $this->getRequest();
         $whetherlogin = false;
         $userID = 0;
+        $auth=WAuthUtil::get_auth();
+        if($auth)
+            $whetherlogin = true;
         if($request->isPost()&&isset($request->getPost()['fcontent'])){
-            $auth=WAuthUtil::get_auth();
+
             if($auth){
                 $whetherlogin = true;
                 $userID=$auth->userID;
