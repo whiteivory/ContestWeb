@@ -1,3 +1,6 @@
+<?php echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/zq.css')?>
+
 <?php
 /*
  * 
@@ -15,23 +18,45 @@ echo $this->headmeta('utf-8');
 //    echo $this->form($form);
    echo $this->form()->opentag($form);//<form>
    ?>
+   
+     <label id="fontadd">
+比赛项目：
+</label>  
+
+
    <?php 
    echo $this->formRow($form->get('secID')).'<br>';?>
    
-  
+    <label id="fontadd">
+发帖种类：
+</label> 
    <?php 
    echo $this->formRow($form->get('ptype')).'<br>';
    ?>
+<label id="fontadd">
+标题：
+</label>
    
    <?php 
    echo $this->formRow($form->get('ptitle'));?>
-   <div class="col-sm-9">
-   <input type="email" id="user-weibo" placeholder="请输入标题">
-   </div>
+
    <?php
-   echo $this->formRow($form->get('pcontent'));
+   echo $this->formRow($form->get('pcontent'));?>
+   <label id="font-addsmall">
+是否允许其他学校查看本文?
+</label>
+ <?php 
    echo $this->formRow($form->get('pallow'));
+   ?>
+   <br>
+   
+      <label id="fontadd">
+附加文件
+</label>
+   <?php 
    echo $this->formRow($form->get('filepath')).'<br>';
+   ?>
+   <?php 
    echo $this->formSubmit($form->get('submit'));
    echo $this->form()->closeTag();//</form>
    ?>
