@@ -33,7 +33,11 @@ class PageForm extends Form
                             '3' => '挑战杯',
                      ),
                  
-             )
+             ),
+             'attributes' => array(  //设置attibute，注意,不要忘加
+                 'class'=>'btn btn-default dropdown-toggle',
+                 'id'=>'slt'
+             ),//这里
      ));
          $this->add(array(
              'type' => 'Select',
@@ -46,11 +50,11 @@ class PageForm extends Form
                      '3' => '经验交流',
                      '4' => '共享资源',
                  ),
-                 'attributes' => array(
-                     'class'=>'dropdown-toggle',
-                     
-                 ),//这里
-             )
+             ),
+             'attributes' => array(  //设置attibute，注意,不要忘加
+                 'class'=>'btn btn-default dropdown-toggle',
+             ),//这里
+             
          ));
         $this->add(array(
             'type' => 'text',
@@ -68,6 +72,7 @@ class PageForm extends Form
         $this->add(array(
             'type' => 'textarea',
             'name' => 'pcontent',//这里的逗号
+            
             'attributes' => array(  //设置attibute，注意,不要忘加
                 'id'=>'editor1', //id="editor1"
                 'rows'=>'10',

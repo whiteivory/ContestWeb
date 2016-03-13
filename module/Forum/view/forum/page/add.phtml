@@ -1,6 +1,8 @@
 <?php echo $this->headLink()
             ->prependStylesheet($this->basePath() . '/css/zq.css')?>
 
+
+
 <?php
 /*
  * 
@@ -19,6 +21,16 @@ echo $this->headmeta('utf-8');
    echo $this->form()->opentag($form);//<form>
    ?>
    
+ <!-- <script>
+ var parentValue=""; 
+var el = document.getElementById('slt');
+parentValue=select.options[select.selectedIndex]; 
+
+parentValue.className += 'dropdown-menu';
+
+</script> -->
+ 
+   
      <label id="fontadd">
 比赛项目：
 </label>  
@@ -30,6 +42,7 @@ echo $this->headmeta('utf-8');
     <label id="fontadd">
 发帖种类：
 </label> 
+
    <?php 
    echo $this->formRow($form->get('ptype')).'<br>';
    ?>
