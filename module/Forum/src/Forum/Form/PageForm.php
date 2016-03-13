@@ -46,11 +46,11 @@ class PageForm extends Form
                      '3' => '经验交流',
                      '4' => '共享资源',
                  ),
-                 'attributes' => array(
-                     'class'=>'dropdown-toggle',
-                     
-                 ),//这里
-             )
+             ),
+             'attributes' => array(
+                 'class'=>'dropdown-toggle',
+                  
+             ),//这里
          ));
         $this->add(array(
             'type' => 'text',
@@ -90,10 +90,11 @@ class PageForm extends Form
             'name' => 'filepath',
             'attributes' => array(
                 'value' => 'foo',
+                'id'=>'youridhere',
+                'class'=>'yourclasshere',
             ),
             'options' => array(
                 //'label' => '附加文件'
-                
             )
         ));
         $this->add(array(
