@@ -14,7 +14,7 @@ recruit sort tag
 
 .portfolio-filter li a {
   border-radius: 0;
-  color: #91d1e3;
+  color: #686868;
   font-size: 18px;
   font-weight: 300;
   padding: 0 25px;
@@ -114,8 +114,8 @@ recruit pagination
 .pagination .active a:hover,
 .pagination .active a:focus{
   background: none;
-  border-color: #cc9b59;
-  color: #cc9b59;
+  border-color: #91d1e3;
+  color: #91d1e3;
 }
 
 /****************************
@@ -221,7 +221,7 @@ recruit pagination
 }
 
 .highligh-table .plan-name {
-  background-color: #b07b2c;
+  background-color: #91d1e3;
   color: #fff;
 }
 
@@ -230,15 +230,15 @@ recruit pagination
 }
 
 .highligh-table .plan-price:after {
-  border-color: #a56d1a transparent transparent;
+  border-color: #77bad4 transparent transparent;
 }
 
 .highligh-table .btn-buynow {
-  background-color: #a5732a;
+  background-color: #91d1e3;
 }
 
 .highligh-table .btn-buynow:hover {
-  background-color: #976a28;
+  background-color: #91d1e3;
 }
 
 
@@ -326,7 +326,7 @@ recruit pagination
 }
 
 .single-table.highligh-table .table-header {
-  background-color: #b07b2c
+  background-color: #91d1e3
 }
 
 .highligh-table .btn-signup a, 
@@ -334,16 +334,59 @@ recruit pagination
   color: #fff;
 }
 
-.highligh-table .btn-signup.btn-signup:hover:after {
+.highligh-table .btn-buynow:hover:after {
 
-  border-color: #a07028 transparent transparent;
+  border-color: #00d2ff transparent transparent;
 }
 
-.highligh-table .btn-signup:after {
-  border-color: #b07b2c transparent transparent;
+.highligh-table .btn-buynow:after {
+  border-color: #00d2ff transparent transparent;
 }
 
 .highligh-table:before {
-  border-color:transparent transparent #a56d1a;
+  border-color:transparent transparent #00d2ff;
 }
 
+/*20160327*/
+.price-one .btn-buynow, 
+.price-two .btn-buynow, 
+.price-three .btn-buynow, 
+.price-four .btn-buynow   {  
+  border-radius: 0;
+  color: #fff;
+  padding: 12px;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+.price-one .btn-buynow  {
+  background-color: #0d6fb1;
+}
+
+.price-two .btn-buynow  {
+  background-color: #ac2429;
+}
+
+.price-three .btn-buynow  {
+  background-color: #e78817;
+}
+
+.price-four .btn-buynow  {
+  background-color: #5f7452;
+}
+
+.price-one .btn-buynow:hover  {
+  background-color: #0a5a90;
+}
+
+.price-two .btn-buynow:hover  {
+  background-color: #821b1e;
+}
+
+.price-three .btn-buynow:hover  {
+  background-color: #c57413;
+}
+
+.price-four .btn-buynow:hover  {
+  background-color: #48583e;
+}
