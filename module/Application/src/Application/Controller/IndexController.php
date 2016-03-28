@@ -11,11 +11,14 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Application\Common\WAuthUtil;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        $auth=WAuthUtil::get_auth();
+        WAuthUtil::addUserpanelToLayout($this, '/');
         return new ViewModel();
     }
 }

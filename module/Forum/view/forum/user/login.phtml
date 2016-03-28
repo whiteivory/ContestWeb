@@ -1,5 +1,6 @@
 <?php 
  $form = $this->userform;
+ $errormessage = $this->errormessage;
 //设置表单的action属性，跳转到album/add 然后addAction()getRequest；和正常的方式是类似的。
 $form->setAttribute('action', $this->url());
 
@@ -19,14 +20,18 @@ echo $this->formHidden($form->get('userID'));
 
 
 <?php
-echo $this->formRow($form->get('username'));
+echo $this->formelement($form->get('username'));
+echo $this->formElementErrors($form->get('username'), array('class' => 'error-message'));
 ?>
 
 <label for="inputEmail"  placeholder="Email address" required autofocus>
 输入密码：
 </label>
 <?php 
-echo $this->formRow($form->get('upassword'));?>
+echo $this->formelement($form->get('upassword'));
+echo $this->formElementErrors($form->get('upassword'), array('class' => 'error-message'));
+
+?>
 
 
 <label style="font-size:13px;font-family:'Microsoft YaHei', sans-serif;">
@@ -40,5 +45,8 @@ echo $this->formSubmit($form->get('submit'));
 
  
 echo $this->form()->closeTag();
+if($errormessage!=null):
 ?>
+用户名不存在或者密码错误
+<?php endif;?>
 

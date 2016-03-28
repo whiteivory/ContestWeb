@@ -9,13 +9,15 @@ font-size:21px;
 font-weight:200;
 line-height:17;
 color:inherit;	
+	font-family: "Microsoft YaHei";
 }
 .zq01{
 background-color:#E7E7E7;
 border-radius:6px;
-font-size:11px;
+font-size:12px;
 line-height:3;
 color:inherit;	
+	font-family: "Microsoft YaHei";
 }
 /*zq补充CSS*/
 #submitstyle{
@@ -26,15 +28,97 @@ color:inherit;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
-  font-family: 'Montserrat', arial, sans-serif;
+  font-family: "Microsoft YaHei";
   padding: 8px 16px;
   font-weight: bold;
-<<<<<<< HEAD
-	font-family:'Montserrat', sans-serif;
-}
-
 
 	
-=======
 }
->>>>>>> parent of 0349ad9... 个人基本信息头像界面
+
+#demo_line_05{
+    letter-spacing: -1px;
+    color: #ddd;
+}
+
+
+#fontsmall{
+	 
+	display:block;
+	float:right;
+	line-height:12px;
+	color:#b3b6bd;
+	font-size:18px;
+	font-family: "Microsoft YaHei";
+	
+}
+#font-regular{
+	 
+ color: #2e6da4;
+	line-height:28px;
+	font-weight:400;
+	font-family: "Microsoft YaHei";
+}
+#font-title
+{
+	font-weight:600;
+	font-size:1.3em;
+	color:#286090;
+	font-family: "Microsoft YaHei";
+}
+
+#fontadd{
+	font-family: "Microsoft YaHei";
+	font-size:1.2em;
+	color:#0e90d2;
+	padding: 0.4em 1em;
+    font-weight: bold;
+}
+#font-addsmall{
+	font-family: "Times New Roman";
+	font-size:1.1em;
+	color:#0e90c2;
+	padding: 1.4em 2em;
+    
+}
+
+
+/*star*/
+#star{position:relative;width:600px;margin:20px auto;height:24px;}
+#star ul,#star span{float:left;display:inline;height:19px;line-height:19px;}
+#star ul{margin:0 10px;}
+#star li{float:left;width:24px;cursor:pointer;text-indent:-9999px;background:url(/img/star.png) no-repeat;}
+#star strong{color:#2e6da4;padding-left:10px;}
+#star li.on{background-position:0 -28px;}
+#star p{position:absolute;top:20px;width:159px;height:60px;display:none;background:url(/img/icon.gif) no-repeat;padding:7px 10px 0;}
+#star p em{color:#286090;display:block;font-style:normal;}
+
+
+
+.am-btn{
+	display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 0.625em 1em;
+  border-radius: 2px;
+  line-height: 1.2;
+  font-size: 1.6rem;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-transition: background-color 300ms ease-out, border-color 300ms ease-out;
+  transition: background-color 300ms ease-out, border-color 300ms ease-out;
+}
+.am-btn-primary {
+  color: #ffffff;
+  background-color: #0e90d2;
+  border-color: #0e90d2;
+}

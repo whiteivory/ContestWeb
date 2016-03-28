@@ -29,25 +29,35 @@ class FollowController extends AbstractActionController{
         $this->getFollowService()->updateClicktime($id);
         //查看是否评论，进行request处理
         $request = $this->getRequest();
+        $whetherlogin = false;
+        $userID = 0;
         $auth=WAuthUtil::get_auth();
-        $userID=$auth->userID;
+        if($auth){
+            $whetherlogin = true;
+            $userID=$auth->userID;
+        }
+
         if($request->isPost()&&isset($request->getPost()['fcontent'])){
-            $followObject = new Follow();
-            $user=new User();  //！之所以要用一个对象，是因为follow对象里面没有userID这个属性，要在mapper里手工加上
-            $form->bind($followObject);//通过Hydrator\ArraySerializable 通过model的exchangeArray
-            $form->setData($request->getPost());
-            if ($form->isValid()) {
-                $user->setUserID($userID);
-                $followObject->setUser($user);
-                $followObject->setPageID($id);
-                $this->getFollowService()->saveFollow($followObject);
-                //                 Redirect to list of albums如果想要dump就不要转业
-                //                 return $this->redirect()->toRoute('page');
+
+            if($auth){
+                $followObject = new Follow();
+                $user=new User();  //！之所以要用一个对象，是因为follow对象里面没有userID这个属性，要在mapper里手工加上
+                $form->bind($followObject);//通过Hydrator\ArraySerializable 通过model的exchangeArray
+                $form->setData($request->getPost());
+                if ($form->isValid()) {
+                    $user->setUserID($userID);
+                    $followObject->setUser($user);
+                    $followObject->setPageID($id);
+                    $this->getFollowService()->saveFollow($followObject);
+                    //                 Redirect to list of albums如果想要dump就不要转业
+                    //                 return $this->redirect()->toRoute('page');
+                }
+                else {
+                    $messages = $form->getMessages();
+                    Debug::dump($messages);
+                }
             }
-            else {
-                $messages = $form->getMessages();
-                Debug::dump($messages);
-            }
+
         }
 
         //读取page信息
@@ -68,7 +78,8 @@ class FollowController extends AbstractActionController{
             'userID'=>$userID,
             'page' => $page,
             'follows'=>$follows,
-            'form'=>$form
+            'form'=>$form,
+            'whetherLogin'=>$whetherlogin
         ));
     }
     /**
@@ -89,12 +100,13 @@ class FollowController extends AbstractActionController{
     public function zanajaxAction(){
         $request=$this->getRequest();
         $hasrecord=0;
+        $exception = 0;
         $msg='';
         if($request->isPost()&&isset($request->getPost()['userID'])){
             $userID=$request->getPost()['userID'];
             $pageID=$request->getPost()['pageID'];
+            $star = $request->getPost()['iStar'];
             $sql="select * from zanup where userID=$userID and pageID=$pageID";
-            
             try {
                 $dbh=new \PDO('mysql:host=localhost;dbname=contestweb', 'root', '');
                 $stmt=$dbh->query($sql);
@@ -105,16 +117,19 @@ class FollowController extends AbstractActionController{
                 else{
                     $sqlforupdate="update page set pzannum=pzannum+1 where pageID=$pageID";
                     $dbh->query($sqlforupdate);
-                    $sqlforinsert="insert into zanup(userID,pageID) values($userID,$pageID)";
+                    $sqlforinsert="insert into zanup (pageID,userID,star) values($pageID,$userID,$star)";
                     $dbh->query($sqlforinsert);
                 }
-                $dbh=null;
+                $dbh=null;   //申请资源进行释放
             } catch (\Exception $e) {
                 $msg= "ERROR!: ".$e->getMessage()."<br/>";
+                $exception = 1;
             }
             $success=$hasrecord==1?0:1;
-            if($success==0) $msg='每个人只能点赞一次哦！';
-            
+            if(!$exception){
+                if($success==0) $msg='每个人只能评论一次哦！';
+                else $msg = '评分成功!';
+            }
             echo '{"success":'.$success.',"msg":'.'"'.$msg.'"'.',"sql":'.'"'.$sql.'"'.'}';
 
         }

@@ -33,7 +33,8 @@ class UserController  extends AbstractActionController
     public function indexAction(){
         WAuthUtil::whetherLogout($this);
         $routeID = $this->params()->fromRoute('id');
-        $userID=WAuthUtil::get_auth()->userID;
+        $auth = WAuthUtil::get_auth();
+        $userID = ($auth == null? 0 : $auth->userID) ;
         $mode= $routeID==$userID? self::User_EDIT:self::USER_CHECK;
         
         //处理上传头像请求
@@ -98,6 +99,7 @@ class UserController  extends AbstractActionController
     public function loginAction(){
         WAuthUtil::whetherLogout($this);
         
+        $errormessage = null;
         $form = new UserForm();
 //         $username2=$form->get('username');
 //         $username2->setAttribute('class', 'username');
@@ -114,17 +116,20 @@ class UserController  extends AbstractActionController
                 if($this->getservice()->auth($user)){
                     return $this->redirect()->toRoute('add');
                 }
+                else 
+                    $errormessage = "用户名不存在或者密码错误";
             }
             else {
                 $messages = $form->getMessages();
-                Debug::dump($messages);
+//                 Debug::dump($messages);
             }
         }
         
 //         WAuthUtil::addUserpanelToLayout($this, '/login');
         
         return new ViewModel(array(
-            'userform'=>$form
+            'userform'=>$form,
+            'errormessage'=>$errormessage
         ));
     }
     
@@ -155,7 +160,7 @@ class UserController  extends AbstractActionController
             }
             else {
                 $messages = $form->getMessages();
-                Debug::dump($messages);
+//                 Debug::dump($messages);
             }
         }
         

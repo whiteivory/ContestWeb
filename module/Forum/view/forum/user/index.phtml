@@ -8,6 +8,7 @@ $user=$this->user;
  * $user->getUsername() 用户名
  */
 ?>
+
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span12">
@@ -33,10 +34,7 @@ $user=$this->user;
 					<a class="btn btn-primary btn-large" href="#">私信</a>
 				</p>
 			</div>		
-
->>>>>>> 1842f40569ac14c2e37a16b834bf9649af52411f
 <?php if($mode=='edit'):?>
-
 <p style="font-size:20px;font-family:'Microsoft YaHei', sans-serif;">上传头像：</p>
 
 <form action="/account/<?= $user->getUserID() ?>" method="post"
@@ -48,8 +46,6 @@ enctype="multipart/form-data">
 <br />
 <input class="btn btn-primary btn-large" type="submit" name="submit" value="提交修改" />
 </form>
-
-
 
 </div>
 	</div>

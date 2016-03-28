@@ -44,6 +44,7 @@ class WAuthUtil{
     }
     /**
      * @return string 用户名字符串
+     * 如果没有，返回null
      */
     public static function get_auth(){
         $auth = new AuthenticationService();

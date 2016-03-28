@@ -26,35 +26,44 @@ class PageForm extends Form
              'type' => 'Select',
              'name' => 'secID',
              'options' => array(
-                     'label' => '比赛项目',
+                     
                      'value_options' => array(
                              '1' => '科研立项',
                              '2' => '齐鲁软件',
-                             '3' => '挑战杯',
+                            '3' => '挑战杯',
                      ),
-             )
+                 
+             ),
+             'attributes' => array(  //设置attibute，注意,不要忘加
+                 'class'=>'btn btn-default dropdown-toggle',
+                 'id'=>'slt'
+             ),//这里
      ));
          $this->add(array(
              'type' => 'Select',
              'name' => 'ptype',
              'options' => array(
-                 'label' => '发帖种类',
+                 
                  'value_options' => array(
                      '1' => '比赛通知',
                      '2' => '往届比赛信息',
                      '3' => '经验交流',
                      '4' => '共享资源',
                  ),
-             )
+             ),
+             'attributes' => array(  //设置attibute，注意,不要忘加
+                 'class'=>'btn btn-default dropdown-toggle',
+             ),//这里
          ));
         $this->add(array(
             'type' => 'text',
             'name' => 'ptitle',
+            //'placeholder'=>"请输入标题",
             'options' => array(
-                'label' => '标题'
+               
             ),
             'attributes' => array(  //设置attibute，注意,不要忘加
-                'id'=>'biaoti',//id="editor1"
+                'id'=>'exampleInputEmail1',//id="editor1"
                 'class'=>'biaoti',
             ),//这里
         ));
@@ -62,6 +71,7 @@ class PageForm extends Form
         $this->add(array(
             'type' => 'textarea',
             'name' => 'pcontent',//这里的逗号
+            
             'attributes' => array(  //设置attibute，注意,不要忘加
                 'id'=>'editor1', //id="editor1"
                 'rows'=>'10',
@@ -72,7 +82,7 @@ class PageForm extends Form
             'type' => 'Radio',
             'name' => 'pallow',
             'options' => array(
-                'label' => '是否允许其他学校查看本文?',
+                //'label' => '是否允许其他学校查看本文?',
                 'value_options' => array(
                     '1' => '是',
                     '0' => '否',
@@ -84,16 +94,19 @@ class PageForm extends Form
             'name' => 'filepath',
             'attributes' => array(
                 'value' => 'foo',
+                'id'=>'youridhere',
+                'class'=>'yourclasshere',
             ),
             'options' => array(
-                'label' => '附加文件'
+                //'label' => '附加文件'
             )
         ));
         $this->add(array(
             'name' => 'submit',
             'type'  => 'Submit',
             'attributes' => array(
-                'value' => 'Submit',
+                'value' => '确认提交',
+                'class'=>'am-btn am-btn-primary',
             ),
         ));
       /*   $this->add(array(
