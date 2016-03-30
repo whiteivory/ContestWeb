@@ -75,7 +75,7 @@ CREATE TABLE `page` (
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1001,1,1,1,'阿斯蒂',NULL,'<p>各省地方</p>\r\n','2016-03-11 01:33:17','1',7,0,9,1,'0',NULL),(1002,1,1,1,'shijian',NULL,'<p>asdf</p>\r\n',NULL,'1',0,0,0,1,'0',NULL),(1003,1,1,1,'shijian','2016-02-21 03:05:00','<p>asdfdsaf</p>\r\n','2016-02-21 05:33:00','1',9,1,0,1,'0',NULL),(1004,1,1,1,'阿斯蒂芬','2016-02-21 05:37:23','<p>暗室逢灯</p>\r\n',NULL,'1',0,0,2,1,'0',NULL),(1005,1,1,1,'阿斯蒂芬','2016-02-21 05:38:09','<p>暗室逢灯</p>\r\n\r\n<p><img alt=\"\" src=\"/data/postinlineimg/29_56c93f2ce8f4f.ico\" style=\"height:128px; width:128px\" /></p>\r\n',NULL,'1',7,0,8,1,'0',NULL);
+INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1001,1,1,1,'阿斯蒂',NULL,'<p>各省地方</p>\r\n','2016-03-11 01:33:17','1',8,0,9,1,'0',NULL),(1002,1,1,1,'shijian',NULL,'<p>asdf</p>\r\n',NULL,'1',0,0,0,1,'0',NULL),(1003,1,1,1,'shijian','2016-02-21 03:05:00','<p>asdfdsaf</p>\r\n','2016-02-21 05:33:00','1',9,1,0,1,'0',NULL),(1004,1,1,1,'阿斯蒂芬','2016-02-21 05:37:23','<p>暗室逢灯</p>\r\n',NULL,'1',0,0,2,1,'0',NULL),(1005,1,1,1,'阿斯蒂芬','2016-02-21 05:38:09','<p>暗室逢灯</p>\r\n\r\n<p><img alt=\"\" src=\"/data/postinlineimg/29_56c93f2ce8f4f.ico\" style=\"height:128px; width:128px\" /></p>\r\n',NULL,'1',7,0,8,1,'0',NULL);
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `recruit` (
 
 LOCK TABLES `recruit` WRITE;
 /*!40000 ALTER TABLE `recruit` DISABLE KEYS */;
-INSERT INTO `recruit` VALUES (1,3,'rrr','<p>rrr</p>\r\n',NULL,NULL,NULL,NULL,NULL,1,NULL);
+INSERT INTO `recruit` VALUES (1,3,'rrr','<p>rrr</p>\r\n',NULL,NULL,NULL,NULL,NULL,1,NULL),(2,2,'asfd','<p>feefwf</p>\r\n',NULL,NULL,NULL,NULL,'代码',1,1);
 /*!40000 ALTER TABLE `recruit` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -274,4 +274,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-11 22:55:57
+-- Dump completed on 2016-03-30 14:23:17
