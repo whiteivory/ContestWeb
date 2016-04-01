@@ -1,46 +1,28 @@
 <?php 
-/*
-SimpleXMLElement Object ( 
-	[User] => Array ( 
-		[0] => SimpleXMLElement Object ( 
-			[UserId] => 1 
-			[ItemList] => SimpleXMLElement Object ( 
-				[ItemId] => Array ( 
-					[0] => 1001 
-					[1] => 1002 
-				)
-			 ) 
-		) 
-		[1] => SimpleXMLElement Object ( 
-			[UserId] => 2 
-			[ItemList] => SimpleXMLElement Object ( 
-				[ItemId] => 1002 
-			) 
-		) 
-	) 
-)
-*/
-$users = simplexml_load_file("recForEachUser.xml");
-// print_r($users);
-echo $users->User[0]->ItemList->ItemId[1];
-$userrecarr  = array();
+$users = simplexml_load_file("recs.xml");
+$ar = array();
 foreach ($users as $u){
     $m_u = array();
-    $userId = $u->UserId;
-    $m_u['userId'] = $userId;
     $recarr = array();
-    if(is_array($u->ItemList->ItemId)){
-        foreach ($u->ItemList->ItemId as $i){
-            $recarr[] = $i;
-        }
+    foreach ($u->Item as $i){
+        $itemtmp = array();
+       //var_dump($i);
+        $itemtmp['itemId'] = $i->ItemId->__toString();
+        $itemtmp['predictRating']=$i->PredictRating->__toString();
+        $recarr[] = $itemtmp;
     }
-    else{
-        $recarr[] = $u->ItemList->ItemId;
+    $simiarr = array();
+    foreach ($u->Simi as $s){
+        $simitmp = array();
+        //var_dump($s);
+        $simitmp['simiId'] = $s->SimiId->__toString();
+        $simitmp['similarity'] = $s->Similarity->__toString();
+        $simiarr[] = $simitmp;
     }
-    $m_u['recList'] = $recarr;
-    $userrecarr[] = $m_u;
+    $m_u['reclist'] = $recarr;
+    $m_u['similist'] = $simiarr;
+    $ar[] = $m_u;
 }
-// echo "<br>";
-// print_r($userrecarr);
-//@todo insert into mysql
+
+var_dump($ar);
 ?>
