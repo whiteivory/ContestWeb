@@ -57,10 +57,11 @@ class UserController  extends AbstractActionController
 //             Debug::dump($filepath);
             $this->getservice()->updateUser($user);
         }
-        WAuthUtil::addUserpanelToLayout($this, '/account/'.$routeID);
+//         WAuthUtil::addUserpanelToLayout($this, '/account/'.$routeID);
         return new ViewModel(array(
             'mode'=>$mode,
-            'user'=>$user
+            'user'=>$user,
+            'friends'=>$this->getservice()->getSimi(),
         ));
     }
     public function testAction(){

@@ -1,6 +1,9 @@
 <?php
 /*本页返回数据
  * 更新以下可用
+ * 推荐
+ * foreach($this->recs as $rec)
+ * 
  * $page->getPclicknum()//帖子点击量
 $page->getPreplynum()//回复量
 $page->getPzannum()//点赞数
@@ -115,7 +118,19 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
    </div> 
    <div class="recommond" id="fontadd">
     <h4>您可能对以下文章感兴趣：</h4>
-    
+    <?php $hasFlag = false;//是否有推荐内容?>
+    <?php if($this->whetherLogIn === false):?>
+        <p>请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
+    <?php elseif ($this->recs !== null):?>
+
+    <?php foreach ($this->recs as $rec):
+        $hasFlag=true;?>
+    <p><a href = <?="/page/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a><p>
+    <?php endforeach;
+          endif;?>
+    <?php if($hasFlag===false):?>
+    请对您浏览的内容进行评分让我们更好得为您推荐
+    <?php endif;?>
 </div><!-- 搜索框 -->
 <form action="/search" method="get" class="input-group">
     <input name="q"type = "text" class="form-control" placeholder="查询内容">

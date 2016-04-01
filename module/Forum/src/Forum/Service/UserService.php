@@ -15,6 +15,7 @@ use Zend\Db\Sql\Update;
 use Zend\Db\Sql\Sql;
 use Zend\Db\Adapter\Driver\ResultInterface;
  use Zend\Stdlib\Hydrator\HydratorInterface;
+use Application\Common\WAuthUtil;
 class UserService
 {
     /**
@@ -62,6 +63,23 @@ class UserService
         $userObject=new User();
         $userObject->exchangeArray($result->current());
         return $userObject;
+    }
+    public function getSimi(){
+        $userId = WAuthUtil::get_auth()===null?null:WAuthUtil::get_auth()->userID;
+        $users = array();
+        if($userId!==null){
+            $sql =  "select recfris.friendId userID,simi ,user.* from recfris join user on
+            recfris.friendId = user.userID where recfris.userId = $userId
+            order by simi desc";
+            $stmt = $this->dbAdapter->query($sql);
+            $result = $stmt->execute();
+            foreach ($result as $s){
+                $userObject=new User();
+                $userObject->exchangeArray($s);
+                $users[] = $userObject;
+            }
+        }
+        return $users;
     }
     public function save(User $user){
         //select

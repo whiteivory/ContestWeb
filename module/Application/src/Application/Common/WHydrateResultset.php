@@ -9,6 +9,8 @@ use Doctrine\Instantiator\Exception\InvalidArgumentException;
 /*
  * 针对多表连接的类，需要保证传入的arr是一个arrayobject数组
  * 要保证传入的classmethod hydrate在工厂里面已经加入了相应的filter，比如getUser的filter
+ * 采用的算法是依次检查传入sql的select列表里面的属性是否与各个model名字相同，
+ * 并以prototypeOri为主类，arr里面的类为其成员对象，返回主类对象。
  */
 class WHydrateResultset extends HydratingResultSet
 {
