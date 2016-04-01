@@ -50,4 +50,16 @@ enctype="multipart/form-data">
 </div>
 	</div>
 </div>
+<!-- 在edit模式下显示兴趣形同用户 -->
+发现与您兴趣相似的用户：
+<?php 
+    $hasFalg = false;//如果没有为该用户推荐的内容，false，并提示用户打分
+    foreach ($this->friends as $f):
+    $hasFalg =true;?>
+    <p>用户名：<a href = <?="/account/".$f->getUserID()?> > <?=$f->getUsername(); ?></a></p>
+    <p>用户头像：<img src =<?= $f->getFaceimgpath(); ?> ></p>
+<?php endforeach;?>
+<?php if($hasFalg=== false):?>
+<p>请对您浏览的资源进行评分让我们发现与您兴趣相似的用户</p>
+<?php endif;?>
 <?php endif?>
