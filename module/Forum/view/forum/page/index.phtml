@@ -128,7 +128,7 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
     <?php $hasFlag = false;//是否有推荐内容?>
     <?php if($this->whetherLogIn === false):?>
       
-         <p id="font-recom2">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
+         <p id="font-regular">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
          
     <?php elseif ($this->recs !== null):?>
 
@@ -144,7 +144,7 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
     <?php endforeach;
           endif;?>
     <?php if($hasFlag===false):?>
-   <p id="font-recom2"> 请对您浏览的内容进行评分让我们更好得为您推荐</p>
+   <p id="font-regular"> 请对您浏览的内容进行评分让我们更好得为您推荐</p>
     <?php endif;?>
 </div>
 
