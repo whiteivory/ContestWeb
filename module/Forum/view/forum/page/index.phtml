@@ -32,19 +32,20 @@ $page->getUser()->getFaceimgpath()//头像地址
 $page->getPcontent();  //具体内容
 $
 */
-
+?>
+<?php 
 echo $this->headLink()
 ->prependStylesheet($this->basePath() . '/css/source.css');
 ?>
-
+<?php echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/zq.css')?>
 <?php
 
 
      echo $this->inlineScript()->prependFile($this->basePath('js/jump.js'));
 
 ?>
-<?php echo $this->headLink()
-            ->prependStylesheet($this->basePath() . '/css/zq.css')?>
+
 <script type="text/javascript">
 var body=document.getElementsByTagName("body"); 
 body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this->ptype;?>)");
@@ -114,34 +115,49 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
 	</script>
       <!-- filterable portfolio menu ends --> 
      </div> 
-    </div> 
-   </div> 
-   <div class="recommond" id="fontadd">
-    <h4>您可能对以下文章感兴趣：</h4>
-    <?php $hasFlag = false;//是否有推荐内容?>
-    <?php if($this->whetherLogIn === false):?>
-        <p>请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
-    <?php elseif ($this->recs !== null):?>
-
-    <?php foreach ($this->recs as $rec):
-        $hasFlag=true;?>
-    <p><a href = <?="/page/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a><p>
-    <?php endforeach;
-          endif;?>
-    <?php if($hasFlag===false):?>
-    请对您浏览的内容进行评分让我们更好得为您推荐
-    <?php endif;?>
-</div><!-- 搜索框 -->
-<form action="/search" method="get" class="input-group">
+ <form action="/search" method="get" class="input-group">
     <input name="q"type = "text" class="form-control" placeholder="查询内容">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">搜索</button>
       </span>
     <!-- <input name="submitsearch" type="submit" lass="btn btn-default"> -->
 </form>
+   <div class="recommond" id="fontadd">
+    <h4 id="font-recom1">您可能对以下文章感兴趣：</h4>
+    <br>
+    <?php $hasFlag = false;//是否有推荐内容?>
+    <?php if($this->whetherLogIn === false):?>
+      
+         <p id="font-recom2">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
+         
+    <?php elseif ($this->recs !== null):?>
 
+    <?php foreach ($this->recs as $rec):
+        $hasFlag=true;?>
+  <div class="pagelist">
+   <p id="font-regular">标题：
+   <a id="font-addsmall" href = <?="/page/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a></p>
+      
+      <hr>
+ </div>
 
-   <hr /> 
+    <?php endforeach;
+          endif;?>
+    <?php if($hasFlag===false):?>
+   <p id="font-recom2"> 请对您浏览的内容进行评分让我们更好得为您推荐</p>
+    <?php endif;?>
+</div>
+
+  </div> 
+   </div>
+   
+   <hr/> 
+<div class="span12">
+ <hr>
+      
+      <p style="font-size:18px;font-weight: bold;color:#0e90d2;font-family:'Montserrat', sans-serif;">资源文章列表</p><hr>
+      </div>
+
 <?php 
  foreach ($this->pages as $page): ?>
    <div class="row">
