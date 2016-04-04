@@ -14,12 +14,16 @@ The recommended way to get a working copy of this project is to clone the reposi
 and use `composer` to install 
 
 first clone this resoponsity
+
         cd my/project/dir
         git clone https://github.com/whiteivory/CotestWeb_.git
+        
 Then use composer to install vender, make sure you are in the git dir, because the nessary file composer.lock and composer.json is in this file
+
         curl -s https://getcomposer.org/installer | php --
         php composer.phar self-update
         php composer.phar install
+        
 (The `self-update` directive is to ensure you have an up-to-date `composer.phar`
 available.)
 
@@ -29,6 +33,7 @@ Web Server Setup
 
 ### Apache Setup
 You must also ensure that Apache is configured to support .htaccess files. This is usually done by changing the setting:
+
         AllowOverride None
         to
         AllowOverride FileInfo
@@ -37,6 +42,7 @@ You must also ensure that Apache is configured to support .htaccess files. This 
 To setup apache, setup a virtual host to point to the public/ directory of the
 project and you should be ready to go! It should look something like below:
 (note that you should block the servername in your host file)
+
        <VirtualHost *:80>
             ServerName www.contestweb.com
             DocumentRoot /path/to/dir/public
