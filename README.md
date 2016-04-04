@@ -3,22 +3,20 @@ ContestWeb
 
 Introduction
 ------------
-    This is a webset built by ZendFrameWork2 for college students communicate with each other on a variety of contest.
-    This webset is consist of two main module. A Forum module for communicating which consists of recruit and resources sharing
-and a recommend system based on collabrative filtering which can be found in my another responsity recommender-cpp.
+This is a webset built by ZendFrameWork2 for college students communicate with each other on a variety of contest.<br/>
+This webset is consist of two main module. A Forum module for communicating which consists of recruit and resources sharing
+and a recommend system based on collabrative filtering which can be found in my another responsity [recommender-cpp](https://github.com/whiteivory/recommender-cpp).
 
-Installation
-------------
 
 Using Composer (recommended)
 ----------------------------
 The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+and use `composer` to install 
 
-    first clone this resoponsity
+first clone this resoponsity
     cd my/project/dir
     git clone https://github.com/whiteivory/CotestWeb_.git
-    Then use composer to install vender, make sure you are in the git dir, because the nessary file composer.lock and composer.json is in this file
+Then use composer to install vender, make sure you are in the git dir, because the nessary file composer.lock and composer.json is in this file
     curl -s https://getcomposer.org/installer | php --
     php composer.phar self-update
     php composer.phar install
