@@ -23,15 +23,10 @@ color:inherit;
 #submitstyle{
 	color: #fff;
   background-color: #337ab7;
- border-radius:2px;
-	-webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
   font-family: "Microsoft YaHei";
   padding: 8px 16px;
   font-weight: bold;
-
+  border-color: #2e6da4;
 	
 }
 
