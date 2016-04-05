@@ -38,7 +38,7 @@ CREATE TABLE `follow` (
 
 LOCK TABLES `follow` WRITE;
 /*!40000 ALTER TABLE `follow` DISABLE KEYS */;
-INSERT INTO `follow` VALUES (1,NULL,NULL,NULL,NULL),(2,1003,1,'adf',NULL),(3,1003,1,'adf',NULL),(4,1003,1,'adfafdfw',NULL),(5,1003,1,'adfafdfw',NULL),(6,1003,1,'adfafdfw',NULL),(7,1003,1,'grasdfg',NULL),(8,1003,1,'grasdfgasdffe',NULL),(9,1001,1,'asfd',NULL),(10,1001,1,'asfd',NULL);
+INSERT INTO `follow` VALUES (1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `follow` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,8 +75,32 @@ CREATE TABLE `page` (
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(1001,1,1,1,'阿斯蒂',NULL,'<p>各省地方</p>\r\n','2016-03-11 01:33:17','1',7,0,9,1,'0',NULL),(1002,1,1,1,'shijian',NULL,'<p>asdf</p>\r\n',NULL,'1',0,0,0,1,'0',NULL),(1003,1,1,1,'shijian','2016-02-21 03:05:00','<p>asdfdsaf</p>\r\n','2016-02-21 05:33:00','1',9,1,0,1,'0',NULL),(1004,1,1,1,'阿斯蒂芬','2016-02-21 05:37:23','<p>暗室逢灯</p>\r\n',NULL,'1',0,0,2,1,'0',NULL),(1005,1,1,1,'阿斯蒂芬','2016-02-21 05:38:09','<p>暗室逢灯</p>\r\n\r\n<p><img alt=\"\" src=\"/data/postinlineimg/29_56c93f2ce8f4f.ico\" style=\"height:128px; width:128px\" /></p>\r\n',NULL,'1',7,0,8,1,'0',NULL);
+INSERT INTO `page` VALUES (1000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `recfris`
+--
+
+DROP TABLE IF EXISTS `recfris`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recfris` (
+  `userId` int(11) NOT NULL,
+  `friendId` int(11) NOT NULL,
+  `simi` double DEFAULT NULL,
+  PRIMARY KEY (`userId`,`friendId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recfris`
+--
+
+LOCK TABLES `recfris` WRITE;
+/*!40000 ALTER TABLE `recfris` DISABLE KEYS */;
+/*!40000 ALTER TABLE `recfris` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -108,8 +132,31 @@ CREATE TABLE `recruit` (
 
 LOCK TABLES `recruit` WRITE;
 /*!40000 ALTER TABLE `recruit` DISABLE KEYS */;
-INSERT INTO `recruit` VALUES (1,3,'rrr','<p>rrr</p>\r\n',NULL,NULL,NULL,NULL,NULL,1,NULL);
 /*!40000 ALTER TABLE `recruit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `recs`
+--
+
+DROP TABLE IF EXISTS `recs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recs` (
+  `userId` int(11) NOT NULL,
+  `pageId` int(11) NOT NULL,
+  `predictRating` int(11) DEFAULT NULL,
+  PRIMARY KEY (`userId`,`pageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `recs`
+--
+
+LOCK TABLES `recs` WRITE;
+/*!40000 ALTER TABLE `recs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `recs` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -241,6 +288,22 @@ INSERT INTO `user` VALUES (1,'tttt','tttt',1,NULL,NULL,'/data/face/defaultfaceim
 UNLOCK TABLES;
 
 --
+-- Temporary table structure for view `userrat`
+--
+
+DROP TABLE IF EXISTS `userrat`;
+/*!50001 DROP VIEW IF EXISTS `userrat`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `userrat` (
+  `userID` tinyint NOT NULL,
+  `username` tinyint NOT NULL,
+  `pageID` tinyint NOT NULL,
+  `star` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `zanup`
 --
 
@@ -249,9 +312,9 @@ DROP TABLE IF EXISTS `zanup`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zanup` (
   `pageID` int(11) NOT NULL,
-  `userID` int(11) DEFAULT NULL,
-  `star` int(11) DEFAULT NULL,
-  PRIMARY KEY (`pageID`)
+  `userID` int(11) NOT NULL,
+  `star` int(11) NOT NULL,
+  PRIMARY KEY (`pageID`,`userID`,`star`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -261,9 +324,27 @@ CREATE TABLE `zanup` (
 
 LOCK TABLES `zanup` WRITE;
 /*!40000 ALTER TABLE `zanup` DISABLE KEYS */;
-INSERT INTO `zanup` VALUES (1001,2,3);
 /*!40000 ALTER TABLE `zanup` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `userrat`
+--
+
+/*!50001 DROP TABLE IF EXISTS `userrat`*/;
+/*!50001 DROP VIEW IF EXISTS `userrat`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `userrat` AS select `user`.`userID` AS `userID`,`user`.`username` AS `username`,`zanup`.`pageID` AS `pageID`,`zanup`.`star` AS `star` from (`user` join `zanup` on((`user`.`userID` = `zanup`.`userID`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -274,4 +355,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-11 22:55:57
+-- Dump completed on 2016-04-01 14:55:43

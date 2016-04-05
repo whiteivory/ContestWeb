@@ -8,7 +8,8 @@ $user=$this->user;
  * $user->getUsername() 用户名
  */
 ?>
-
+<?php echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/zq.css')?>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span12">
@@ -30,9 +31,7 @@ $user=$this->user;
                     个人性格，爱好，希望在比赛中学到什么，对什么比赛感兴趣等等。
                     
 				</p>
-				<p>
-					<a class="btn btn-primary btn-large" href="#">私信</a>
-				</p>
+				
 			</div>		
 <?php if($mode=='edit'):?>
 <p style="font-size:20px;font-family:'Microsoft YaHei', sans-serif;">上传头像：</p>
@@ -47,7 +46,30 @@ enctype="multipart/form-data">
 <input class="btn btn-primary btn-large" type="submit" name="submit" value="提交修改" />
 </form>
 
-</div>
-	</div>
-</div>
+<hr><br>
+<!-- 在edit模式下显示兴趣形同用户 -->
+<p id="font-recom1">发现与您兴趣相似的用户：</p><hr>
+ 
+<?php 
+    $hasFalg = false;//如果没有为该用户推荐的内容，false，并提示用户打分
+    foreach ($this->friends as $f):
+    $hasFalg =true;?>
+    <img  class="img-circle" id="touxiang" src =<?= $f->getFaceimgpath(); ?> >
+<span id="font-recom2">用户名：<a href = <?="/account/".$f->getUserID()?> > <?=$f->getUsername(); ?></a>
+   <a class="btn btn-primary btn-large" style="margin-left: 30px;" href="#">TA的主页</a></span>
+
+					
+				
+
+<?php endforeach;?>
+<?php if($hasFalg=== false):?>
+<p id="font-recom2">请先对您浏览的资源进行评分让我们发现与您兴趣相似的用户</p>
+
+
+
+
+</div><!-- 整体bs框架span12 -->
+	</div><!-- 整体bs框架row-fluid -->
+</div><!-- 整体bs框架container-fluid -->
+<?php endif;?>
 <?php endif?>

@@ -60,7 +60,19 @@ color:inherit;
 	color:#286090;
 	font-family: "Microsoft YaHei";
 }
-
+#font-recom1{
+	font-size:20px;font-family:'Microsoft YaHei', sans-serif;
+}
+#font-recom2{
+	font-family:'Microsoft YaHei', sans-serif;
+	font-size:1.2em;
+	color:#0e90c2;
+	padding: 1.4em 2em;
+    
+}
+#touxiang{
+	width:70px;height:70px;padding:0;margin:0px;vertical-align:middle;
+}
 #fontadd{
 	font-family: "Microsoft YaHei";
 	font-size:1.2em;
@@ -75,6 +87,7 @@ color:inherit;
 	padding: 1.4em 2em;
     
 }
+
 
 
 /*star*/
@@ -116,4 +129,17 @@ color:inherit;
   color: #ffffff;
   background-color: #0e90d2;
   border-color: #0e90d2;
+}
+.pagelist{
+	margin-bottom:-1px;
+	overflow:hidden;
+	line-height:24px;margin-bottom:5px;
+	
+	
+}
+#biaoti{
+	font-size:18px;
+	font-weight: bold;
+	color:#0e90d2;
+	font-family:'Montserrat', sans-serif;
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Recs>
+	<User>
+		<UserId>1</UserId>
+		<ItemList>
+			<ItemId>1001</ItemId>
+			<ItemId>1002</ItemId>
+		</ItemList>
+	</User>
+	<User>
+		<UserId>2</UserId>
+		<ItemList>
+			<ItemId>1002</ItemId>
+		</ItemList>
+	</User>
+</Recs>

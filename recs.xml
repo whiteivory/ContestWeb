@@ -1,0 +1,32 @@
+<UserRecs>
+    <User>
+        <UserId>1</UserId>
+        <Item>
+            <ItemId>1004</ItemId>
+            <PredictRating>5</PredictRating>
+        </Item>
+        <Item>
+            <ItemId>1001</ItemId>
+            <PredictRating>3</PredictRating>
+        </Item>
+        <Simi>
+            <SimiId>2</SimiId>
+            <Similarity>1</Similarity>
+        </Simi>
+    </User>
+    <User>
+        <UserId>2</UserId>
+        <Item>
+            <ItemId>1002</ItemId>
+            <PredictRating>5</PredictRating>
+        </Item>
+        <Item>
+            <ItemId>1003</ItemId>
+            <PredictRating>2</PredictRating>
+        </Item>
+        <Simi>
+            <SimiId>1</SimiId>
+            <Similarity>1</Similarity>
+        </Simi>
+    </User>
+</UserRecs>

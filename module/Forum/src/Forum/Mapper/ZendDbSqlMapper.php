@@ -11,7 +11,8 @@ namespace Forum\Mapper;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Insert;
 use Application\Common\WHydrateResultset;
-  
+use Application\Common\WAuthUtil;
+   
  class ZendDbSqlMapper implements PageMapperInterface
  {
      /**
@@ -148,5 +149,29 @@ use Application\Common\WHydrateResultset;
         $row=$result->current();
 //         Debug::dump($row  );
         return $row['max(pageID)']+1;
+     }
+     
+     public function findRec(){
+         if(WAuthUtil::get_auth()!==null){
+             $userId = WAuthUtil::get_auth()->userID;
+             $sql = "select page.*,predictRating,user.* from (recs join page  on recs.pageId = page.pageID)join user on recs.userId = user.userId where 
+                recs.userId = $userId order by predictRating desc";
+             $statement=$this->dbAdapter->query($sql);
+             $result=$statement->execute();
+              
+             if ($result instanceof ResultInterface && $result->isQueryResult()) {
+                 $resultSet = new WHydrateResultset($this->hydrator, $this->pagePrototype,$this->prototypeArr);
+                 $tmp=$resultSet->initialize($result);
+                 //              foreach ($resultSet as $row){
+                 //                  Debug::dump($row);
+                 //              }
+                 return $tmp;
+             }
+              
+             throw new \InvalidArgumentException("Forum with given ID:{$id} not found.");
+         }
+         else {
+             return null;
+         }
      }
  }

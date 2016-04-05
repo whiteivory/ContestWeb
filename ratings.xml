@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ratings>
+ <Rating>
+  <UserId>1</UserId>
+  <ItemId>1000</ItemId>
+  <Star>2</Star>
+ </Rating>
+ <Rating>
+  <UserId>2</UserId>
+  <ItemId>1000</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>2</UserId>
+  <ItemId>1001</ItemId>
+  <Star>3</Star>
+ </Rating>
+ <Rating>
+  <UserId>1</UserId>
+  <ItemId>1002</ItemId>
+  <Star>5</Star>
+ </Rating>
+ <Rating>
+  <UserId>1</UserId>
+  <ItemId>1003</ItemId>
+  <Star>2</Star>
+ </Rating>
+ <Rating>
+  <UserId>2</UserId>
+  <ItemId>1004</ItemId>
+  <Star>5</Star>
+ </Rating>
+</Ratings>
