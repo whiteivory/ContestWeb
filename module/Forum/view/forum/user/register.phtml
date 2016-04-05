@@ -1,6 +1,6 @@
 <div id="register">
 <?php 
-
+echo $this->headtitle("注册 | ContestWeb");
 // $this->layout()->userpanel=$this->action
  $form = $this->userform;
 //设置表单的action属性，跳转到album/add 然后addAction()getRequest；和正常的方式是类似的。
@@ -10,7 +10,7 @@ $form->prepare();
 echo $this->form()->openTag($form);
 echo $this->formHidden($form->get('userID'));
 ?>
-<h2 style="font-size:25px;font-family:'Microsoft YaHei', sans-serif;">用户登录</h2><hr>
+<h2 style="font-size:25px;font-family:'Microsoft YaHei', sans-serif;">用户注册</h2><hr>
 
 <label for="inputEmail"  placeholder="Email address" required autofocus>
 邮箱地址：

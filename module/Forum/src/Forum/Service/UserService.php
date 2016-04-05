@@ -115,6 +115,7 @@ class UserService
                 'userID',
         'username',
         'schoolID',
+                'type'
             )));
             return true;
         }

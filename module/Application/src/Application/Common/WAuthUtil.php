@@ -49,6 +49,6 @@ class WAuthUtil{
     public static function get_auth(){
         $auth = new AuthenticationService();
         $tmp=$auth->getStorage()->read();
-        return $tmp;//返回一个类，有username和schoolID和userID这三个在userservice里面get——auth函数里write数据库中的两列。
+        return $tmp;//返回一个类，有username和schoolID和userID和type这四个在userservice里面get——auth函数里write数据库中的两列。
     }
 }
