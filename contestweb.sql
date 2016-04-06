@@ -259,6 +259,30 @@ INSERT INTO `section` VALUES (1,'科研立项',NULL,NULL,2),(2,'齐鲁软件',NU
 UNLOCK TABLES;
 
 --
+-- Table structure for table `simipages`
+--
+
+DROP TABLE IF EXISTS `simipages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `simipages` (
+  `itemId` int(11) NOT NULL,
+  `simiId` int(11) NOT NULL,
+  `similarity` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`itemId`,`simiId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `simipages`
+--
+
+LOCK TABLES `simipages` WRITE;
+/*!40000 ALTER TABLE `simipages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `simipages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -273,6 +297,7 @@ CREATE TABLE `user` (
   `sregtime` date DEFAULT NULL,
   `teamnum` int(11) DEFAULT NULL,
   `faceimgpath` varchar(255) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -283,7 +308,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'tttt','tttt',1,NULL,NULL,'/data/face/defaultfaceimg.png'),(2,'7777777','7777777',1,NULL,NULL,'/data/face/defaultfaceimg.png');
+INSERT INTO `user` VALUES (2,'7777777','7777777',1,NULL,NULL,'/data/face/defaultfaceimg.png',2);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,4 +380,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-01 14:55:43
+-- Dump completed on 2016-04-06 13:09:12
