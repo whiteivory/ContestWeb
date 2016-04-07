@@ -88,10 +88,11 @@ echo $this->headtitle($page->getPtitle()." | ContestWeb ");
       <div class="row">
     	<div class="col-12 col-sm-6 col-lg-12 zq01">
   
-        <h4 id="font-regular">评论者:<?= $follow->getUser()->getUsername();?></h4>
-       <img style="width:50px;" src="<?= $follow->getUser()->getFaceimgpath();?>"/>
+        <h5 id="font-regular">评论者:<?= $follow->getUser()->getUsername();?></h5>
+       <img class="img-circle" id="touxiang" src="<?= $follow->getUser()->getFaceimgpath();?>"/>
+      
         <br>
-        <h5 style="font-family: "Microsoft YaHei";">评论内容:<?= $follow->getFcontent();?></h5><hr>
+        <span id="fontadd">评论内容:<?= $follow->getFcontent();?></span><hr>
         <p><a class="btn btn-default" href="#" role="button">查看详情</a></p>
         
       </div>
@@ -156,7 +157,7 @@ $(document).ready(function(){
     echo $this->form()->closeTag();//</form>
     ?>
     <?php else: ?>
-    <p>请<a href="/login">登录</a>发表评论</p>
+    <p >请<a href="/login">登录</a>发表评论</p>
     <?php endif;?>
 
     <?php 
