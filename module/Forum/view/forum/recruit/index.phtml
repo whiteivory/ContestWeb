@@ -1,6 +1,5 @@
 <?php echo $this->headLink()
-->prependStylesheet($this->basePath() . '/css/ptt.css');?>
-<?php 
+->prependStylesheet($this->basePath() . '/css/ptt.css');
 /*可以调用的方法*/
 /*
  *  $recruit->getRecruitID(); 帖子ID
@@ -14,15 +13,7 @@
     $recruit->getUser()->getUsername();作者名称
     $recruit->getUser()->getFaceimgpath();作者头像
  */
-
-$recruits=$this->recruits;
-
-foreach ($recruits as $recruit):?>
-    <span>标题 </span><a href="/recruit/<?=$recruit->getRecruitID(); ?>"><?=$recruit->getRtitle(); ?></a>
-    <span>标签 </span><?=$recruit->getTag(); ?>
-    <span>内容 </span><?=$recruit->getRcontent(); ?>
-    <span>作者</span><?=$recruit->getUser()->getUserName(); ?>
-<?php endforeach;?>
+?>
 
     <div class="row">
     
@@ -43,38 +34,48 @@ foreach ($recruits as $recruit):?>
       
         <div id="price-table">
             <div class="row">
+            <?php 
+
+    $recruits=$this->recruits;
+
+    foreach ($recruits as $recruit):?>
+               <!-- 个人 --> 
                 <div class="col-sm-6 col-md-3">
                     <div class="single-price">
                         <div class="table-heading">
-                            <p class="plan-name">毛线</p>
+                            <p class="plan-name"><?=$recruit->getUser()->getUserName(); ?></p>
                             
-                            <p class="plan-price"><img style="width:65px;height:60px;" class="img-circle" src="../img/testimonial-1.jpg"/></p>
+                            <p class="plan-price"><img style="width:65px;height:60px;" class="img-circle" src="<?=$recruit->getUser()->getFaceimgpath(); ?>"/></p>
                         </div>
                         <ul>                            
-                            <li>高等数学 </li>
-                            <li>C语言程序设计</li>
-                            <li>photoshop</li>
-                            <li>run</li>
+                            <li> <?=$recruit->getTag();?>  </li>
+                            <li> <?=$recruit->getTag(); ?></li>
+                            <li> <?=$recruit->getTag(); ?></li>
+                            <li> <?=$recruit->getTag();?> </li>
 
                         </ul>
-                        <a href="#" class="btn btn-buynow col-md-6">了解更多</a><a href="#" class="btn btn-buynow col-md-6">私信TA</a>
+                        <a href="/recruit/<?=$recruit->getRecruitID(); ?>" class="btn btn-buynow">了解更多</a>
                     </div>
                 </div>
+                
+                 <!-- 团队 -->
                 <div class="col-sm-6 col-md-3">
                     <div class="single-price highligh-table">
                         <div class="table-heading">
-                            <p class="plan-name">欠揍</p>
-                            <p class="plan-price"><img style="width:65px;height:60px;" class="img-circle" src="../img/testimonial-1.jpg"/></p>
+                            <p class="plan-name"><?=$recruit->getUser()->getUserName(); ?></p>
+                            <p class="plan-price"><img style="width:65px;height:60px;" class="img-circle" src="<?=$recruit->getUser()->getFaceimgpath(); ?>"/></p>
                         </div>                        
                         <ul>
-                            <li>技能点</li>
-                            <li>技能点</li>   
-                            <li>技能点</li>
-                            <li>技能点</li>                      
+                            <li>团队需求</li>
+                            <li>团队需求</li>   
+                            <li>团队需求</li>
+                            <li>团队需求</li>                      
                         </ul>
-                        <a href="#" class="btn btn-buynow col-md-6">了解更多</a><a href="#" class="btn btn-buynow col-md-6">查看团队</a>
+                        <a href="/recruit/<?=$recruit->getRecruitID(); ?>" class="btn btn-buynow">了解更多</a>
                     </div>
                 </div>
+      <?php endforeach;?>
+                
 
             </div>
         </div><!--/#price-table-->
