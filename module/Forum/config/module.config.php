@@ -23,7 +23,8 @@ return array(
              'Forum\Service\RecruitServiceInterface' => 'Forum\Factory\RecruitServiceFactory',
              'Forum\Service\RFollowServiceInterface'=>'Forum\Factory\RFollowServiceFactory',
              'Forum\Mapper\RFollowMapperInterface'=>'Forum\Factory\RFollowMapperFactory',
-              
+             'Forum\Service\AdminServiceInterface' => 'Forum\Factory\AdminServiceFactory',
+   
          )
      ),
     'view_manager' => array(
@@ -40,7 +41,9 @@ return array(
              'Forum\Controller\Follow'=>'Forum\Factory\FollowControllerFactory',
              'Forum\Controller\Recruit'=>'Forum\Factory\RecruitControllerFactory',
              'Forum\Controller\RFollow'=>'Forum\Factory\RFollControllerFactory',
-         )
+             'Forum\Controller\Admin'=>'Forum\Factory\AdminControllerFactory',
+                 
+             )
         ),
     'router' => array(
         // Open configuration for all possible routes
@@ -211,6 +214,18 @@ return array(
                     'defaults' => array(
                         'controller' => 'Forum\Controller\User',
                         'action'     => 'register',
+                    )
+                )
+            ),
+            'admin'=>array(
+                'type' => 'literal',
+                'options' => array(
+                    // Listen to "/blog" as uri
+                    'route'    => '/admin',
+                    // Define default controller and action to be called when this route is matched
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Admin',
+                        'action'     => 'index',
                     )
                 )
             ),

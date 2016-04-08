@@ -1,0 +1,11 @@
+<?php 
+if($this->type == 2):?>
+<form action="" method="get">
+  <p>要删除的帖子id <input type="text" name="pageId" /></p>
+  <p>要删除的用户id <input type="text" name="userId" /></p>
+  <input type="submit" value="Submit" />
+</form>
+<?php else:
+print_r($this->type) ;?>
+仅有管理员有权限查看本页
+<?php endif;?>
