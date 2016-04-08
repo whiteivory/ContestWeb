@@ -1,6 +1,5 @@
-<?php echo $this->headLink()
-->prependStylesheet($this->basePath() . '/css/ptt.css');?>
-<?php 
+ <?php echo $this->headLink()
+->prependStylesheet($this->basePath() . '/css/ptt.css');
 /*可以调用的方法*/
 /*
  *  $recruit->getRecruitID(); 帖子ID
@@ -14,90 +13,100 @@
     $recruit->getUser()->getUsername();作者名称
     $recruit->getUser()->getFaceimgpath();作者头像
  */
+
 echo $this->headtitle("招募 | ContestWeb ");
-$recruits=$this->recruits;
 
-foreach ($recruits as $recruit):?>
-    <span>标题 </span><a href="/recruit/<?=$recruit->getRecruitID(); ?>"><?=$recruit->getRtitle(); ?></a>
-    <span>标签 </span><?=$recruit->getTag(); ?>
-    <span>内容 </span><?=$recruit->getRcontent(); ?>
-    <span>作者</span><?=$recruit->getUser()->getUserName(); ?>
-<?php endforeach;?>
+ 
+ <div class="btn-group" role="group" aria-label="recruittype">
+              <button type="button" class="btn btn-default active">人才招募</button>
+              <button type="button" class="btn btn-default">团队招募</button>
+        </div>
+        <br><br>
+        
 
-    <div class="row">
-    
-    <ul class="nav navbar-nav" style="font-size:18px;margin:0 3px"> 
-            	<li class="active" style="background:#91d1e3;"><a href="#">人才招募</a></li>
-                <li class="active" style="background:#C4C4C4;color:	#7a7878"><a href="#">团队招募</a></li>
-            </ul> 
-    
-       <ul class="portfolio-filter text-center">
-           <li><a class="btn btn-default active" href="#" data-filter="*">全部</a></li>
-           <li><a class="btn btn-default" href="#" data-filter=".branded">计算机</a></li>
-           <li><a class="btn btn-default" href="#" data-filter=".design">美工</a></li>
-           <li><a class="btn btn-default" href="#" data-filter=".folio">后台</a></li>
-           <li><a class="btn btn-default" href="#" data-filter=".logos">机械</a></li>
-           <li><a class="btn btn-default" href="#" data-filter=".mobile">挑战杯</a></li>
-           <li><a class="btn btn-default" href="#" data-filter=".mockup">科研立项</a></li>
-       </ul><!--/#portfolio-filter-->
-      
-        <div id="price-table">
-            <div class="row">
-                <div class="col-sm-6 col-md-3">
-                    <div class="single-price">
-                        <div class="table-heading">
-                            <p class="plan-name">毛线</p>
-                            
-                            <p class="plan-price"><img style="width:65px;height:60px;" class="img-circle" src="../img/testimonial-1.jpg"/></p>
-                        </div>
-                        <ul>                            
-                            <li>高等数学 </li>
-                            <li>C语言程序设计</li>
-                            <li>photoshop</li>
-                            <li>run</li>
+        <ul class="nav nav-pills">
+          <li role="presentation" class="active"><a href="#">全部</a></li>
+          <li role="presentation"><a href="#">计算机</a></li>
+          <li role="presentation"><a href="#">科研立项</a></li>
+          <li role="presentation"><a href="#">后台</a></li>
+          <li role="presentation"><a href="#">美工</a></li>
+          <li role="presentation"><a href="#">挑战杯</a></li>
+          <li role="presentation"><a href="#">挑战杯</a></li>
+          <li role="presentation"><a href="#">挑战杯</a></li>
+          <li role="presentation"><a href="#">挑战杯</a></li>
+          <li role="presentation"><a href="#">挑战杯</a></li>
+          <li role="presentation"><a href="#">挑战杯</a></li>
+        </ul>
+        <br>
+        <div class="row">
+        <?php 
 
-                        </ul>
-                        <a href="#" class="btn btn-buynow col-md-6">了解更多</a><a href="#" class="btn btn-buynow col-md-6">私信TA</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="single-price highligh-table">
-                        <div class="table-heading">
-                            <p class="plan-name">欠揍</p>
-                            <p class="plan-price"><img style="width:65px;height:60px;" class="img-circle" src="../img/testimonial-1.jpg"/></p>
-                        </div>                        
-                        <ul>
-                            <li>技能点</li>
-                            <li>技能点</li>   
-                            <li>技能点</li>
-                            <li>技能点</li>                      
-                        </ul>
-                        <a href="#" class="btn btn-buynow col-md-6">了解更多</a><a href="#" class="btn btn-buynow col-md-6">查看团队</a>
-                    </div>
-                </div>
+    $recruits=$this->recruits;
 
+    foreach ($recruits as $recruit):?>
+        <!--个人-->
+          <div class="col-sm-6 col-md-3">
+          
+            <div class="thumbnail">
+              <img src="<?=$recruit->getUser()->getFaceimgpath(); ?>" alt="..." class="img-circle headimg">
+              <div class="caption">
+                <h3 class="text-center"><?=$recruit->getUser()->getUserName(); ?></h3>
+                <p class="text-center">女</p>
+                <span class="label label-default"><?=$recruit->getTag();?></span>
+                <span class="label label-primary"><?=$recruit->getTag();?></span>
+                <span class="label label-success"><?=$recruit->getTag();?></span>
+                <span class="label label-info"><?=$recruit->getTag();?></span>
+                <span class="label label-warning"><?=$recruit->getTag();?></span>
+                <span class="label label-danger"><?=$recruit->getTag();?></span>
+                <span class="label label-danger"><?=$recruit->getTag();?></span>
+                <br><br>
+                <p class="text-center"><a href="#" class="btn btn-primary" role="button">Ta的简历</a> <a href="#" class="btn btn-default" role="button">个人主页</a></p>
+              </div>
             </div>
-        </div><!--/#price-table-->
-
+          </div>
+          
+           <!--团队-->
+           <div class="col-sm-6 col-md-3">
+          
+            <div class="thumbnail">
+             
+              <div class="caption">
                
-
+               <div class="row">
+               		<div class="col-md-4"><img src="<?=$recruit->getUser()->getFaceimgpath(); ?>" alt="..." class="img-rounded teamimg"></div>
+                    <div class="col-md-8"><h4 >团队名称</h4></div>  
+                    <div class="col-md-8 text-center"><h6 >发起人：<?=$recruit->getUser()->getUserName(); ?></h6></div>          
+               </div>
                 
-                <div class="portfolio-pagination col-md-12">
-                    <ul class="pagination">
-                      <li><a href="#">上一页</a></li>
-                      <li class="active"><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                      <li><a href="#">6</a></li>
-                      <li><a href="#">7</a></li>
-                      <li><a href="#">8</a></li>
-                      <li><a href="#">9</a></li>
-                      <li><a href="#">下一页</a></li>
-                    </ul>
-                </div>
+                <p class="text-center"> <?=$recruit->getRcontent();?></p>
+                
+                <p class="text-center"><a href="#" class="btn btn-primary" role="button">团队详情</a> <a href="#" class="btn btn-default" role="button">与Ta联系</a></p>
+              </div>
             </div>
+          </div>
+          <?php endforeach;?>
+        </div>
+        
+        <nav>
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li  class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        
 <?php     
     //最后添加js
     echo $this->inlineScript()->prependFile($this->basepath('/js/pttmain.js'));
