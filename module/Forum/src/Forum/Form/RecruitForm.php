@@ -21,7 +21,7 @@ class RecruitForm extends Form
         // will be built.
 
         //学校和比赛是多对多的关系，帖子和比赛是多对一的关系，需要schID是为了如果设置成不对外校显示需要一个ID来说明对哪个学校显示
-
+    /*
          $this->add(array(
              'type' => 'Select',
              'name' => 'tag',
@@ -32,7 +32,11 @@ class RecruitForm extends Form
                              '宣传' => '宣传',
                      ),
              )
-     ));
+     ));*/
+        $this->add(array(
+            'type' => 'text',
+            'name' => 'tag',
+        ));
          $this->add(array(
              'type' => 'Select',
              'name' => 'type',

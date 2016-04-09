@@ -18,31 +18,25 @@ echo $this->headtitle("招募 | ContestWeb ");?>
 
  
  <div class="btn-group" role="group" aria-label="recruittype">
-              <button type="button" class="btn btn-default active">人才招募</button>
-              <button type="button" class="btn btn-default">团队招募</button>
+              <button type="button" onclick="window.location.href='/recruit?type=1'" class="btn btn-default <?=$this->type==1?"active":" "; ?>">人才招募</button>
+              <button type="button" onclick="window.location.href='/recruit?type=2'" class="btn btn-default <?=$this->type==2?"active":" "; ?>">团队招募</button>
         </div>
         <br><br>
         
-
+        <?php /*
         <ul class="nav nav-pills">
           <li role="presentation" class="active"><a href="#">全部</a></li>
           <li role="presentation"><a href="#">计算机</a></li>
           <li role="presentation"><a href="#">科研立项</a></li>
           <li role="presentation"><a href="#">后台</a></li>
           <li role="presentation"><a href="#">美工</a></li>
-          <li role="presentation"><a href="#">挑战杯</a></li>
-          <li role="presentation"><a href="#">挑战杯</a></li>
-          <li role="presentation"><a href="#">挑战杯</a></li>
-          <li role="presentation"><a href="#">挑战杯</a></li>
-          <li role="presentation"><a href="#">挑战杯</a></li>
-          <li role="presentation"><a href="#">挑战杯</a></li>
         </ul>
         <br>
-        <div class="row">
+        <div class="row">*/?>
         <?php 
 
     $recruits=$this->recruits;
-
+    if($this->type == 1):
     foreach ($recruits as $recruit):?>
         <!--个人-->
           <div class="col-sm-6 col-md-3">
@@ -51,20 +45,31 @@ echo $this->headtitle("招募 | ContestWeb ");?>
               <img src="<?=$recruit->getUser()->getFaceimgpath(); ?>" alt="..." class="img-circle headimg">
               <div class="caption">
                 <h3 class="text-center"><?=$recruit->getUser()->getUserName(); ?></h3>
-                <p class="text-center">女</p>
-                <span class="label label-default"><?=$recruit->getTag();?></span>
-                <span class="label label-primary"><?=$recruit->getTag();?></span>
+                <p class="text-center">标题：<?=$recruit->getRtitle() ?></p>
+                <?php 
+                $tagar = explode(',',$recruit->getTag());
+                    foreach ($tagar as $t):
+                ?>
+                <span class="label label-primary"><?=$t;?></span>
+                <?php 
+                    endforeach;
+                /*
+                 *                 <span class="label label-primary"><?=$recruit->getTag();?></span>
                 <span class="label label-success"><?=$recruit->getTag();?></span>
                 <span class="label label-info"><?=$recruit->getTag();?></span>
                 <span class="label label-warning"><?=$recruit->getTag();?></span>
                 <span class="label label-danger"><?=$recruit->getTag();?></span>
                 <span class="label label-danger"><?=$recruit->getTag();?></span>
+                 */?>
                 <br><br>
-                <p class="text-center"><a href="#" class="btn btn-primary" role="button">Ta的简历</a> <a href="#" class="btn btn-default" role="button">个人主页</a></p>
+                <p class="text-center"><a href="/recruit/<?=$recruit->getRecruitID() ?>" class="btn btn-primary" role="button" >详细信息</a> <a href="/account/<?=$recruit->getUser()->getUserID() ?>" class="btn btn-default" role="button">个人主页</a></p>
               </div>
             </div>
           </div>
-          
+          <?php endforeach;
+          else:
+          foreach ($recruits as $recruit):
+          ?>
            <!--团队-->
            <div class="col-sm-6 col-md-3">
           
@@ -84,9 +89,11 @@ echo $this->headtitle("招募 | ContestWeb ");?>
               </div>
             </div>
           </div>
-          <?php endforeach;?>
+          <?php endforeach;
+          endif;
+          ?>
         </div>
-        
+        <?php /*
         <nav>
           <ul class="pagination">
             <li>
@@ -105,7 +112,7 @@ echo $this->headtitle("招募 | ContestWeb ");?>
               </a>
             </li>
           </ul>
-        </nav>
+        </nav>*/?>
         
 <?php     
     //最后添加js

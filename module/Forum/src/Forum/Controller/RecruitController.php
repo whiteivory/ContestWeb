@@ -32,13 +32,13 @@ protected $recruitService;
         if($request->isGet()&&isset($request->getQuery()['tag'])){
             $tag=$request->getQuery()['tag'];
         }
-        echo "<br/><br/><br/>";
         if(isset($request->getQuery()['type'])){
             $type=$request->getQuery()['type'];
         }
         if($type!=1&&$type!=2) $type=1;
         WAuthUtil::addUserpanelToLayout($this, '/recruit');
         return new ViewModel(array(
+            'type'=>$type,
             'recruits' => $this->recruitService->getRecruits($tag,$type),
         ));
     }
