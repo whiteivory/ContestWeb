@@ -68,7 +68,7 @@ use Application\Common\WAuthUtil;
          throw new \InvalidArgumentException("Forum with given ID:{$id} not found.");
      }
      
-     public function findAll($secID,$ptype,$schID){
+     public function findAll($secID,$ptype,$schID,$limit,$offset){
         $sql="select * from page ";
         $sql =$sql. " join user on page.userID=user.userID ";
         $sql=$sql."where ";
@@ -87,6 +87,7 @@ use Application\Common\WAuthUtil;
         else{
             $sql=$sql.'(pallow=1)';
         }
+        $sql=$sql."limit $limit,$offset";
 //         echo $sql;
         $statement=$this->dbAdapter->query($sql);
         $result=$statement->execute();
@@ -103,6 +104,31 @@ use Application\Common\WAuthUtil;
         }
 
         return array();
+     }
+     public function getAllCount($secID,$ptype,$schID){
+         $sql="select count(*) from page ";
+         $sql =$sql. " join user on page.userID=user.userID ";
+         $sql=$sql."where ";
+         if($secID!=0){
+             $sql =$sql." secID=$secID ";
+             if($ptype!=0)
+                 $sql=$sql.' and ';
+         }
+         if($ptype!=0) $sql=$sql." ptype=$ptype ";
+         if($ptype!=0||$secID!=0){
+             $sql=$sql.' and ';
+         }
+         if($schID!=0){
+             $sql=$sql.'(pallow=1 or (pallow=0 and schID='.$schID.' ))';
+         }
+         else{
+             $sql=$sql.'(pallow=1)';
+         }
+
+         
+         $statement=$this->dbAdapter->query($sql);
+         $result=$statement->execute();
+         return $result->current()['count(*)'];
      }
      //单纯的resultset方式
      public function findAllres(){

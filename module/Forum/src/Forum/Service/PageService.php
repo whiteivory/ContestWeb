@@ -24,16 +24,22 @@ class PageService
      * 如过注册了，则schID=session中的schoolID
      * 如过没注册，那么为0，数据库中不存在为0的schoolID，进一步交给mapper处理
      */
-    public function getPages($secID,$ptype)
+    public function getPages($secID,$ptype,$limit,$offset)
     {
         // TODO: Implement findAllPosts() method.
         if(isset(WAuthUtil::get_auth()->schoolID))
             $schID=WAuthUtil::get_auth()->schoolID;
         else $schID=0;
-        return $this->pageMapper->findAll($secID,$ptype,$schID);
+        return $this->pageMapper->findAll($secID,$ptype,$schID,$limit,$offset);
     }
     public function getRecs(){
         return $this->pageMapper->findRec();
+    }
+    public function getPageCount($secID,$ptype){
+        if(isset(WAuthUtil::get_auth()->schoolID))
+            $schID=WAuthUtil::get_auth()->schoolID;
+        else $schID=0;
+        return $this->pageMapper->getAllCount($secID,$ptype,$schID);
     }
 
     /**

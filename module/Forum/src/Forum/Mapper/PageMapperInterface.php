@@ -15,5 +15,5 @@ interface PageMapperInterface
     /**
      * @return array|PostInterface[]
     */
-    public function findAll($secID,$ptype,$schID);
+    public function findAll($secID,$ptype,$schID,$limit,$offset);
 }

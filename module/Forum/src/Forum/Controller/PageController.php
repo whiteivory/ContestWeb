@@ -14,6 +14,7 @@ use Application\Common\WBasePath;
 use Zend\Http\Request;
 use Zend\Feed\Reader\Reader;
 use Forum\Model\User;
+use Application\Common\PageGen;
 
 class PageController  extends AbstractActionController
 {
@@ -41,12 +42,26 @@ class PageController  extends AbstractActionController
         }
         WAuthUtil::addUserpanelToLayout($this, '/page');
         
+        if($request->isGet()&&isset($request->getQuery()['page'])){
+            $page_=$request->getQuery('page');
+        }
+        else $page_=1;
+        $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
+        $url=preg_replace('/index.php/', 'page', $url);
+        $rownum=$this->pageService->getPageCount($secID,$ptype);
+        $rowper=10;
+        $pgen=new PageGen($rownum, $rowper, $page_, $url,5);
+        $limit=$pgen->genPdo()['limit'];
+        $offset=$pgen->genPdo()['offset'];
+        $bararr=$pgen->genBar();
+        
         return new ViewModel(array(
             'whetherLogIn'=>(WAuthUtil::get_auth()===null?false:true),
-            'pages' => $this->pageService->getPages($secID,$ptype),
+            'pages' => $this->pageService->getPages($secID,$ptype,$limit,$offset),
             'secID' => $secID,
             'ptype' =>$ptype,
-            'recs'=>$this->pageService->getRecs()
+            'recs'=>$this->pageService->getRecs(),
+            'bararr'=>$bararr
         ));
     }
     public function getservice(){

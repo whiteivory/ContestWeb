@@ -1,4 +1,5 @@
 <?php
+use Application\Common\Page;
 /*本页返回数据
  * 更新以下可用
  * 推荐
@@ -94,7 +95,7 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
         $hasFlag=true;?>
   <div class="pagelist">
    <p id="font-regular">标题：
-   <a id="font-addsmall" href = <?="/page/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a></p>
+   <a id="font-addsmall" href = <?="/p/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a></p>
       
       <hr>
  </div>
@@ -143,9 +144,28 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
    <div class="row">
     <div class="col-md-12">
       <ul class="ask-list">
-       <li> <a href="page/<?php echo $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= strip_tags($page->getPcontent()) ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
+       <li> <a href="/p/<?php echo $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= strip_tags($page->getPcontent()) ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
        </ul>
     </div>
    </div>
 <?php endforeach ?>
 
+          <nav>
+           <ul class="pagination">
+           <?php 
+           foreach ($this->bararr as $b):
+            if($b->getType()==Page::PRE||$b->getType()==Page::LAT):?>
+            <li class="<?= $b->getEditable()==Page::EDITABLE?'':'disabled';?>"><a href="<?=$b->getUrl(); ?>
+            " aria-label="<?=$b->getType()==Page::PRE?'Previous':'Next'; ?>"><span aria-hidden="true">
+            <?=$b->getType()==Page::PRE?'&laquo;':'&raquo;'; ?></span></a></li>
+            <?php elseif($b->getType()==Page::LUE):?>
+            <li class=""><a href="#"><span aria-hidden="true">...</span></a></li>
+            <?php elseif($b->getType()==Page::NOR&&$b->getSelected()==Page::SELECTED):?>
+            <li class="active"><a href="#"><?=$b->getNum(); ?> <span class="sr-only">(current)</span></a></li>
+            <?php else:?>
+            <li><a href="<?=$b->getUrl(); ?>"><?=$b->getNum(); ?></a></li>
+            <?php endif;?>
+
+           <?php endforeach;?>
+           </ul>
+          </nav>

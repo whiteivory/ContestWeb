@@ -79,6 +79,38 @@ return array(
                     )
                 )
             ),
+            'detail' => array(
+                // Define the routes type to be "Zend\Mvc\Router\Http\Literal", which is basically just a string
+                'type' => 'literal',
+                // Configure the route itself
+                'options' => array(
+                    // Listen to "/blog" as uri
+                    'route'    => '/p',
+                    // Define default controller and action to be called when this route is matched
+                    /*
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Follow',
+                        'action'     => 'detial',
+                    )*/
+                ),
+                'may_terminate' => true,
+                'child_routes'  => array(
+                    'details' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route'    => '/:id',
+                            'defaults' => array(
+                                'controller' => 'Forum\Controller\Follow',
+                                'action' => 'detail'
+                            ),
+                            'constraints' => array(
+                                'id' => '[1-9]\d*'
+                            )
+                        )
+                    )
+                )
+            ),
+                    
             'page' => array(
                 // Define the routes type to be "Zend\Mvc\Router\Http\Literal", which is basically just a string
                 'type' => 'literal',
@@ -94,19 +126,6 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes'  => array(
-                    'detail' => array(
-                        'type' => 'segment',
-                        'options' => array(
-                            'route'    => '/:id',
-                            'defaults' => array(
-                                'controller' => 'Forum\Controller\Follow',
-                                'action' => 'detail'
-                            ),
-                            'constraints' => array(
-                                'id' => '[1-9]\d*'
-                            )
-                        )
-                    ),
                     'followajax' => array(
                         'type'    => 'segment',
                         'options' => array(
