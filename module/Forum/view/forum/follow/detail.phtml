@@ -152,7 +152,7 @@ $(document).ready(function(){
     if($whetherLogin):
     ?>
     <?php 
-    $form->setAttribute('action', '/page/'.$page->getPageID());//注意这里写绝对路径
+    $form->setAttribute('action', '/p/'.$page->getPageID());//注意这里写绝对路径
     $form->prepare();
     echo $this->form()->opentag($form);//<form>
        echo $this->formRow($form->get('fcontent')).'<br>';
