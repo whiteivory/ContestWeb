@@ -85,7 +85,7 @@ echo $this->headtitle("招募 | ContestWeb ");?>
                 
                 <p class="text-center"> <?=$recruit->getRcontent();?></p>
                 
-                <p class="text-center"><a href="#" class="btn btn-primary" role="button">团队详情</a> <a href="#" class="btn btn-default" role="button">与Ta联系</a></p>
+                <p class="text-center"><a href="/recruit/<?=$recruit->getRecruitID() ?>" class="btn btn-primary" role="button">团队详情</a> <a href="/account/<?=$recruit->getUser()->getUserID() ?>" class="btn btn-default" role="button">与Ta联系</a></p>
               </div>
             </div>
           </div>

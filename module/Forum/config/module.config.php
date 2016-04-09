@@ -212,6 +212,16 @@ return array(
                     )
                 )
             ),
+            '/about'=>array(
+                'type' => 'literal',
+                'options' => array(
+                    'route'    => '/about',
+                    'defaults' => array(
+                        'controller' => 'Forum\Controller\Page',
+                        'action'     => 'about',
+                    )
+                )
+            ),
             'search'=>array(
                 'type' => 'literal',
                 'options' => array(

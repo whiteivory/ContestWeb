@@ -67,7 +67,11 @@ class PageController  extends AbstractActionController
     public function getservice(){
         return $this->pageService;
     }
-    
+    public function aboutAction(){
+        WAuthUtil::whetherLogout($this);
+        WAuthUtil::addUserpanelToLayout($this, '/about');
+        return array();
+    }
     public function searchAction(){
         WAuthUtil::whetherLogout($this);
         $request = $this->getRequest();
