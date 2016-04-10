@@ -152,7 +152,15 @@ color:inherit;
 	font-family:'Montserrat', sans-serif;
 }
 
-
+#forimg img{
+	max-width:600px;
+	max-height:500px;
+	max-width:expression((document.documentElement.clientWidth||document.body.clientWidth) > 600? "600px": "auto");
+	max-height:expression((document.documentElement.clientHeight||document.body.clientHeight) > 500? "500px": "auto");
+}
+.forimg{
+	margin:0 auto; width:800px; padding:0; 
+}
 
 /*aboutus*/
 
