@@ -1,3 +1,4 @@
+
 <?php echo $this->headLink()
             ->prependStylesheet($this->basePath() . '/css/ptt.css')
 ?>
@@ -5,7 +6,14 @@
    
 <!-- <label class="fontradd">
 招募信息：
-</label>   -->     
+</label> =======
+<div class="row"> 
+    <div class="col-md-2 lead">
+     <strong>招募信息</strong>
+    </div> <br><br><br>
+<div>  -->     
+
+
 
 
 <?php
@@ -26,10 +34,10 @@ echo $this->headmeta('utf-8');
    echo $this->form()->opentag($form);//<form>
    ?>
    <?php 
-   echo '<label class="fontradd">标题：</label>'.$this->formRow($form->get('rtitle')).'<br/>';
-   echo '<label class="fontradd">类型：</label>'.$this->formRow($form->get('type'));
-   echo '<label class="fontradd">标签：</label>'.$this->formRow($form->get('tag'));
-   echo $this->formRow($form->get('rcontent')).'<br/>';
+   echo '标题'.$this->formRow($form->get('rtitle')).'<br/>';
+   echo '类型'.$this->formRow($form->get('type'));
+   echo '标签'.$this->formRow($form->get('tag'));
+   echo $this->formRow($form->get('rcontent'));
    echo $this->formSubmit($form->get('submit'));
    echo $this->form()->closeTag();//</form>
    ?>
@@ -41,3 +49,4 @@ echo $this->headmeta('utf-8');
            	 filebrowserUploadUrl: "/addUpPicSer"
             });
             </script>
+
