@@ -95,7 +95,11 @@ color:inherit;
 	padding: 1.4em 2em;
     
 }
-
+#followtext
+{
+	height:100px;
+	width:100%;
+}
 
 
 /*star*/
@@ -133,6 +137,9 @@ color:inherit;
   -webkit-transition: background-color 300ms ease-out, border-color 300ms ease-out;
   transition: background-color 300ms ease-out, border-color 300ms ease-out;
 }
+.btn-admin{
+	 background-color: #0e90d2;
+}
 .am-btn-primary {
   color: #ffffff;
   background-color: #0e90d2;
@@ -164,7 +171,7 @@ color:inherit;
 
 /*aboutus*/
 
-.contact{
+.contact1{
 	padding:7em 0px;
 }
 .contact-top{

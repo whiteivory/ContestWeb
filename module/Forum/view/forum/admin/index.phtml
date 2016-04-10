@@ -1,9 +1,16 @@
+<?php echo $this->headLink()
+->prependStylesheet($this->basePath() . '/css/zq.css');
+     
+?>
+
+
 <?php 
 if($this->type == 2):?>
+<h2 style="font-size:25px;font-family:'Microsoft YaHei', sans-serif;">管理员</h2><hr>
 <form action="" method="get">
-  <p>要删除的帖子id <input type="text" name="pageId" /></p>
-  <p>要删除的用户id <input type="text" name="userId" /></p>
-  <input type="submit" value="Submit" />
+  <p style="font-size:20px;font-family:'Microsoft YaHei', sans-serif;">要删除的帖子id <input type="text" name="pageId" /></p>
+  <p style="font-size:20px;font-family:'Microsoft YaHei', sans-serif;">要删除的用户id <input type="text" name="userId" /></p>
+  <div ><input class="am-btn am-btn-primary" type="submit" value="确认提交" /></div>
 </form>
 <?php else:
 print_r($this->type) ;?>
