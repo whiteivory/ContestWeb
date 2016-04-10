@@ -31,7 +31,11 @@ class RecruitForm extends Form
                              '美工' => '美工',
                              '宣传' => '宣传',
                      ),
-             )
+             ),
+             'attributes' => array(  //设置attibute，注意,不要忘加
+                 'class'=>'btn btn-default dropdown-toggle',
+                
+             ),//这里
      ));
          $this->add(array(
              'type' => 'Select',
@@ -41,7 +45,11 @@ class RecruitForm extends Form
                      '1' => '个人招募',
                      '2' => '组队招募',
                  ),
-             )
+             ),
+             'attributes' => array(  //设置attibute，注意,不要忘加
+                 'class'=>'btn btn-default dropdown-toggle',
+       
+             ),//这里
          ));
         $this->add(array(
             'type' => 'text',
@@ -76,7 +84,8 @@ class RecruitForm extends Form
             'name' => 'submit',
             'type'  => 'Submit',
             'attributes' => array(
-                'value' => 'Submit',
+                'value' => '确认提交',
+                'class'=>'am-btn am-btn-primary',
             ),
         ));
       /*   $this->add(array(
