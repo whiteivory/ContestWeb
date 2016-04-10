@@ -64,21 +64,25 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
     <div class="col-md-12"> 
      <div class="well"> 
       <!-- filterable portfolio menu starts --> 
-      <ul class="portfolioMenuWrapper " id="portfolioMenuWrapper"> 
-       <li><a id="0" onclick="jump(this.id);return false;" href="" data-type="all" class="currentPortfolioFilter">全部</a></li> 
-       <li><a id="1"  onclick="jump(this.id);return false;" href="" data-type="科研立项">科研立项</a></li> 
-       <li><a id="2" onclick="jump(this.id);return false;" href="" data-type="齐鲁软件">齐鲁软件</a></li> 
-       <li><a id="3" onclick="jump(this.id);return false;" href="" data-type="挑战杯">挑战杯</a></li> 
+      <ul class="nav nav-pills"  role="tablist"> 
+       <li class="active"><a id="0" onclick="jump(this.id);return false;" href="" data-type="all" class="currentPortfolioFilter">全部</a></li> 
+       <li><a id="1"  onclick="jump(this.id);return false;" href="" data-type="科研立项">科研立项<span class="badge">32</span></a></a></li> 
+       <li><a id="2" onclick="jump(this.id);return false;" href="" data-type="齐鲁软件">齐鲁软件<span class="badge">20</span></a></a></li> 
+       <li><a id="3" onclick="jump(this.id);return false;" href="" data-type="挑战杯">挑战杯<span class="badge">14</span></a></a></li> 
       </ul>
-      <br/> 
-      <ul class="portfolioMenuWrapper " id="portfolioMenuWrapper2"> 
-       <li><a id="t0" onclick="jump2(this.id);return false;" href="" data-type="all" class="currentPortfolioFilter">全部</a></li> 
-       <li><a id="t1" onclick="jump2(this.id);return false;" href="" >本届信息</a></li> 
-       <li><a id="t2" onclick="jump2(this.id);return false;" href="" >往届信息</a></li> 
-       <li><a id="t3" onclick="jump2(this.id);return false;" href="" >经验交流</a></li> 
-       <li><a id="t4" onclick="jump2(this.id);return false;" href="" >资源分享</a></li> 
+      <br> 
+      <ul class="nav nav-pills"  role="tablist"> 
+       <li class="active"><a id="t0" onclick="jump2(this.id);return false;" href="" data-type="all" class="currentPortfolioFilter">全部</a></li> 
+       <li><a id="t1" onclick="jump2(this.id);return false;" href="" >本届信息<span class="badge">32</span></a></li> 
+       <li><a id="t2" onclick="jump2(this.id);return false;" href="" >往届信息<span class="badge">10</span></a></li> 
+       <li><a id="t3" onclick="jump2(this.id);return false;" href="" >经验交流<span class="badge">20</span></a></li> 
+       <li><a id="t4" onclick="jump2(this.id);return false;" href="" >资源分享<span class="badge">22</span></a></li> 
+       <li><a id="t4" onclick="jump2(this.id);return false;" href="" >资源分享<span class="badge">22</span></a></li> 
+       <li><a id="t4" onclick="jump2(this.id);return false;" href="" >资源分享<span class="badge">22</span></a></li> 
+
+
       </ul>
-<br/> 
+
      </div> 
 
    <div class="recommond" id="fontadd">

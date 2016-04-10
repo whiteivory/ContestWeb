@@ -1,8 +1,17 @@
+
+<?php echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/ptt.css')
+?>  
+
+
+
+
 <div class="row"> 
     <div class="col-md-2 lead">
      <strong>招募信息</strong>
     </div> <br><br><br>
 <div>
+
 <?php
 /*
  * 
@@ -21,10 +30,10 @@ echo $this->headmeta('utf-8');
    echo $this->form()->opentag($form);//<form>
    ?>
    <?php 
-   echo '标题'.$this->formRow($form->get('rtitle')).'<br/>';
-   echo '类型'.$this->formRow($form->get('type')).'<br/>';
-   echo '标签(用,分割)'.$this->formRow($form->get('tag'));
-   echo $this->formRow($form->get('rcontent'));
+   echo '<label id="fontadd">标题：</label>'.$this->formRow($form->get('rtitle')).'<br/>';
+   echo '<label id="fontadd">类型：</label>'.$this->formRow($form->get('type'));
+   echo '<label id="fontadd">标签(用,分割)：</label>'.$this->formRow($form->get('tag'));
+   echo $this->formRow($form->get('rcontent')).'<br/>';
    echo $this->formSubmit($form->get('submit'));
    echo $this->form()->closeTag();//</form>
    ?>
@@ -36,5 +45,4 @@ echo $this->headmeta('utf-8');
            	 filebrowserUploadUrl: "/addUpPicSer"
             });
             </script>
-    </div>
-   </div>
+
