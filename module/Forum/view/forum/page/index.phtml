@@ -1,6 +1,9 @@
 <?php
 /*本页返回数据
  * 更新以下可用
+ * 推荐
+ * foreach($this->recs as $rec)
+ * 
  * $page->getPclicknum()//帖子点击量
 $page->getPreplynum()//回复量
 $page->getPzannum()//点赞数
@@ -29,19 +32,22 @@ $page->getUser()->getFaceimgpath()//头像地址
 $page->getPcontent();  //具体内容
 $
 */
-
+?>
+<?php 
 echo $this->headLink()
 ->prependStylesheet($this->basePath() . '/css/source.css');
+$title = "科研资源 | ContestWeb ";
+echo $this->headTitle($title);
 ?>
-
+<?php echo $this->headLink()
+            ->prependStylesheet($this->basePath() . '/css/zq.css')?>
 <?php
 
 
      echo $this->inlineScript()->prependFile($this->basePath('js/jump.js'));
 
 ?>
-<?php echo $this->headLink()
-            ->prependStylesheet($this->basePath() . '/css/zq.css')?>
+
 <script type="text/javascript">
 var body=document.getElementsByTagName("body"); 
 body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this->ptype;?>)");
@@ -63,6 +69,7 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
        <li><a id="2" onclick="jump(this.id);return false;" href="" data-type="齐鲁软件">齐鲁软件<span class="badge">32</span></a></li> 
        <li><a id="3" onclick="jump(this.id);return false;" href="" data-type="挑战杯">挑战杯<span class="badge">5</span></a></li> 
       </ul>
+
       <br /> 
       <ul class="nav nav-pills"  role="tablist"> 
        <li class="active"><a id="t0" onclick="jump2(this.id);return false;" href="" data-type="all" class="currentPortfolioFilter">全部</a></a></li> 
@@ -73,73 +80,76 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
        <li><a id="t4" onclick="jump2(this.id);return false;" href="" >资源分享<span class="badge">22</span></a></a></li> 
        <li><a id="t4" onclick="jump2(this.id);return false;" href="" >资源分享<span class="badge">22</span></a></a></li> 
 
-       
       </ul>
-      
-      
-      
-      
-      
-      <script >
-//       $('#portfolioMenuWrapper > li > a').click(function(){
-//     		$('.currentPortfolioFilter').removeClass('currentPortfolioFilter');
-//     		this.addClass('currentPortfolioFilter');
-//     })
-/* filterable portfolio functions start
-	$('#portfolioMenuWrapper > li > a').click(function(){
-		var filterVal = $(this).attr('data-type');
-		if(filterVal != 'all'){
-			$('.currentPortfolioFilter').removeClass('currentPortfolioFilter');
-			$(this).addClass('currentPortfolioFilter');
-			$('.portfolioFilterableItemWrapper').each(function(){
-				var itemCategories = $(this).attr("data-type").split(",");
-				if($.inArray(filterVal, itemCategories) > -1){
-					$(this).addClass('filteredPortfolioItem');
-   	       			$('.filteredPortfolioItem').stop(true, true).animate({opacity:1}, 300, 'easeOutCubic');
-				}else{
-					$(this).removeClass('filteredPortfolioItem');
-					if(!$(this).hasClass('filteredPortfolioItem')){
-						$(this).stop(true, true).animate({opacity:0.3}, 300, 'easeOutCubic');
-					};
-				};
-			});
-		}else{
-			$('.currentPortfolioFilter').removeClass('currentPortfolioFilter');
-			$(this).addClass('currentPortfolioFilter');
-			$('.filteredPortfolioItem').removeClass('filteredPortfolioItem');
-			$('.portfolioFilterableItemWrapper').stop(true, true).animate({opacity:1}, 300, 'easeOutCubic');
-		}
-		return false;
-	});
-	// filterable portfolio functions end*/
-	</script>
-      <!-- filterable portfolio menu ends --> 
+<br/> 
      </div> 
-    </div> 
-   </div> 
+
    <div class="recommond" id="fontadd">
-    <h4>您可能对以下文章感兴趣：</h4>
-    
-</div><!-- 搜索框 -->
-<form action="/search" method="get" class="input-group">
+    <h4 id="font-recom1">您可能对以下文章感兴趣：</h4>
+    <br>
+    <?php $hasFlag = false;//是否有推荐内容?>
+    <?php if($this->whetherLogIn === false):?>
+      
+         <p id="font-regular">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
+         
+    <?php elseif ($this->recs !== null):?>
+
+    <?php foreach ($this->recs as $rec):
+        $hasFlag=true;?>
+  <div class="pagelist">
+   <p id="font-regular">标题：
+   <a id="font-addsmall" href = <?="/page/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a></p>
+      
+      <hr>
+ </div>
+
+    <?php endforeach;
+          endif;?>
+    <?php if($hasFlag===false):?>
+   <p id="font-regular"> 请对您浏览的内容进行评分让我们更好得为您推荐</p>
+    <?php endif;?>
+</div>
+
+<!-- 搜索部分 -->
+ <form action="/search" method="get" class="input-group">
     <input name="q"type = "text" class="form-control" placeholder="查询内容">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">搜索</button>
+        <button class="btn btn-primary" type="button">搜索</button>
       </span>
     <!-- <input name="submitsearch" type="submit" lass="btn btn-default"> -->
-</form>
+</form><hr>
 
 
-   <hr /> 
+   <p id="font-title">搜索结果：</p>
+<br>
+<div class="span12">
+	<blockquote>
+				<p>标题：<a href="#" >文章标题名</a></p>  
+					<small>来自 <cite>用户001</cite></small>
+</blockquote>
+
+</div>
+<hr>
+<!-- 搜索结果部分 -->
+
+
+
+  </div> <!-- col-md-2 lead -->
+   </div><!-- row> -->
+   
+
+<div class="span12">
+   <p id="biaoti">资源文章列表</p><hr>
+      </div>
+
 <?php 
  foreach ($this->pages as $page): ?>
    <div class="row">
     <div class="col-md-12">
       <ul class="ask-list">
-       <li> <a href="page/<?php echo $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= $page->getPcontent() ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
+       <li> <a href="page/<?php echo $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= strip_tags($page->getPcontent()) ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
        </ul>
     </div>
    </div>
-   
 <?php endforeach ?>
 

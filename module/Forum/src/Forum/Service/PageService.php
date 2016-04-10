@@ -32,6 +32,9 @@ class PageService
         else $schID=0;
         return $this->pageMapper->findAll($secID,$ptype,$schID);
     }
+    public function getRecs(){
+        return $this->pageMapper->findRec();
+    }
 
     /**
      * {@inheritDoc}

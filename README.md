@@ -1,77 +1,67 @@
-ZendSkeletonApplication
+ContestWeb
 =======================
 
 Introduction
 ------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+This is a webset built by ZendFrameWork2 for college students communicate with each other on a variety of contest.<br/>
+This webset is consist of two main module. A Forum module for communicating which consists of recruit and resources sharing
+and a recommend system based on collabrative filtering which can be found in my another responsity [recommender-cpp](https://github.com/whiteivory/recommender-cpp).<br/>
+If you want to get it Run in your own computer you can following the following steps.
 
-Installation
-------------
+Install
+----------------
 
 Using Composer (recommended)
 ----------------------------
 The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+and use `composer` to install 
 
-    curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
+first clone this resoponsity
 
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
+        cd my/project/dir
+        git clone https://github.com/whiteivory/CotestWeb_.git
+        
+Then use composer to install vender, make sure you are in the git dir, because the nessary file composer.lock and composer.json is in this file
 
-    cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
-    cd ZendSkeletonApplication
-    php composer.phar self-update
-    php composer.phar install
-
+        curl -s https://getcomposer.org/installer | php --
+        php composer.phar self-update
+        php composer.phar install
+        
 (The `self-update` directive is to ensure you have an up-to-date `composer.phar`
 available.)
 
-Another alternative for downloading the project is to grab it via `curl`, and
-then pass it to `tar`:
-
-    cd my/project/dir
-    curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
-
-You would then invoke `composer` to install dependencies per the previous
-example.
-
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
-
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
 
 Web Server Setup
 ----------------
 
-### PHP CLI Server
-
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
-
-    php -S 0.0.0.0:8080 -t public/ public/index.php
-
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
-
-**Note: ** The built-in CLI server is *for development only*.
-
 ### Apache Setup
+You must also ensure that Apache is configured to support .htaccess files. This is usually done by changing the setting:
+
+        AllowOverride None
+        to
+        AllowOverride FileInfo
+        accoriding [zf2 document](http://framework.zend.com/manual/current/en/user-guide/overview.html)<br/>
 
 To setup apache, setup a virtual host to point to the public/ directory of the
 project and you should be ready to go! It should look something like below:
+(note that you should block the servername in your host file)
 
-    <VirtualHost *:80>
-        ServerName zf2-tutorial.localhost
-        DocumentRoot /path/to/zf2-tutorial/public
-        SetEnv APPLICATION_ENV "development"
-        <Directory /path/to/zf2-tutorial/public>
-            DirectoryIndex index.php
-            AllowOverride All
-            Order allow,deny
-            Allow from all
-        </Directory>
-    </VirtualHost>
+       <VirtualHost *:80>
+            ServerName www.contestweb.com
+            DocumentRoot /path/to/dir/public
+            SetEnv APPLICATION_ENV "development"
+            <Directory /path/to/dir/public>
+                DirectoryIndex index.php
+                AllowOverride All
+                Order allow,deny
+                Allow from all
+            </Directory>
+        </VirtualHost>
+
+Mysql setup
+----------------
+The contestweb.sql in the root directory is the source file for the Mysql. You should input into your own mysql.
+
+        create database constestweb;
+        source contestweb.sql;
+        source /to/your/gitdir/contestweb.sql;

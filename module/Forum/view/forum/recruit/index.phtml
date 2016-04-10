@@ -1,5 +1,7 @@
+
  <?php echo $this->headLink()
 ->prependStylesheet($this->basePath() . '/css/ptt.css');
+
 /*可以调用的方法*/
 /*
  *  $recruit->getRecruitID(); 帖子ID
@@ -12,8 +14,25 @@
     $recruit->getTag(); 标签
     $recruit->getUser()->getUsername();作者名称
     $recruit->getUser()->getFaceimgpath();作者头像
+    
+
  */
+
+ echo $this->headtitle("招募 | ContestWeb ");
+
+
 ?>
+    <div class="row">
+    
+    <ul class="nav navbar-nav" style="font-size:18px;margin:0 3px"> 
+            	<li class="active" style="background:#91d1e3;"><a href="#">人才招募</a></li>
+                <li class="active" style="background:#C4C4C4;color:	#7a7878"><a href="#">团队招募</a></li>
+            </ul> 
+    
+                
+
+
+
  
  <div class="btn-group" role="group" aria-label="recruittype">
               <button type="button" class="btn btn-default active">人才墙</button>
@@ -41,6 +60,7 @@
 
     $recruits=$this->recruits;
 
+
     foreach ($recruits as $recruit):?>
         <!--个人-->
           <div class="col-sm-6 col-md-3">
@@ -61,6 +81,10 @@
                 <p class="text-center"><a href="#" class="btn btn-primary" role="button">Ta的简历</a> <a href="#" class="btn btn-default" role="button">个人主页</a></p>
               </div>
             </div>
+
+        </div>
+
+
           </div>
           
            <!--团队-->
@@ -69,6 +93,7 @@
             <div class="thumbnail">
              
               <div class="caption">
+
                
                <div class="row">
                		<div class="col-md-4"><img src="<?=$recruit->getUser()->getFaceimgpath(); ?>" alt="..." class="img-rounded teamimg"></div>

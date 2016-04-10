@@ -1,5 +1,6 @@
 <?php echo $this->headLink()
-            ->prependStylesheet($this->basePath() . '/css/ptt.css')?>
+            ->prependStylesheet($this->basePath() . '/css/ptt.css')
+?>
 
    
 <!-- <label class="fontradd">
@@ -17,7 +18,7 @@ echo $this->headmeta('utf-8');
    echo $this->headScript()
         ->prependFile($this->basePath() . '/ckeditor/ckeditor.js')
         ->prependFile($this->basePath() . '/ckeditor/config.js'); //这一行 
-   
+   echo $this->headtitle("添加 | ContestWeb ");
    $form = $this->recruitform;
    $form->setAttribute('action', $this->url());
    $form->prepare();

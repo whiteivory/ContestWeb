@@ -75,7 +75,7 @@ use Forum\Model\Recruit;
             $sql =$sql." tag='$tag' "."and ";
         }
         $sql=$sql."schID =$schID"." and ";
-        $sql=$sql."type = $type";
+        $sql=$sql."recruit.type = $type";
         $statement=$this->dbAdapter->query($sql);
         $result=$statement->execute();
 //         foreach ($result as $row){
