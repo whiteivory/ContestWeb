@@ -4,7 +4,8 @@
 
   body {
     background: #fff;
-    font-family: 'Lato', sans-serif;
+  	background:url(../img/bg.png);
+    font-family: "Microsoft YaHei";
     font-weight: 300;
     font-size: 14px;
     line-height: 22px;
@@ -44,7 +45,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', sans-serif;
+   font-family: "Microsoft YaHei";
     font-weight: 300;
   }
 
@@ -73,13 +74,13 @@
     font-size: 14px;
     color: #0099ae;
     border: 1px solid #0099ae;
-    font-family: 'Open Sans', sans-serif;
+   font-family: "Microsoft YaHei";
     font-weight: 300;
     padding: 10px 25px;
   }
 
   #action .col-sm-5{
-    position: absolute;
+    
 
     top: 0;
     height: 100%;
@@ -242,24 +243,17 @@
 #page-breadcrumb{
   position: relative;
 }
-
+#bgimg{
+	background:url(../img/bg1.png);
+	padding-top:10px; 
+	padding-bottom:20px;
+	padding-left:50px;
+}
 #page-breadcrumb {
   /*border-bottom:3px solid #c0c9f7;*/
-  /*background-color: #eae8e8;*/
-
-background: -ms-linear-gradient(bottom,#d5d5d9,#bfb7d7);        /* IE 10 */
-
-background:-moz-linear-gradient(bottom,#d5d5d9,#bfb7d7);/*火狐*/ 
-
-background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#d5d5d9), to(#bfb7d7));/*谷歌*/ 
-
-background: -webkit-linear-gradient(bottom,#d5d5d9,#bfb7d7);   /*Safari5.1 Chrome 10+*/
-
-
-
 height:120px;
   padding-top:20px;
-  background:-moz-linear-gradient(bottom,#d5d5d9,#bfb7d7);
+  
   background-position: center;
   display: table;
   position: static;
