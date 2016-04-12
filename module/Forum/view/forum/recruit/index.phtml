@@ -36,15 +36,25 @@
         <br><br>
         
        <div class="well"> 
-        <ul class="nav nav-pills">
-          <li role="presentation" class="active"><a href="#">全部</a></li>
-          <li role="presentation"><a href="#">计算机</a></li>
-          <li role="presentation"><a href="#">科研立项</a></li>
-          <li role="presentation"><a href="#">后台</a></li>
-          <li role="presentation"><a href="#">美工</a></li>
+        <ul class="nav nav-pills" id="rul">
+          <li role="presentation" class="active" onclick="javascript:changeColor(this)"><a href="#">全部</a></li>
+          <li role="presentation" onclick="javascript:changeColor(this)"><a href="#">计算机</a></li>
+          <li role="presentation" onclick="javascript:changeColor(this)"><a href="#">科研立项</a></li>
+          <li role="presentation" onclick="javascript:changeColor(this)"><a href="#">后台</a></li>
+          <li role="presentation" onclick="javascript:changeColor(this)"><a href="#">美工</a></li>
         </ul>
 
       </div>
+      <script type="text/javascript">
+      var myRul=document.getElementById("rul");
+      var myRli=myRul.getElementsByTagName("li");
+      function changeColor(x){
+  	     for(var i=0;i<myRli.length;i++){
+  	  	     myRli[i].className="";
+          };
+          x.className="active";
+      }
+      </script>
         <div class="row">
         <?php 
 
