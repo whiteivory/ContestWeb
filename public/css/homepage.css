@@ -5,7 +5,7 @@
   body {
     background: #fff;
   	background:url(../img/bg.png);
-    font-family: 'Lato', sans-serif;
+    font-family: "Microsoft YaHei";
     font-weight: 300;
     font-size: 14px;
     line-height: 22px;
@@ -45,7 +45,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', sans-serif;
+   font-family: "Microsoft YaHei";
     font-weight: 300;
   }
 
@@ -74,7 +74,7 @@
     font-size: 14px;
     color: #0099ae;
     border: 1px solid #0099ae;
-    font-family: 'Open Sans', sans-serif;
+   font-family: "Microsoft YaHei";
     font-weight: 300;
     padding: 10px 25px;
   }
