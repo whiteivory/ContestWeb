@@ -69,10 +69,10 @@ color:inherit;
 	font-family: "Microsoft YaHei";
 }
 #font-recom1{
-	font-size:20px;font-family:'Microsoft YaHei', sans-serif;
+	font-size:20px;font-family:'Microsoft YaHei';
 }
 #font-recom2{
-	font-family:'Microsoft YaHei', sans-serif;
+	font-family:'Microsoft YaHei';
 	font-size:1.2em;
 	color:#0e90c2;
 	padding: 1.4em 2em;
