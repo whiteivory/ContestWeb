@@ -191,12 +191,14 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
 
     <?php foreach ($this->recs as $rec):
         $hasFlag=true;?>
+         <div class="row row-offcavnas row-offcanvas-right">
+   <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
          <div class="list-group">
-     <a href="#" class="list-group-item active">默认推荐文章列表</a>
+     <a href="#" class="list-group-item active">推荐适合您的文章：</a>
         <a  href=<?="/p/".$rec->getPageID(); ?> class="list-group-item"><?= $rec->getPtitle(); ?></a>
      </div>
         
-       
+       </div></div>
 
  
   <!-- <div class="pagelist">
