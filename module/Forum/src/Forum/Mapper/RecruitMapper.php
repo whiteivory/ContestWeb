@@ -92,6 +92,27 @@ use Forum\Model\Recruit;
 
         return array();
      }
+     //发现推荐并且发表了招募申请的用户
+     public function findSimi($userId){
+         $sql = "select user.userID userID,username,recruitID,rtitle,faceimgpath  from (recfris join recruit on recfris.friendId = recruit.userID) 
+            join user on recfris.friendId = user.userID
+             where recfris.userId = $userId 
+            order by simi desc";
+         $statement=$this->dbAdapter->query($sql);
+         $result=$statement->execute();
+//                  foreach ($result as $row){
+//                      Debug::dump($row);
+//                  }
+         if ($result instanceof ResultInterface && $result->isQueryResult()) {
+             $resultSet = new WHydrateResultset($this->hydrator, $this->recruitPrototype,$this->prototypeArr);
+             $tmp=$resultSet->initialize($result);
+//                           foreach ($resultSet as $row){
+//                               Debug::dump($row);
+//                           }
+             return $tmp;
+         }
+         return array();
+     }
      //单纯的resultset方式
      public function findAllres(){
          $sql    = new Sql($this->dbAdapter);

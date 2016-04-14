@@ -1,4 +1,5 @@
 <?php 
+
 $users = simplexml_load_file("recs.xml");
 $ar = array();
 foreach ($users as $u){
@@ -69,5 +70,38 @@ foreach ($ar as $_u){
         $stmt->execute(array($userId,$friId,$s,$s));
     }
 }
+
+//itemSimi.xml 基于item相似性推荐相似文章
+$items = simplexml_load_file("itemSimi.xml");
+$ar = array();
+foreach ($items as $i){
+    $m_i = array();
+    $recarr = array();
+    $m_i['itemId'] = $i->ItemId->__toString();
+    $simiarr = array();
+    foreach ($i->Simi as $s){
+        $simitmp = array();
+        //var_dump($s);
+        $simitmp['simiId'] = $s->SimiId->__toString();
+        $simitmp['similarity'] = $s->Similarity->__toString();
+        $simiarr[] = $simitmp;
+    }
+    $m_i['similist'] = $simiarr;
+    $ar[] = $m_i;
+}
+
+foreach ($ar as $_i){
+    $sqlstr = "insert into simipages(itemId,simiId,similarity) values(?,?,?)
+        on duplicate key update similarity = ? ";
+    $itemId = $_i['itemId'];
+
+    foreach ($_i['similist'] as $_s){
+        $friId = $_s['simiId'];
+        $s = $_s['similarity'];
+        $stmt = $dbh->prepare($sqlstr);
+        $stmt->execute(array($itemId,$friId,$s,$s));
+    }
+}
+
 $dbh= null;
 ?>
