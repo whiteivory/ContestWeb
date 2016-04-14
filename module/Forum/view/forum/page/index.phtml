@@ -137,32 +137,46 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
            <?php endforeach;?>
            </ul>
           </nav>
-     
-
-
   </div> <!-- row -->
    </div><!-- col-xs-12 col-sm-9 -->
    
    
    
  <!-- 右侧推荐部分 -->  
-<div class="recommond" id="fontadd">
+<div class="recommond">
     <br>
     <?php $hasFlag = false;//是否有推荐内容?>
     <?php if($this->whetherLogIn === false):?>
       
-         <p id="fontmin">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
          
+          
+        <div class="row row-offcavnas row-offcanvas-right">
+   <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+   <p id="fontmin">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
+       <div class="list-group">
+     <a href="#" class="list-group-item active">默认推荐文章列表</a>
+        <a  href="#" class="list-group-item">推荐1</a>
+     <a  href="#" class="list-group-item">推荐2</a>
+     <a  href="#" class="list-group-item">推荐3</a>
+     <a  href="#" class="list-group-item">推荐4</a>
+     <a  href="#" class="list-group-item">推荐5</a>
+     <a  href="#" class="list-group-item">推荐6</a></div>
     <?php elseif ($this->recs !== null):?>
 
     <?php foreach ($this->recs as $rec):
         $hasFlag=true;?>
-  <div class="pagelist">
+         <div class="list-group">
+     <a href="#" class="list-group-item active">默认推荐文章列表</a>
+        <a  href=<?="/p/".$rec->getPageID(); ?> class="list-group-item"><?= $rec->getPtitle(); ?></a>
+     </div>
+        
+       
+
+ 
+  <!-- <div class="pagelist">
    <p id="font-regular">标题：
    <a id="font-addsmall" href = <?="/p/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a></p>
-      
-      <hr>
- </div>
+      <hr> </div>-->
 
     <?php endforeach;
           endif;?>
@@ -171,22 +185,5 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
     <?php endif;?>
 </div>
 
-<p id="createResult"></p>
-   <div class="row row-offcavnas row-offcanvas-right">
-   <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-    <div class="list-group">
-     <a href="#" class="list-group-item active">推荐文章列表</a>
-     <a  href="#" class="list-group-item">推荐1</a>
-     <a  href="#" class="list-group-item">推荐2</a>
-     <a  href="#" class="list-group-item">推荐3</a>
-     <a  href="#" class="list-group-item">推荐4</a>
-     <a  href="#" class="list-group-item">推荐5</a>
-     <a  href="#" class="list-group-item">推荐6</a>
-     
-    
-    </div></div>
-    
-    </div>
-    
-    </div><!-- row row-offcavnas row-offcanvas-right -->
+</div></div><!-- row row-offcavnas row-offcanvas-right -->
     <!-- 右侧推荐部分 -->  
