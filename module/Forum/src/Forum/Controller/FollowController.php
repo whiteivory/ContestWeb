@@ -79,7 +79,8 @@ class FollowController extends AbstractActionController{
             'page' => $page,
             'follows'=>$follows,
             'form'=>$form,
-            'whetherLogin'=>$whetherlogin
+            'whetherLogin'=>$whetherlogin,
+            'simi'=>$this->getFollowService()->getSimi($id)
         ));
     }
     /**

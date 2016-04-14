@@ -4,6 +4,9 @@
 
 /*可以调用的方法*/
 /*
+ * 推荐
+ * 
+ * 
  *  $recruit->getRecruitID(); 帖子ID
     $recruit->getRtitle(); 标题
     $recruit->getRtime(); //未完成
@@ -15,7 +18,7 @@
     $recruit->getUser()->getUsername();作者名称
     $recruit->getUser()->getFaceimgpath();作者头像
     
-
+    
  */
 
  echo $this->headtitle("招募 | ContestWeb ");
@@ -141,7 +144,17 @@
             </li>
           </ul>
         </nav>*/?>
-        
+<!--         推荐 -->
+<?php 
+    if($this->islogin === true&&$this->type == 1):
+?>
+    <h2>您可能对这些用户招募感兴趣:</h2>
+    <?php foreach ($this->recs as $r):?>
+    <p>用户名:<?= $r->getUser()->getUsername();?><p>
+    用户头像：<img src="<?=$r->getUser()->getFaceimgpath(); ?>"><br>
+    标题：<a href = "/recruit/<?=$r->getRecruitID(); ?>"><?= $r->getRtitle()?></a>
+    <?php endforeach;endif;?>
+    
 <?php     
     //最后添加js
     echo $this->inlineScript()->prependFile($this->basepath('/js/pttmain.js'));

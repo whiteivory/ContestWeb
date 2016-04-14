@@ -36,10 +36,23 @@ protected $recruitService;
             $type=$request->getQuery()['type'];
         }
         if($type!=1&&$type!=2) $type=1;
+        //获取推荐数据
+        $auth = WAuthUtil::get_auth();
+        $islogin = false;
+        $userId = null;
+        $recs = null;
+        if($auth !== null){
+            $islogin =true;
+            $userId = $auth->userID;
+            $recs = $this->recruitService->getSimis($userId);
+        }
+        
         WAuthUtil::addUserpanelToLayout($this, '/recruit');
         return new ViewModel(array(
             'type'=>$type,
             'recruits' => $this->recruitService->getRecruits($tag,$type),
+            'recs'=>$recs,
+            'islogin'=>$islogin
         ));
     }
     public function getservice(){

@@ -4,7 +4,7 @@ $page=$this->page->current();
 $form=$this->form;
 $follows=$this->follows;
 $whetherLogin = $this->whetherLogin;
-
+$simis = $this->simi;
 
 /*更新可用：
  * $page->getPtime()//发帖时间
@@ -131,13 +131,10 @@ $(document).ready(function(){
    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
     <div class="list-group">
      <a href="#" class="list-group-item active">相关此文件的资源列表</a>
-     <a  href="#" class="list-group-item">资源1</a>
-     <a  href="#" class="list-group-item">资源2</a>
-     <a  href="#" class="list-group-item">资源3</a>
-     <a  href="#" class="list-group-item">资源4</a>
-     <a  href="#" class="list-group-item">资源5</a>
-     <a  href="#" class="list-group-item">资源6</a>
-     <a  href="#" class="list-group-item">资源7</a>
+     <?php foreach ($simis as $p):?>
+     
+     <a  href="/p/<?=$p->getPageID() ?>" class="list-group-item"><?= $p->getPtitle() ?></a>
+    <?php endforeach;?>
     
     </div></div>
     

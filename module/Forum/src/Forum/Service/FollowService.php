@@ -13,6 +13,9 @@ class FollowService{
         // TODO: Implement findAllPosts() method.
         return $this->followMapper->findAll($pageID);
     }
+    public function getSimi($pageID){
+        return $this->followMapper->getSimi($pageID);
+    }
     public function saveFollow(Follow $followObject){
         $followObject->setFollowID($this->getNewFollowID());
         $this->followMapper->save($followObject);

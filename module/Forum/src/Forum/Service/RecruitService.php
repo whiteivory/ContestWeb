@@ -31,7 +31,9 @@ class RecruitService
         else $schID=0;
         return $this->recruitMapper->findAll($schID,$tag,$type);
     }
-    
+    public function getSimis($userId){
+        return $this->recruitMapper->findSimi($userId);
+    }
     /**
      * {@inheritDoc}
      */
