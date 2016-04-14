@@ -89,11 +89,16 @@ color:inherit;
     font-weight: bold;
 }
 #font-addsmall{
-	font-family: "Times New Roman";
+	font-family: "Microsoft YaHei";
 	font-size:1.1em;
 	color:#0e90c2;
 	padding: 1.4em 2em;
     
+}
+#fontmin{
+	font-family: "Microsoft YaHei";
+	font-size:0.9em;
+	color:#286090;
 }
 #followtext
 {
@@ -163,16 +168,10 @@ color:inherit;
 	 border-radius: 16px;
 	position: relative;
 	max-width:83%;
-	max-width:expression((document.documentElement.clientWidth||document.body.clientWidth) > 70? "70%": "auto");  
 	max-height:400px;
-	height:400px;
-	height:expression(document.body.clientWidth>400?"400px":"auto");
-	overflow:hidden;
+	height:expression(document.body.clientWidth>400?"400px":"auto");*/
+	display: block;	
 	
-	
-}
-.forimg{
-	margin:0 auto;  padding:0; 
 }
 
 /*aboutus*/
