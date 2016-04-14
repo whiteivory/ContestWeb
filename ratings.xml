@@ -1,33 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Ratings>
  <Rating>
-  <UserId>1</UserId>
-  <ItemId>1000</ItemId>
-  <Star>2</Star>
+  <UserId>4</UserId>
+  <ItemId>1012</ItemId>
+  <Star>5</Star>
  </Rating>
  <Rating>
-  <UserId>2</UserId>
-  <ItemId>1000</ItemId>
-  <Star>4</Star>
+  <UserId>5</UserId>
+  <ItemId>1012</ItemId>
+  <Star>5</Star>
  </Rating>
  <Rating>
-  <UserId>2</UserId>
-  <ItemId>1001</ItemId>
+  <UserId>4</UserId>
+  <ItemId>1048</ItemId>
   <Star>3</Star>
  </Rating>
  <Rating>
-  <UserId>1</UserId>
-  <ItemId>1002</ItemId>
+  <UserId>6</UserId>
+  <ItemId>1048</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>7</UserId>
+  <ItemId>1048</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>5</UserId>
+  <ItemId>1049</ItemId>
   <Star>5</Star>
  </Rating>
  <Rating>
-  <UserId>1</UserId>
-  <ItemId>1003</ItemId>
+  <UserId>7</UserId>
+  <ItemId>1049</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>4</UserId>
+  <ItemId>1050</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>5</UserId>
+  <ItemId>1050</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>6</UserId>
+  <ItemId>1050</ItemId>
+  <Star>5</Star>
+ </Rating>
+ <Rating>
+  <UserId>7</UserId>
+  <ItemId>1050</ItemId>
+  <Star>5</Star>
+ </Rating>
+ <Rating>
+  <UserId>4</UserId>
+  <ItemId>1051</ItemId>
+  <Star>5</Star>
+ </Rating>
+ <Rating>
+  <UserId>4</UserId>
+  <ItemId>1052</ItemId>
   <Star>2</Star>
  </Rating>
  <Rating>
-  <UserId>2</UserId>
-  <ItemId>1004</ItemId>
+  <UserId>5</UserId>
+  <ItemId>1052</ItemId>
+  <Star>2</Star>
+ </Rating>
+ <Rating>
+  <UserId>6</UserId>
+  <ItemId>1052</ItemId>
+  <Star>3</Star>
+ </Rating>
+ <Rating>
+  <UserId>7</UserId>
+  <ItemId>1053</ItemId>
   <Star>5</Star>
+ </Rating>
+ <Rating>
+  <UserId>5</UserId>
+  <ItemId>1054</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>6</UserId>
+  <ItemId>1054</ItemId>
+  <Star>5</Star>
+ </Rating>
+ <Rating>
+  <UserId>4</UserId>
+  <ItemId>1055</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>6</UserId>
+  <ItemId>1055</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>7</UserId>
+  <ItemId>1055</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>6</UserId>
+  <ItemId>1056</ItemId>
+  <Star>4</Star>
+ </Rating>
+ <Rating>
+  <UserId>7</UserId>
+  <ItemId>1056</ItemId>
+  <Star>3</Star>
  </Rating>
 </Ratings>
