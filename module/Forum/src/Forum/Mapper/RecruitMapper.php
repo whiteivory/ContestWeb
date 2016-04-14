@@ -96,7 +96,7 @@ use Forum\Model\Recruit;
      public function findSimi($userId){
          $sql = "select user.userID userID,username,recruitID,rtitle,faceimgpath  from (recfris join recruit on recfris.friendId = recruit.userID) 
             join user on recfris.friendId = user.userID
-             where recfris.userId = $userId 
+             where recfris.userId = $userId and simi <> 0
             order by simi desc";
          $statement=$this->dbAdapter->query($sql);
          $result=$statement->execute();

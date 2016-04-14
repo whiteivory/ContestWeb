@@ -14,15 +14,15 @@
             <PredictRating>4.384615384615385</PredictRating>
         </Item>
         <Simi>
-            <SimiId>7</SimiId>
+            <SimiId>5</SimiId>
             <Similarity>1</Similarity>
         </Simi>
         <Simi>
-            <SimiId>6</SimiId>
+            <SimiId>7</SimiId>
             <Similarity>0.66666666666666663</Similarity>
         </Simi>
         <Simi>
-            <SimiId>5</SimiId>
+            <SimiId>6</SimiId>
             <Similarity>0.625</Similarity>
         </Simi>
     </User>
@@ -41,15 +41,15 @@
             <PredictRating>4</PredictRating>
         </Item>
         <Simi>
-            <SimiId>7</SimiId>
+            <SimiId>4</SimiId>
             <Similarity>1</Similarity>
         </Simi>
         <Simi>
-            <SimiId>6</SimiId>
+            <SimiId>7</SimiId>
             <Similarity>0</Similarity>
         </Simi>
         <Simi>
-            <SimiId>4</SimiId>
+            <SimiId>6</SimiId>
             <Similarity>0</Similarity>
         </Simi>
     </User>
@@ -72,11 +72,11 @@
             <Similarity>0.875</Similarity>
         </Simi>
         <Simi>
-            <SimiId>5</SimiId>
+            <SimiId>4</SimiId>
             <Similarity>0.625</Similarity>
         </Simi>
         <Simi>
-            <SimiId>4</SimiId>
+            <SimiId>5</SimiId>
             <Similarity>0</Similarity>
         </Simi>
     </User>
@@ -99,11 +99,11 @@
             <Similarity>0.875</Similarity>
         </Simi>
         <Simi>
-            <SimiId>5</SimiId>
+            <SimiId>4</SimiId>
             <Similarity>0.66666666666666663</Similarity>
         </Simi>
         <Simi>
-            <SimiId>4</SimiId>
+            <SimiId>5</SimiId>
             <Similarity>0</Similarity>
         </Simi>
     </User>

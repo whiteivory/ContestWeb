@@ -79,7 +79,7 @@ class FollowMapper
     public function getSimi($pageID){
         //注意这里sql语句别名的运用刚好满足hydrate的对应
         $sql="select simipages.simiId pageID,userID,ptitle,ptime,pcontent,pzannum from simipages join page 
-            on simipages.simiId = page.pageID where itemId=$pageID and pallow = 1 order by similarity desc";
+            on simipages.simiId = page.pageID where itemId=$pageID and pallow = 1 and similarity<> 0 order by similarity desc";
         
         //         echo $sql;
         $statement=$this->dbAdapter->query($sql);
