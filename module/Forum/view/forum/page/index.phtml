@@ -1,8 +1,6 @@
 <?php
 use Application\Common\Page;
 /*本页返回数据
- * $this->secID
- * $this->ptype
  * 更新以下可用
  * 推荐
  * foreach($this->recs as $rec)
@@ -56,13 +54,13 @@ var body=document.getElementsByTagName("body");
 body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this->ptype;?>)");
 </script>
 
-<div class="row row-offcavnas row-offcanvas-right">
-<div class="col-xs-12 col-sm-9">
+
 <div class="row"> 
     <div class="col-md-2 lead">
      <strong>全部资源</strong>
     </div> 
-   
+   </div> 
+   <div class="row"> 
     <div class="col-md-12"> 
      <div class="well"> 
       <!-- filterable portfolio menu starts --> 
@@ -109,9 +107,35 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
  </script>
      </div> 
 
+   <div class="recommond" id="fontadd">
+    <h4 id="font-recom1">您可能对以下文章感兴趣：</h4>
+    <br>
+    <?php $hasFlag = false;//是否有推荐内容?>
+    <?php if($this->whetherLogIn === false):?>
+      
+         <p id="font-regular">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
+         
+    <?php elseif ($this->recs !== null):?>
+
+    <?php foreach ($this->recs as $rec):
+        $hasFlag=true;?>
+  <div class="pagelist">
+   <p id="font-regular">标题：
+   <a id="font-addsmall" href = <?="/p/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a></p>
+      
+      <hr>
+ </div>
+
+    <?php endforeach;
+          endif;?>
+    <?php if($hasFlag===false):?>
+   <p id="font-regular"> 请对您浏览的内容进行评分让我们更好得为您推荐</p>
+    <?php endif;?>
+</div>
+
 <!-- 搜索部分 -->
  <form action="/search" method="get" class="input-group">
-    <input name="q" type = "text" class="form-control" placeholder="查询内容">
+    <input name="q"type = "text" class="form-control" placeholder="查询内容">
       <span class="input-group-btn">
         <button class="btn btn-primary" type="button">搜索</button>
       </span>
@@ -130,17 +154,31 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
 </div>
 <hr>
 <!-- 搜索结果部分 -->
+
+
+
+  </div> <!-- col-md-2 lead -->
+   </div><!-- row> -->
+   
+
 <div class="span12">
    <p id="biaoti">资源文章列表</p><hr>
       </div>
-</div> 
 
-     <?php 
+      
+<?php 
  foreach ($this->pages as $page): ?>
    <div class="row">
     <div class="col-md-12">
       <ul class="ask-list">
-       <li> <a href="/p/<?php echo $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= strip_tags($page->getPcontent()) ?> </p> <span class="ask-descrip">2015/10/10 8:00</span> </li>
+       <li> <a href="/p/<?php echo $page->getPageID() ?>"> <h4><?= $page->getPtitle() ?></h4> </a> <p><?= strip_tags($page->getPcontent()) ?> </p> 
+        <span class="ask-descrip">
+        <ul class="nav navbar-nav post-nav">
+            <li style="margin-right: 30px;"><i class="fa fa-tag"></i>日期 2015/2/14</li>
+            <li style="margin-right: 30px;"><i class="fa fa-heart"></i>点击量 88</li>
+            <li><i class="fa fa-comments"></i>评论 3</li>
+        </ul>
+        </span>
        </ul>
     </div>
    </div>
@@ -165,40 +203,3 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
            <?php endforeach;?>
            </ul>
           </nav>
-  </div> <!-- row -->
-   </div><!-- col-xs-12 col-sm-9 -->
-   
-   
-   
- <!-- 右侧推荐部分 -->  
- <div class="row row-offcavnas row-offcanvas-right">
-   <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-<div class="recommond">
-    <br>
-    <?php $hasFlag = false;//是否有推荐内容?>
-    <?php if($this->whetherLogIn === false):?> 
-   <p id="fontmin">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
-      
-    <?php elseif ($this->recs !== null):?>
-    <div class="list-group">
-    <a href="#" class="list-group-item active">默认推荐文章列表</a>
- <?php foreach ($this->recs as $rec):
-        $hasFlag=true;?>
-     <a  href=<?="/p/".$rec->getPageID(); ?> class="list-group-item">
-     <?= $rec->getPtitle(); ?></a>
-
-  <!-- <div class="pagelist">
-   <p id="font-regular">标题：
-   <a id="font-addsmall" href = <?="/p/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a></p>
-      <hr> </div>-->
-
-        
-    <?php endforeach;
-          endif;?>
-    <?php if($hasFlag===false):?>
-   <p id="fontmin"> 请对浏览的内容进行评分以得到更好推荐</p>
-    <?php endif;?>
-
-</div>
-</div></div></div><!-- row row-offcavnas row-offcanvas-right -->
-    <!-- 右侧推荐部分 -->  
