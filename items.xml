@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Items>
  <Item>
+  <ItemId>1004</ItemId>
+  <Rating>
+   <UserId>8</UserId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <UserId>9</UserId>
+   <star>5</star>
+  </Rating>
+ </Item>
+ <Item>
   <ItemId>1012</ItemId>
   <Rating>
    <UserId>4</UserId>
@@ -9,6 +20,117 @@
   <Rating>
    <UserId>5</UserId>
    <star>5</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1013</ItemId>
+  <Rating>
+   <UserId>8</UserId>
+   <star>3</star>
+  </Rating>
+  <Rating>
+   <UserId>10</UserId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <UserId>11</UserId>
+   <star>4</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1014</ItemId>
+  <Rating>
+   <UserId>11</UserId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <UserId>9</UserId>
+   <star>5</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1015</ItemId>
+  <Rating>
+   <UserId>8</UserId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <UserId>9</UserId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <UserId>10</UserId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <UserId>11</UserId>
+   <star>5</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1016</ItemId>
+  <Rating>
+   <UserId>8</UserId>
+   <star>5</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1017</ItemId>
+  <Rating>
+   <UserId>8</UserId>
+   <star>2</star>
+  </Rating>
+  <Rating>
+   <UserId>9</UserId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <UserId>10</UserId>
+   <star>3</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1018</ItemId>
+  <Rating>
+   <UserId>11</UserId>
+   <star>5</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1019</ItemId>
+  <Rating>
+   <UserId>9</UserId>
+   <star>2</star>
+  </Rating>
+  <Rating>
+   <UserId>10</UserId>
+   <star>5</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1020</ItemId>
+  <Rating>
+   <UserId>8</UserId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <UserId>10</UserId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <UserId>11</UserId>
+   <star>4</star>
+  </Rating>
+ </Item>
+ <Item>
+  <ItemId>1021</ItemId>
+  <Rating>
+   <UserId>11</UserId>
+   <star>3</star>
+  </Rating>
+  <Rating>
+   <UserId>10</UserId>
+   <star>4</star>
   </Rating>
  </Item>
  <Item>
@@ -40,20 +162,20 @@
  <Item>
   <ItemId>1050</ItemId>
   <Rating>
-   <UserId>6</UserId>
-   <star>5</star>
-  </Rating>
-  <Rating>
-   <UserId>7</UserId>
-   <star>5</star>
-  </Rating>
-  <Rating>
    <UserId>4</UserId>
    <star>4</star>
   </Rating>
   <Rating>
    <UserId>5</UserId>
    <star>4</star>
+  </Rating>
+  <Rating>
+   <UserId>6</UserId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <UserId>7</UserId>
+   <star>5</star>
   </Rating>
  </Item>
  <Item>
@@ -88,12 +210,12 @@
  <Item>
   <ItemId>1054</ItemId>
   <Rating>
-   <UserId>5</UserId>
-   <star>4</star>
-  </Rating>
-  <Rating>
    <UserId>6</UserId>
    <star>5</star>
+  </Rating>
+  <Rating>
+   <UserId>5</UserId>
+   <star>4</star>
   </Rating>
  </Item>
  <Item>

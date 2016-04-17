@@ -4,10 +4,6 @@
   <UserId>4</UserId>
   <UserName>user1_1</UserName>
   <Rating>
-   <PageId>1012</PageId>
-   <star>5</star>
-  </Rating>
-  <Rating>
    <PageId>1052</PageId>
    <star>2</star>
   </Rating>
@@ -16,8 +12,8 @@
    <star>3</star>
   </Rating>
   <Rating>
-   <PageId>1055</PageId>
-   <star>4</star>
+   <PageId>1012</PageId>
+   <star>5</star>
   </Rating>
   <Rating>
    <PageId>1050</PageId>
@@ -27,20 +23,20 @@
    <PageId>1051</PageId>
    <star>5</star>
   </Rating>
+  <Rating>
+   <PageId>1055</PageId>
+   <star>4</star>
+  </Rating>
  </User>
  <User>
   <UserId>5</UserId>
   <UserName>user1_2</UserName>
   <Rating>
-   <PageId>1054</PageId>
-   <star>4</star>
-  </Rating>
-  <Rating>
    <PageId>1049</PageId>
    <star>5</star>
   </Rating>
   <Rating>
-   <PageId>1050</PageId>
+   <PageId>1054</PageId>
    <star>4</star>
   </Rating>
   <Rating>
@@ -51,18 +47,14 @@
    <PageId>1012</PageId>
    <star>5</star>
   </Rating>
+  <Rating>
+   <PageId>1050</PageId>
+   <star>4</star>
+  </Rating>
  </User>
  <User>
   <UserId>6</UserId>
   <UserName>user1_3</UserName>
-  <Rating>
-   <PageId>1054</PageId>
-   <star>5</star>
-  </Rating>
-  <Rating>
-   <PageId>1048</PageId>
-   <star>4</star>
-  </Rating>
   <Rating>
    <PageId>1055</PageId>
    <star>4</star>
@@ -72,19 +64,35 @@
    <star>5</star>
   </Rating>
   <Rating>
-   <PageId>1056</PageId>
+   <PageId>1048</PageId>
    <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1054</PageId>
+   <star>5</star>
   </Rating>
   <Rating>
    <PageId>1052</PageId>
    <star>3</star>
+  </Rating>
+  <Rating>
+   <PageId>1056</PageId>
+   <star>4</star>
   </Rating>
  </User>
  <User>
   <UserId>7</UserId>
   <UserName>user1_4</UserName>
   <Rating>
-   <PageId>1048</PageId>
+   <PageId>1053</PageId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <PageId>1056</PageId>
+   <star>3</star>
+  </Rating>
+  <Rating>
+   <PageId>1049</PageId>
    <star>4</star>
   </Rating>
   <Rating>
@@ -92,20 +100,120 @@
    <star>4</star>
   </Rating>
   <Rating>
-   <PageId>1049</PageId>
-   <star>4</star>
-  </Rating>
-  <Rating>
-   <PageId>1056</PageId>
-   <star>3</star>
-  </Rating>
-  <Rating>
    <PageId>1050</PageId>
    <star>5</star>
   </Rating>
   <Rating>
-   <PageId>1053</PageId>
+   <PageId>1048</PageId>
+   <star>4</star>
+  </Rating>
+ </User>
+ <User>
+  <UserId>8</UserId>
+  <UserName>user2_1</UserName>
+  <Rating>
+   <PageId>1015</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1016</PageId>
    <star>5</star>
+  </Rating>
+  <Rating>
+   <PageId>1020</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1004</PageId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <PageId>1017</PageId>
+   <star>2</star>
+  </Rating>
+  <Rating>
+   <PageId>1013</PageId>
+   <star>3</star>
+  </Rating>
+ </User>
+ <User>
+  <UserId>9</UserId>
+  <UserName>user2_2</UserName>
+  <Rating>
+   <PageId>1004</PageId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <PageId>1019</PageId>
+   <star>2</star>
+  </Rating>
+  <Rating>
+   <PageId>1017</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1015</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1014</PageId>
+   <star>5</star>
+  </Rating>
+ </User>
+ <User>
+  <UserId>10</UserId>
+  <UserName>user2_3</UserName>
+  <Rating>
+   <PageId>1013</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1019</PageId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <PageId>1017</PageId>
+   <star>3</star>
+  </Rating>
+  <Rating>
+   <PageId>1021</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1020</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1015</PageId>
+   <star>5</star>
+  </Rating>
+ </User>
+ <User>
+  <UserId>11</UserId>
+  <UserName>user2_4</UserName>
+  <Rating>
+   <PageId>1014</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1020</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1015</PageId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <PageId>1013</PageId>
+   <star>4</star>
+  </Rating>
+  <Rating>
+   <PageId>1018</PageId>
+   <star>5</star>
+  </Rating>
+  <Rating>
+   <PageId>1021</PageId>
+   <star>3</star>
   </Rating>
  </User>
 </Users>
