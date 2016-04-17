@@ -1,32 +1,110 @@
 <UserRecs>
     <User>
-        <UserId>1</UserId>
+        <UserId>4</UserId>
         <Item>
-            <ItemId>1004</ItemId>
+            <ItemId>1053</ItemId>
             <PredictRating>5</PredictRating>
         </Item>
         <Item>
-            <ItemId>1001</ItemId>
-            <PredictRating>3</PredictRating>
+            <ItemId>1049</ItemId>
+            <PredictRating>4.5999999999999996</PredictRating>
+        </Item>
+        <Item>
+            <ItemId>1054</ItemId>
+            <PredictRating>4.384615384615385</PredictRating>
         </Item>
         <Simi>
-            <SimiId>2</SimiId>
+            <SimiId>5</SimiId>
             <Similarity>1</Similarity>
+        </Simi>
+        <Simi>
+            <SimiId>7</SimiId>
+            <Similarity>0.66666666666666663</Similarity>
+        </Simi>
+        <Simi>
+            <SimiId>6</SimiId>
+            <Similarity>0.625</Similarity>
         </Simi>
     </User>
     <User>
-        <UserId>2</UserId>
+        <UserId>5</UserId>
         <Item>
-            <ItemId>1002</ItemId>
+            <ItemId>1051</ItemId>
             <PredictRating>5</PredictRating>
         </Item>
         <Item>
-            <ItemId>1003</ItemId>
-            <PredictRating>2</PredictRating>
+            <ItemId>1056</ItemId>
+            <PredictRating>4</PredictRating>
+        </Item>
+        <Item>
+            <ItemId>1055</ItemId>
+            <PredictRating>4</PredictRating>
         </Item>
         <Simi>
-            <SimiId>1</SimiId>
+            <SimiId>4</SimiId>
             <Similarity>1</Similarity>
+        </Simi>
+        <Simi>
+            <SimiId>7</SimiId>
+            <Similarity>0</Similarity>
+        </Simi>
+        <Simi>
+            <SimiId>6</SimiId>
+            <Similarity>0</Similarity>
+        </Simi>
+    </User>
+    <User>
+        <UserId>6</UserId>
+        <Item>
+            <ItemId>1053</ItemId>
+            <PredictRating>5</PredictRating>
+        </Item>
+        <Item>
+            <ItemId>1051</ItemId>
+            <PredictRating>5</PredictRating>
+        </Item>
+        <Item>
+            <ItemId>1012</ItemId>
+            <PredictRating>5</PredictRating>
+        </Item>
+        <Simi>
+            <SimiId>7</SimiId>
+            <Similarity>0.875</Similarity>
+        </Simi>
+        <Simi>
+            <SimiId>4</SimiId>
+            <Similarity>0.625</Similarity>
+        </Simi>
+        <Simi>
+            <SimiId>5</SimiId>
+            <Similarity>0</Similarity>
+        </Simi>
+    </User>
+    <User>
+        <UserId>7</UserId>
+        <Item>
+            <ItemId>1054</ItemId>
+            <PredictRating>5</PredictRating>
+        </Item>
+        <Item>
+            <ItemId>1051</ItemId>
+            <PredictRating>5</PredictRating>
+        </Item>
+        <Item>
+            <ItemId>1012</ItemId>
+            <PredictRating>5</PredictRating>
+        </Item>
+        <Simi>
+            <SimiId>6</SimiId>
+            <Similarity>0.875</Similarity>
+        </Simi>
+        <Simi>
+            <SimiId>4</SimiId>
+            <Similarity>0.66666666666666663</Similarity>
+        </Simi>
+        <Simi>
+            <SimiId>5</SimiId>
+            <Similarity>0</Similarity>
         </Simi>
     </User>
 </UserRecs>

@@ -181,7 +181,7 @@ use Application\Common\WAuthUtil;
          if(WAuthUtil::get_auth()!==null){
              $userId = WAuthUtil::get_auth()->userID;
              $sql = "select page.*,predictRating,user.* from (recs join page  on recs.pageId = page.pageID)join user on recs.userId = user.userId where 
-                recs.userId = $userId order by predictRating desc";
+                recs.userId = $userId and predictRating <> 0 order by predictRating desc";
              $statement=$this->dbAdapter->query($sql);
              $result=$statement->execute();
               

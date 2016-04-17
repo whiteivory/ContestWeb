@@ -69,7 +69,7 @@ class UserService
         $users = array();
         if($userId!==null){
             $sql =  "select recfris.friendId userID,simi ,user.* from recfris join user on
-            recfris.friendId = user.userID where recfris.userId = $userId
+            recfris.friendId = user.userID where recfris.userId = $userId and simi <> 0
             order by simi desc";
             $stmt = $this->dbAdapter->query($sql);
             $result = $stmt->execute();

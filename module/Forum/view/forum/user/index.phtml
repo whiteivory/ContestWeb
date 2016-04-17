@@ -56,11 +56,13 @@ enctype="multipart/form-data">
     $hasFalg = false;//如果没有为该用户推荐的内容，false，并提示用户打分
     foreach ($this->friends as $f):
     $hasFalg =true;?>
+    <div class="col-md-4">
     <img  class="img-circle" id="touxiang" src =<?= $f->getFaceimgpath(); ?> >
-<span id="font-recom2">用户名：<a href = <?="/account/".$f->getUserID()?> > <?=$f->getUsername(); ?></a>
-   <a class="btn btn-primary btn-large" style="margin-left: 30px;" href="#">TA的主页</a></span>
-
-					
+   <span id="font-recom2" >用户名：<a href = <?="/account/".$f->getUserID()?> > <?=$f->getUsername(); ?></a></span>
+    <p class="text-center">
+   <a class="btn btn-primary" role="button"  href="#">TA的主页</a></p>
+<hr>
+	</div>			
 				
 
 <?php endforeach;?>
