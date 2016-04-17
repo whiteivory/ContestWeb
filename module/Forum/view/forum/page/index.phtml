@@ -66,47 +66,29 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
       <!-- filterable portfolio menu starts --> 
       
       <ul class="nav nav-pills" id="pul"> 
-       <li class="active" onclick="javascript:changeColor()"><a href="" data-type="all">全部</a></li> 
-       <li onclick="javascript:changeColor()"><a href="" data-type="科研立项">科研立项<span class="badge">32</span></a></li> 
-       <li onclick="javascript:changeColor()"><a  href="" data-type="齐鲁软件">齐鲁软件<span class="badge">20</span></a></li> 
-       <li onclick="javascript:changeColor()"><a href="" data-type="挑战杯">挑战杯<span class="badge">14</span></a></li> 
-       <li onclick="javascript:changeColor()"><a href="" data-type="ACM">ACM<span class="badge">20</span></a></li> 
-       <li onclick="javascript:changeColor()"><a  href="" data-type="其它">其它<span class="badge">14</span></a></li> 
+       <li><a id="0" onclick = "jump(this.id);return false;" data-type="all">全部</a></li> 
+       <li><a  id="1" onclick = "jump(this.id);return false;" data-type="科研立项">科研立项</a></li> 
+       <li  ><a  id="2" onclick = "jump(this.id);return false;"  data-type="齐鲁软件">齐鲁软件</a></li> 
+       <li  ><a  id="3" onclick = "jump(this.id);return false;"  data-type="挑战杯">挑战杯</a></li> 
+       <li  ><a  id="4" onclick = "jump(this.id);return false;"  data-type="ACM">ACM</a></li> 
+       <li  ><a  id="5" onclick = "jump(this.id);return false;"  data-type="其它">其它</a></li> 
       </ul>
       <br> 
       
       <ul class="nav nav-pills" id="pul2" > 
-       <li class="active" onclick="javascript:changeColor2()"><a href="" data-type="all">全部</a></li> 
-       <li onclick="javascript:changeColor2()"><a href="" >本届信息<span class="badge">32</span></a></li> 
-       <li onclick="javascript:changeColor2()"><a href="" >往届信息<span class="badge">10</span></a></li> 
-       <li onclick="javascript:changeColor2()"><a href="" >经验交流<span class="badge">20</span></a></li> 
+       <li ><a  id="t0" onclick = "jump2(this.id);return false;" data-type="all">全部</a></li> 
+       <li ><a  id="t1" onclick = "jump2(this.id);return false;">本届信息</a></li> 
+       <li ><a  id="t2" onclick = "jump2(this.id);return false;">往届信息</a></li> 
+       <li ><a  id="t3" onclick = "jump2(this.id);return false;">经验交流</a></li> 
       </ul>
-      
- <script type="text/javascript">
-      var myPul=document.getElementById("pul");
-      var myPli=myPul.getElementsByTagName("li");
-      var myPul2=document.getElementById("pul2");
-      var myPli2=myPul2.getElementsByTagName("li");
-      
-      function changeColor(){
-          var j=<?=$this->secID?>;
-  	     for(var i=0;i<myPli.length;i++){
-  	  	     myPli[i].className="";
-          };
-          myPli[j].className="active";
-      }
-
-     
-      function changeColor2(){
-    	 var j=<?=$this->ptype?>;
-  	     for(var i=0;i<myPli2.length;i++){
-  	  	     myPli2[i].className="";
-          };
-          myPli2[j].className="active";
-      }
- </script>
      </div> 
-
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#<?=$this->secID ?>").parent().addClass("active");
+    $("#t<?=$this->ptype ?>").parent().addClass("active");
+	});
+</script>
+     
    <div class="recommond" id="fontadd">
     <h4 id="font-recom1">您可能对以下文章感兴趣：</h4>
     <br>
