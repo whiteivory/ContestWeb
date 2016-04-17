@@ -66,20 +66,20 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
       <!-- filterable portfolio menu starts --> 
       
       <ul class="nav nav-pills" id="pul"> 
-       <li class="active" onclick="javascript:changeColor(this)"><a href="" data-type="all">全部</a></li> 
-       <li onclick="javascript:changeColor(this)"><a href="" data-type="科研立项">科研立项<span class="badge">32</span></a></li> 
-       <li onclick="javascript:changeColor(this)"><a  href="" data-type="齐鲁软件">齐鲁软件<span class="badge">20</span></a></li> 
-       <li onclick="javascript:changeColor(this)"><a href="" data-type="挑战杯">挑战杯<span class="badge">14</span></a></li> 
-       <li onclick="javascript:changeColor(this)"><a href="" data-type="ACM">ACM<span class="badge">20</span></a></li> 
-       <li onclick="javascript:changeColor(this)"><a  href="" data-type="其它">其它<span class="badge">14</span></a></li> 
+       <li class="active" onclick="javascript:changeColor()"><a href="" data-type="all">全部</a></li> 
+       <li onclick="javascript:changeColor()"><a href="" data-type="科研立项">科研立项<span class="badge">32</span></a></li> 
+       <li onclick="javascript:changeColor()"><a  href="" data-type="齐鲁软件">齐鲁软件<span class="badge">20</span></a></li> 
+       <li onclick="javascript:changeColor()"><a href="" data-type="挑战杯">挑战杯<span class="badge">14</span></a></li> 
+       <li onclick="javascript:changeColor()"><a href="" data-type="ACM">ACM<span class="badge">20</span></a></li> 
+       <li onclick="javascript:changeColor()"><a  href="" data-type="其它">其它<span class="badge">14</span></a></li> 
       </ul>
       <br> 
       
       <ul class="nav nav-pills" id="pul2" > 
-       <li class="active" onclick="javascript:changeColor2(this)"><a href="" data-type="all">全部</a></li> 
-       <li onclick="javascript:changeColor2(this)"><a href="" >本届信息<span class="badge">32</span></a></li> 
-       <li onclick="javascript:changeColor2(this)"><a href="" >往届信息<span class="badge">10</span></a></li> 
-       <li onclick="javascript:changeColor2(this)"><a href="" >经验交流<span class="badge">20</span></a></li> 
+       <li class="active" onclick="javascript:changeColor2()"><a href="" data-type="all">全部</a></li> 
+       <li onclick="javascript:changeColor2()"><a href="" >本届信息<span class="badge">32</span></a></li> 
+       <li onclick="javascript:changeColor2()"><a href="" >往届信息<span class="badge">10</span></a></li> 
+       <li onclick="javascript:changeColor2()"><a href="" >经验交流<span class="badge">20</span></a></li> 
       </ul>
       
  <script type="text/javascript">
@@ -88,21 +88,23 @@ body[0].setAttribute("onload","init(<?php echo $this->secID;?>,<?php echo $this-
       var myPul2=document.getElementById("pul2");
       var myPli2=myPul2.getElementsByTagName("li");
       
-      function changeColor(x){
+      function changeColor(){
+          var j=<?=$this->secID?>;
   	     for(var i=0;i<myPli.length;i++){
   	  	     myPli[i].className="";
           };
-          x.className="active";
+          myPli[j].className="active";
       }
 
      
-      function changeColor2(x){
+      function changeColor2(){
+    	 var j=<?=$this->ptype?>;
   	     for(var i=0;i<myPli2.length;i++){
   	  	     myPli2[i].className="";
           };
-          x.className="active";
+          myPli2[j].className="active";
       }
-      </script>
+ </script>
      </div> 
 
    <div class="recommond" id="fontadd">
