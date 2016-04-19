@@ -87,8 +87,10 @@ class PageController  extends AbstractActionController
                 $pos=strpos($idori,'pos');
                 $pos+=5;
                 $id=substr($idori, $pos,4);
-                $p=$this->getservice()->getPage($id);
-                $return[]=$p->current();
+                if($id!=null){
+                    $p=$this->getservice()->getPage($id);
+                    $return[]=$p->current();
+                }
             }
 //             Debug::dump($de->docs[0]);
 //             print_r($de);
