@@ -90,33 +90,6 @@ $(document).ready(function(){
     $("#t<?=$this->ptype ?>").parent().addClass("active");
 	});
 </script>
-     
-   <div class="recommond" id="fontadd">
-    <h4 id="font-recom1">您可能对以下文章感兴趣：</h4>
-    <br>
-    <?php $hasFlag = false;//是否有推荐内容?>
-    <?php if($this->whetherLogIn === false):?>
-      
-         <p id="font-regular">请先<a href = "/login">登录</a>获取与您兴趣一致的推荐<p>
-         
-    <?php elseif ($this->recs !== null):?>
-
-    <?php foreach ($this->recs as $rec):
-        $hasFlag=true;?>
-  <div class="pagelist">
-   <p id="font-regular">标题：
-   <a id="font-addsmall" href = <?="/p/".$rec->getPageID(); ?>><?= $rec->getPtitle(); ?></a></p>
-      
-      <hr>
- </div>
-
-    <?php endforeach;
-          endif;?>
-    <?php if($hasFlag===false):?>
-   <p id="font-regular"> 请对您浏览的内容进行评分让我们更好得为您推荐</p>
-    <?php endif;?>
-</div>
-
 <!-- 搜索部分 -->
  <form action="/search" method="get" class="input-group">
     <input name="q" type = "text" class="form-control" placeholder="查询内容">
@@ -153,7 +126,7 @@ $(document).ready(function(){
         <ul class="nav navbar-nav post-nav">
             <li style="margin-right: 30px;"><i class="fa fa-tag"></i>日期 <?=$page->getPtime()?></li>
             <li style="margin-right: 30px;"><i class="fa fa-heart"></i>点击量 <?=$page->getPclicknum()?></li>
-            <li><i class="fa fa-comments"></i>评论 <?$page->getPreplynum()?></li>
+            <li><i class="fa fa-comments"></i>评论 <?=$page->getPreplynum()?></li>
         </ul>
         </span>
        </ul>
