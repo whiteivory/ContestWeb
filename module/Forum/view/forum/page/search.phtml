@@ -1,5 +1,18 @@
+
+    <h2><a href="/p/<?=$p->getPageID();?>"><?= $p->getPtitle()?> </a></h2>
+
+
+   <p id="font-title">搜索结果：</p>
+<br>
+<div class="span12">
 <?php 
     $pages=$this->pages;
     foreach ($pages as $p):?>
-    <h2><a href="/page/<?=$p->getPageID();?>"><?= $p->getPtitle()?> </a></h2>
+	<blockquote>
+				<p>标题：<a href="/p/<?=$p->getPageID();?>" > <?= $p->getPtitle()?></a></p>  
+					<small>来自 <cite><a href="/accout/<?$p->getUser()->getUserID()?>"><?=$p->getUser()->getUsername() ?></a></cite></small>
+</blockquote>
     <?php endforeach;?>
+</div>
+<hr>
+<!-- 搜索结果部分 -->
