@@ -54,8 +54,8 @@ echo $this->headtitle($page->getPtitle()." | ContestWeb ");
 <div class="jumpbotron"> <!-- 背景灰-->
 
 
-    <h2 id="font-title">标题： <?=$page->getPtitle()?></h2>
-    <div id="font-sourcetxt" >正文<hr> <div id="forimg" class="img-responsive"><?=$page->getPcontent();?></div></div>
+    <h2 id="font-title"><?=$page->getPtitle()?></h2>
+    <div id="font-sourcetxt" ><hr> <div id="forimg" class="img-responsive"><?=$page->getPcontent();?></div></div>
    <span id="fontsmall" >发表者：<?=$page->getUser()->getUsername();?></span> 
        
   
