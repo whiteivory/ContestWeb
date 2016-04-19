@@ -92,9 +92,9 @@ $(document).ready(function(){
 </script>
 <!-- 搜索部分 -->
  <form action="/search" method="get" class="input-group">
-    <input name="q" type = "text" class="form-control" placeholder="查询内容">
+    <input id = "search1"name="q" type = "text" class="form-control" placeholder="查询内容">
       <span class="input-group-btn">
-        <button class="btn btn-primary" type="button">搜索</button>
+        <button class="btn btn-primary" type="button"onclick="javascrtpt:window.location.href=('/search?q='+document.getElementById('search1').value)">搜索</button>
       </span>
     <!-- <input name="submitsearch" type="submit" lass="btn btn-default"> -->
 </form><hr>

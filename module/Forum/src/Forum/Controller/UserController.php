@@ -115,7 +115,7 @@ class UserController  extends AbstractActionController
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 if($this->getservice()->auth($user)){
-                    return $this->redirect()->toRoute('add');
+                    return $this->redirect()->toRoute('home');
                 }
                 else 
                     $errormessage = "用户名不存在或者密码错误";
