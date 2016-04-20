@@ -28,23 +28,41 @@ $follow->getRFtime()回复时间（未实现
  */
 
 echo $this->headtitle($recruit->getRtitle(). "| ContestWeb ");
+echo $this->headLink()
+->prependStylesheet($this->basePath() . '/css/zq.css');
 ?>
 
 
+<div class="row row-offcavnas row-offcanvas-right">
+<div class="col-xs-12 col-sm-9">
+<div class="row">
+       
+ <div class="jumpbotron"> <!-- 背景灰-->
 
 
+    <h2  id="font-title"> <?=$recruit->getRtitle()?></h1><br>
+    <div id="font-sourcetxt" ><hr> <?=$recruit->getRcontent();?></div>
+    <span id="fontsmall" >发表者： <?=$recruit->getUser()->getUsername();?></span> 
+ </div>
+</div>
 
-    <h1>标题： <?=$recruit->getRtitle()?></h1><br>
-    <p>正文信息 <?=$recruit->getRcontent();?></p>
-    <p>发表者用户名 <?=$recruit->getUser()->getUsername();?></p>
-    
     <h2>评论</h2>
-    <?php foreach ($follows as $follow):?>
     
-        <p>评论者用户名:<?= $follow->getUser()->getUsername();?></p>
-        <p>评论者头像:<img src="<?= $follow->getUser()->getFaceimgpath();?>"/></p>
-        <p>评论内容:<?= $follow->getRFcontent();?></p>
+        <?php foreach ($follows as $follow):?>
+    <div class="row">
+    	<div class="col-12 col-sm-6 col-lg-12 zq01">
+  
+        <h5 id="font-regular">评论者:<?= $follow->getUser()->getUsername();?></h5>
+        <img class="img-circle" id="touxiang" src="<?= $follow->getUser()->getFaceimgpath();?>"/>
+       <span id="fontadd">评论内容:<?= $follow->getRFcontent();?></span><hr>
+        <p><a class="btn btn-default" href="#" role="button">查看详情</a></p>
+        
+      </div>
+      <div id="demo_line_05"><br>—————————————————————————</div>
+      </div>  
     <?php endforeach;?>
+    
+    
     <h2>发表评论</h2>
     <?php 
     $form->setAttribute('action', '/recruit/'.$recruit->getRecruitID());//注意这里写绝对路径
@@ -54,3 +72,19 @@ echo $this->headtitle($recruit->getRtitle(). "| ContestWeb ");
        echo $this->formSubmit($form->get('submit'));
     echo $this->form()->closeTag();//</form>
 ?>
+
+    
+    <div class="row row-offcavnas row-offcanvas-right">
+<div class="col-xs-12 col-sm-9">
+<div class="row">
+    <h4 id="font-regular">发表评论</h4>
+     <?php 
+    $form->setAttribute('action', '/recruit/'.$recruit->getRecruitID());//注意这里写绝对路径
+    $form->prepare();
+    echo $this->form()->opentag($form);//<form>
+       echo $this->formRow($form->get('rfcontent')).'<br>';
+       echo $this->formSubmit($form->get('submit'));
+    echo $this->form()->closeTag();//</form>
+?>
+    
+</div></div></div>
