@@ -33,8 +33,9 @@ class UserForm extends Form
             'attributes'=>array(
                 'class'=>'form-control',
                 'id'=>'inputPassword',
-  
-            'options' => array(
+                'value'=>"user1_1",
+                 'onfocus'=>"javascript:if(this.value=='user1_1')this.value='user1_1';",
+                 'options' => array(
             ),
                 )
          ));
@@ -47,7 +48,8 @@ class UserForm extends Form
             ),
             'attributes'=>array(
                 'class'=>'form-control',
-                'id'=>'inputPassword',
+                'value'=>1111111,
+                'onfocus'=>"javascript:if(this.value=='')this.value='1111111';"
             )
         ));
         $this->add(array(

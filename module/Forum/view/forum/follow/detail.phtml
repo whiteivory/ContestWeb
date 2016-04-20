@@ -5,7 +5,8 @@ $form=$this->form;
 $follows=$this->follows;
 $whetherLogin = $this->whetherLogin;
 $simis = $this->simi;
-
+$star=$this->star;
+$star=($star==null?0:$star)
 /*更新可用：
  * $page->getPtime()//发帖时间
 
@@ -71,6 +72,12 @@ echo $this->headtitle($page->getPtitle()." | ContestWeb ");
     
     <div id="star">
 		<span id="font-regular">文章评论打分</span>
+		<?php
+		if($star!=0) {
+		    echo $star;
+		    echo "您已对本文章进行过评分";
+		}
+		?>
 		<ul>
 			<li><a href="javascript:;">1</a></li>
 			<li><a href="javascript:;">2</a></li>
@@ -115,12 +122,12 @@ $(document).ready(function(){
 });
 
 </script>-->
-
 <script type="text/javascript">
 // window.onload = function (){
 // };
 $(document).ready(function(){
-    updatezan(<?= $userID?>,<?= $page->getPageID()?>);
+	
+    updatezan(<?= $userID?>,<?= $page->getPageID()?>,<?=$star ?>);
 });
 </script>
 

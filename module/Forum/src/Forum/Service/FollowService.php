@@ -16,6 +16,9 @@ class FollowService{
     public function getSimi($pageID){
         return $this->followMapper->getSimi($pageID);
     }
+    public function getStar($userID,$pageID){
+        return $this->followMapper->getStar($userID, $pageID);
+    }
     public function saveFollow(Follow $followObject){
         $followObject->setFollowID($this->getNewFollowID());
         $this->followMapper->save($followObject);

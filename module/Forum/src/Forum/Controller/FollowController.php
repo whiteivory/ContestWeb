@@ -32,9 +32,11 @@ class FollowController extends AbstractActionController{
         $whetherlogin = false;
         $userID = 0;
         $auth=WAuthUtil::get_auth();
+        $star=null;
         if($auth){
             $whetherlogin = true;
             $userID=$auth->userID;
+            $star=$this->getFollowService()->getStar($userID, $id);
         }
 
         if($request->isPost()&&isset($request->getPost()['fcontent'])){
@@ -80,7 +82,8 @@ class FollowController extends AbstractActionController{
             'follows'=>$follows,
             'form'=>$form,
             'whetherLogin'=>$whetherlogin,
-            'simi'=>$this->getFollowService()->getSimi($id)
+            'simi'=>$this->getFollowService()->getSimi($id),
+            'star'=>$star,
         ));
     }
     /**

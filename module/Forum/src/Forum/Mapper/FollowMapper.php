@@ -76,6 +76,16 @@ class FollowMapper
     
         return array();
     }
+    public function getStar($userID,$pageID){
+        $sql = "select star from zanup where userID = $userID and pageID = $pageID";
+        $statement=$this->dbAdapter->query($sql);
+        $result=$statement->execute()->current();
+        if($result!=null)
+            return $result['star'];
+        else
+            return null;        
+        
+    }
     public function getSimi($pageID){
         //注意这里sql语句别名的运用刚好满足hydrate的对应
         $sql="select simipages.simiId pageID,userID,ptitle,ptime,pcontent,pzannum from simipages join page 
