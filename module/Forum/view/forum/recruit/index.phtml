@@ -81,11 +81,7 @@
                 <p class="text-center"><a href="/recruit/<?=$recruit->getRecruitID() ?>" class="btn btn-primary" role="button" >详细信息</a> <a href="/account/<?=$recruit->getUser()->getUserID() ?>" class="btn btn-default" role="button">个人主页</a></p>
               </div>
             </div>
-
         </div>
-
-
-
           <?php endforeach;
           else:
           foreach ($recruits as $recruit):
@@ -115,9 +111,10 @@
           ?>
           <?php 
     if($this->islogin === true&&$this->type == 1):
-?>
-    <br>
-    <h2>您可能对这些用户招募感兴趣:</h2>
+
+?><br><br>
+    <h3>您可能对这些用户招募感兴趣:</h3>
+
     <?php foreach ($this->recs as $r):?> 
      <div class="col-sm-6 col-md-3">
           
