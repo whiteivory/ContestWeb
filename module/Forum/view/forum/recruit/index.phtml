@@ -37,17 +37,6 @@
               <button type="button" onclick="window.location.href='/recruit?type=2'" class="btn btn-default <?=$this->type==2?"active":" "; ?>">团队招募</button>
         </div>
         <br><br>
-        
-       <div class="well"> 
-        <ul class="nav nav-pills" id="rul">
-          <li role="presentation" class="active" onclick="javascript:changeColor(this)"><a href="#">全部</a></li>
-          <li role="presentation" onclick="javascript:changeColor(this)"><a href="#">计算机</a></li>
-          <li role="presentation" onclick="javascript:changeColor(this)"><a href="#">科研立项</a></li>
-          <li role="presentation" onclick="javascript:changeColor(this)"><a href="#">后台</a></li>
-          <li role="presentation" onclick="javascript:changeColor(this)"><a href="#">美工</a></li>
-        </ul>
-
-      </div>
       <script type="text/javascript">
       var myRul=document.getElementById("rul");
       var myRli=myRul.getElementsByTagName("li");
@@ -127,6 +116,7 @@
           <?php 
     if($this->islogin === true&&$this->type == 1):
 ?>
+    <br>
     <h2>您可能对这些用户招募感兴趣:</h2>
     <?php foreach ($this->recs as $r):?> 
      <div class="col-sm-6 col-md-3">
