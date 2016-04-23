@@ -22,7 +22,8 @@
  */
 
  echo $this->headtitle("招募 | ContestWeb ");
-
+if($this->islogin == false)
+    echo "<a href='/login'>登录</a>之后才可以查看本校的招募。";
 
 ?>
     <div class="row">
